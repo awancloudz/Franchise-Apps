@@ -13,7 +13,7 @@ import { Camera} from '@ionic-native/camera';
 import { OneSignal } from '@ionic-native/onesignal';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import { HomePage, HomeDetailPage, HomethumbnailPage, HomeprodukdetailPage, HometokoPage, HomechatPage, HomekomentarPage, HomekomentardetailPage, HomeuserPage, HomeratingPage } from '../pages/home/home';
 import { KategoriPage,KategoriDetailPage, KategoriDetailPage2 } from '../pages/kategori/kategori';
 import { PembelianPage,PembelianDetailPage,PembelianCreatePage } from '../pages/pembelian/pembelian';
 import { DompetPage } from '../pages/dompet/dompet';
@@ -31,6 +31,10 @@ import { TokoprofilePage,TokoCreatePage } from '../pages/tokoprofile/tokoprofile
 import { TokosearchPage } from '../pages/tokosearch/tokosearch';
 import { LoginPage,DaftarPage,ForgotPage } from '../pages/login/login';
 import { ProfilePage } from '../pages/profile/profile';
+import { FilterPage } from '../pages/filter/filter';
+import { SortPage } from '../pages/sort/sort';
+import { DaftarkurirPage } from '../pages/daftarkurir/daftarkurir';
+import { InformasitokoPage } from '../pages/informasitoko/informasitoko';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -66,11 +70,17 @@ import { TokopemesananPageModule } from '../pages/tokopemesanan/tokopemesanan.mo
 import { TokopenjualanPageModule } from '../pages/tokopenjualan/tokopenjualan.module';
 import { TokoprodukPageModule } from '../pages/tokoproduk/tokoproduk.module';
 import { TokoPageModule } from '../pages/toko/toko.module';
+import { UserinformationComponent } from '../components/userinformation/userinformation';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
+    HomePage, HomeDetailPage, HomethumbnailPage, HomeprodukdetailPage, HometokoPage, HomechatPage, HomekomentarPage, HomekomentardetailPage, HomeuserPage, HomeratingPage,
+    FilterPage,
+    SortPage,
+    DaftarkurirPage,
+    InformasitokoPage,
+    UserinformationComponent,
     //PembelianPage, PembelianDetailPage,PembelianCreatePage,
     //DompetPage,
     //PesanPage, PesanDetailPage,
@@ -111,7 +121,7 @@ import { TokoPageModule } from '../pages/toko/toko.module';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
+    HomePage, HomeDetailPage, HomethumbnailPage, HomeprodukdetailPage, HometokoPage, HomechatPage, HomekomentarPage, HomekomentardetailPage, HomeuserPage, HomeratingPage,
     KategoriPage, KategoriDetailPage,KategoriDetailPage2,
     PembelianPage, PembelianDetailPage,PembelianCreatePage,
     DompetPage,
@@ -129,6 +139,11 @@ import { TokoPageModule } from '../pages/toko/toko.module';
     TokoprofilePage,TokoCreatePage,
     TokosearchPage,
     ProfilePage,
+    FilterPage,
+    SortPage,
+    DaftarkurirPage,
+    InformasitokoPage,
+    UserinformationComponent,
   ],
   providers: [
     StatusBar,

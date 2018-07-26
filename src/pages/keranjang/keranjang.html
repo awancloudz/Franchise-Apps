@@ -24,12 +24,12 @@
 
 
 <ion-content>
-
+<!--
   <ion-card class="card-container" *ngFor="let item of items.koleksi">
       <ion-row no-padding>
 
             <ion-col class="xxxx">             
-                    <img src="http://forkomperbekelbali.com/desa/public/fotoupload/{{item.produktoko.foto}}" class="picture-item">
+                    <img src="http://localhost:8000/fotoupload/{{item.produktoko.foto}}" class="picture-item">
 
                     <select class="dropdown-quantity" [(ngModel)]="jumlah" (change)="tomboledit(item)">
                       <option value="1">1</option>
@@ -63,8 +63,98 @@
 
       </ion-row>
   </ion-card>
+-->
+
+  <ion-card >
+    <ion-row>
+      <ion-col>
+        <p style="line-height: 1.1; white-space: normal">Nama Barang Nama Barang Nama Barang Nama Barang</p>
+      </ion-col>
+
+      <ion-col style="max-width: 55px; margin: 0 auto">
+          <button ion-button icon-only clear color="dark">
+            <ion-icon name="md-trash"></ion-icon>
+          </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col style="max-width: 120px">
+        <img src="home_slide_image/sample1.jpg" style="width: 110px; height: 100%">
+      </ion-col>
+
+      <ion-col style="max-width: 90px">
+        <p>Harga :<p>
+        <p style="margin-top: 6px">Jumlah :</p>
+        <p style="margin-top: 6px"><b>Total Berat :</b></p>
+      </ion-col>
+
+      <ion-col>
+        <p>Rp 1.000.000</p>
+
+        <ion-buttons style="margin-top: 7px">
+          <button ion-button icon-only outline (click)="decrement()" style="width: 25px; height: 25px; margin-right: 8px; margin-top: -4px">
+            <ion-icon name="ios-remove"></ion-icon>
+          </button>
+
+          {{currentNumber}}
+
+          <button ion-button icon-only outline (click)="increment()" style="width: 25px; height: 25px; margin-left: 8px; margin-top: -4px">
+            <ion-icon name="ios-add"></ion-icon>
+          </button>
+        </ion-buttons>
+
+        <p style="margin-top: 1px">100 Kg</p>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <ion-card >
+      <ion-row>
+        <ion-col>
+          <p style="line-height: 1.1; white-space: normal">Nama Barang Nama Barang Nama Barang Nama Barang</p>
+        </ion-col>
+
+        <ion-col style="max-width: 55px; margin: 0 auto">
+            <button ion-button icon-only clear color="dark">
+              <ion-icon name="md-trash"></ion-icon>
+            </button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col style="max-width: 120px">
+          <img src="home_slide_image/sample2.jpg" style="width: 110px; height: 100%">
+        </ion-col>
+
+        <ion-col style="max-width: 90px">
+          <p>Harga :<p>
+          <p style="margin-top: 5px">Jumlah :</p>
+          <p style="margin-top: 5px"><b>Total Berat :</b></p>
+        </ion-col>
+
+        <ion-col>
+          <p>Rp 1.000.000</p>
+
+          <ion-buttons style="margin-top: 7px">
+            <button ion-button icon-only outline (click)="decrement()" style="width: 25px; height: 25px; margin-right: 8px; margin-top: -4px">
+              <ion-icon name="ios-remove"></ion-icon>
+            </button>
+
+            {{currentNumber}}
+
+            <button ion-button icon-only outline (click)="increment()" style="width: 25px; height: 25px; margin-left: 8px; margin-top: -4px">
+              <ion-icon name="ios-add"></ion-icon>
+            </button>
+          </ion-buttons>
+
+          <p style="margin-top: 1px">50 Kg</p>
+        </ion-col>
+      </ion-row>
+    </ion-card>
 
 </ion-content>
+<!--
 <ion-footer style="text-align:center" *ngFor="let item2 of items.koleksi2">
   <ion-navbar>
   <h6 *ngIf="item2.subtotal == 0">
@@ -78,4 +168,16 @@
     <button *ngIf="item2.subtotal == 0" ion-button block (click)="tombolbeli()">Beli</button>
     <button *ngIf="item2.subtotal != 0" ion-button block (click)="tombolkirim(item2)">Kirim</button>
   </ion-buttons>
+</ion-footer>
+-->
+<ion-footer>
+
+  <ion-row>
+    <ion-col style="text-align: center">
+      <p><b>Total :</b> Rp 15.000.000</p>
+    </ion-col>
+    <ion-col style="max-width: 110px">
+        <button ion-button block color="primary" style="text-transform: none">Checkout</button>
+    </ion-col>
+  </ion-row>
 </ion-footer>

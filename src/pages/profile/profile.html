@@ -23,8 +23,8 @@
 </ion-header>
 
 
-<ion-content padding >
-<ion-list>
+<ion-content>
+<!-- <ion-list>
   
   <ion-input type="hidden" [(ngModel)]="id"></ion-input>
   
@@ -74,16 +74,56 @@
     <ion-input type="text" [(ngModel)]="email"></ion-input>
   </ion-item>
 
-  <!--<ion-item>
+  <ion-item>
     <ion-label floating>Password</ion-label>
     <ion-input type="password" [(ngModel)]="password"></ion-input>
-  </ion-item>-->
-</ion-list>
-  <ion-fab bottom right>
-    <ion-buttons>
-      <button ion-fab (click)="editprofile()" style="margin-bottom:10px">
-        <ion-icon name="checkmark" style="zoom:1.4"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-fab>
+  </ion-item>
+</ion-list>-->
+
+<div style="margin-right: 8px">
+  <ion-item no-lines>
+    <ion-label stacked>No. KTP</ion-label>
+    <ion-input type="number" style="background-color: rgb(230, 230, 230); border-radius: 5px; padding-left: 8px"></ion-input>
+  </ion-item>
+
+  <ion-item no-lines>
+      <ion-label stacked>Nama</ion-label>
+      <ion-input type="text" style="background-color: rgb(230, 230, 230); border-radius: 5px; padding-left: 8px"></ion-input>
+  </ion-item>
+  
+  <ion-item no-lines>
+    <ion-label stacked>Alamat</ion-label>
+    <ion-textarea rows="5" cols="5" style="background-color: rgb(230, 230, 230); border-radius: 5px; padding-left: 8px"></ion-textarea>
+  </ion-item>
+
+  <ion-item no-lines>
+    <ion-label stacked>Tanggal Lahir</ion-label>
+    <ion-datetime displayFormat="DD MMM YYYY"
+    monthShortNames="Jan, Feb, Mar, Apr, Mei, Jun, Jul, Agt, Sept, Okt, Nov, Des"
+    style="background-color: rgb(230, 230, 230); border-radius: 5px; padding-left: 8px"></ion-datetime>
+  </ion-item>
+
+  <ion-item no-lines>
+    <ion-label stacked>Jenis Kelamin</ion-label>
+    <ion-select interface="popover" style="background-color: rgb(230, 230, 230); border-radius: 5px; padding-left: 8px">
+      <ion-option value="L">Laki-Laki</ion-option>
+      <ion-option value="P">Perempuan</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item no-lines>
+      <ion-label stacked>Nomor Telepon</ion-label>
+      <ion-input type="number" style="background-color: rgb(230, 230, 230); border-radius: 5px; padding-left: 8px"></ion-input>
+  </ion-item>
+
+  <ion-item no-lines>
+      <ion-label stacked>Email</ion-label>
+      <ion-input type="email" style="background-color: rgb(230, 230, 230); border-radius: 5px; padding-left: 8px"></ion-input>
+  </ion-item>
+</div>
+
+<ion-buttons style="text-align: center; margin-top: 10px">
+  <button ion-button style="text-transform: none; border-radius: 5px" (click)="editprofile()">Simpan</button>
+</ion-buttons>
+
 </ion-content>

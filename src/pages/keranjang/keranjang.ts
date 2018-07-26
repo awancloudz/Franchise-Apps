@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 //Tambahkan Provider
 import { KeranjangserviceProvider } from '../../providers/keranjangservice/keranjangservice';
 //Tambahkan Variabel Global
 import { KeranjangArray } from '../../pages/keranjang/keranjangarray';
-import { NavController, NavParams, Platform, ActionSheetController, LoadingController ,ToastController,AlertController } from 'ionic-angular';
+import { NavController, NavParams, Platform, ActionSheetController, LoadingController ,ToastController,AlertController, CardContent } from 'ionic-angular';
 import { SearchPage } from '../../pages/search/search';
 import { PembelianPage,PembelianCreatePage } from '../pembelian/pembelian';
 import { HomePage } from '../../pages/home/home';
@@ -21,9 +21,11 @@ import { Storage } from '@ionic/storage';
   entryComponents: [ SearchPage ],
 })
 export class KeranjangPage {
+  
   items:KeranjangArray[]=[];
   jumlah:any;
   stok:any;
+ 
   constructor(public nav: NavController,public platform: Platform,public actionSheetCtrl: ActionSheetController,public alertCtrl: AlertController,
     public loadincontroller:LoadingController,public _toast:ToastController,public keranjangservice:KeranjangserviceProvider,private storage: Storage) {
 
@@ -145,6 +147,17 @@ tombolbeli() {
 tombolkirim(item2) {
   this.nav.setRoot(PembelianCreatePage, { item2: item2 });
 }
+
+private currentNumber = 1;
+  private increment () {
+    if(this.currentNumber < 10)
+    this.currentNumber++;
+  }
+  
+  private decrement () {
+    if(this.currentNumber > 1)
+    this.currentNumber--;
+  }
 }
 
 @Component({

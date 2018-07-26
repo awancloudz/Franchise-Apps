@@ -16,7 +16,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class KategoriserviceProvider {
   private items:KategoriArray[]=[];
-  private url:string="http://forkomperbekelbali.com/desa/public/api/kategoriproduk";
+  private url:string="http://localhost:8000/api/kategoriproduk";
   constructor(public _http: Http) {
   }
 

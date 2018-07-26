@@ -1,30 +1,26 @@
 <ion-menu [content]="content">
   <ion-header>
-    <ion-item color="primary">
-      <ion-avatar round>
-        <img class="avatar-depan" style= "height: 100px;width: 100px" src="assets/img/person3.jpeg" >
-      </ion-avatar>
-        
-      <ion-toolbar color="primary">
-        <ion-title><p *ngFor="let user of warga" style="text-align:center;font-size: 18px" >{{ user.nama }}</p></ion-title>
-      </ion-toolbar>
+    <ion-item color="primary" style="text-align: center">
+        <img style= "height: 100px; width: 100px" src="people.png">
+        <!--<ion-title><p *ngFor="let user of warga" style="text-align:center;font-size: 18px" >{{ user.nama }}</p></ion-title>-->
+        <p style="font-size: 20px">John Doe</p>
     </ion-item>
   </ion-header>
 
   <ion-content>
-    <ion-list>
-      <button menuClose ion-item icon-left *ngFor="let p of pages" (click)="openPage(p)">
-        <i class="fa fa-{{p.icon}} {{p.position}} {{p.color}}" aria-hidden="true" style="padding-right:15px;font-size:20px"></i>
+    <ion-list no-lines style="border-bottom: 1px solid gainsboro">
+      <button menuClose ion-item icon-left *ngFor="let p of pages" (click)="openPage(p)" style="border-top: 1px solid gainsboro; border-bottom: 1px solid gainsboro">
+        <img width="30px" height="30px" src="{{ p.icon }}" item-left>
         {{p.title}}
       </button>
     </ion-list>
 
     <ion-footer>
          <button menuClose ion-item icon-left position="bottom" (click)="tomboltoko()" *ngIf="level == 'toko'">
-          <i class="fa fa-building iconprimary" aria-hidden="true" style="padding-right:15px;font-size:20px;margin-left:5px"></i>
+          <img width="30px" height="30px" src="sidemenu_icon/toko.png" item-left>
           Toko Saya</button>
           <button menuClose ion-item icon-left position="bottom" (click)="daftartoko()" *ngIf="level == 'warga'">
-          <i class="fa fa-building iconprimary" aria-hidden="true" style="padding-right:15px;font-size:20px;margin-left:5px"></i>
+            <img width="30px" height="30px" src="sidemenu_icon/toko.png" item-left>
           Buat Toko</button>
     </ion-footer>
   </ion-content>

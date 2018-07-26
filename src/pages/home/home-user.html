@@ -1,0 +1,99 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>home-user</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content style="background-color: whitesmoke">
+    <ion-card style="margin: 0px -5px 0px -5px; width: auto">
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <img src="people.png" style="width: 80px; height: 80; border-radius: 50%; margin:0 auto">
+                    <p style="font-size: 16px; text-align: center; margin-top: 5px"><b>Alexander Graham Bell</b></p>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card>
+
+    <ion-card style="margin: 10px -5px 0px -5px; width: auto">
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <p style="font-size: 16px; text-align: center"><b>Informasi Pengguna</b></p>
+                </ion-col>
+                <ion-fab right style="margin-top: 5px">
+                    <ion-icon name="ios-information-circle" style="font-size: 25px; color: gray" (click)="userinformation()"></ion-icon>
+                </ion-fab>
+            </ion-row>
+            
+                <ion-row>
+                    <ion-col>
+                            <img src="icon_informasi_toko/good.png" style="width: 50px; height: 50px; margin: 0 auto">
+                            <p style="font-size: 20px; text-align: center">99.99%</p>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row style="text-align: center">
+                    <ion-col col-4 style="text-align: center">
+                        <img src="icon_informasi_toko/bad.png" style="width: 30px; height: 30px; margin: 0 auto">
+                        <p style="margin-top: 2px; color: gray">100</p>
+                    </ion-col>
+              
+                    <ion-col col-4>
+                        <img src="icon_informasi_toko/normal.png" style="width: 30px; height: 30px; margin: 0 auto">
+                        <p style="margin-top: 2px; color: gray">200</p>
+                    </ion-col>
+              
+                    <ion-col col-4>
+                        <img src="icon_informasi_toko/good.png" style="width: 30px; height: 30px; margin: 0 auto">
+                        <p style="margin-top: 2px; color: gray">300</p>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+    </ion-card>
+
+    <ion-card style="margin: 10px -5px 0px -5px; width: auto">
+            <ion-grid>
+                    <ion-row>
+                        <ion-col style="max-width: 65px">
+                            <img src="xxx.jpg" style="border-radius: 50%; height: 55px; width: 55px" (click)="tombol_toko()">
+                        </ion-col>
+    
+                        <ion-col>
+                            <p style="font-size: 16px"><b>eCommerce Nation</b></p>
+                            <img src="medal.png" style="width: 20px; height: 20px; margin-left: -5px">
+                        </ion-col>
+    
+                        <ion-col style="max-width: 40px">
+                                <img src="premium.png" style="height: 30px; width: 30px">
+                        </ion-col>
+                    </ion-row>
+    
+                    <ion-row style="text-align: center">
+                        <ion-col>
+                            <div style="color: rgb(186, 186, 186); font-size: 14px">
+                                <ion-icon name="ios-pin-outline" style="font-size: 20px"></ion-icon>
+                                Jakarta
+                            </div>
+                        </ion-col>
+    
+                        <ion-col>
+                              <div style="color: rgb(186, 186, 186); font-size: 14px; margin-left: 1px; margin-top: 5px">
+                                <ion-icon name="ios-clock-outline"></ion-icon>
+                                2 Jam yang lalu
+                              </div>
+                        </ion-col>
+                    </ion-row>
+                    
+                    <ion-row style="margin: 0 auto">
+                        <ion-col>
+                                <button ion-button outline style="text-transform: none; margin: 0px 0px">Bookmark</button>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+    </ion-card>
+</ion-content>

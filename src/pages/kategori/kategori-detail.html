@@ -31,7 +31,7 @@
     <ion-buttons class="sub-placeholder" start>
       <ion-item class="margin-placeholder">
         <ion-label  style="font-size:15px;text-align:center" stacked>
-        <ion-select [(ngModel)]="id_subkategori" placeholder="Sub-Kategori" okText="Pilih" cancelText="Batal" interface="popover">
+        <ion-select [(ngModel)]="id_subkategori" placeholder="Sub-Kategori" okText="Pilih" cancelText="Batal">
           <ion-option ion-item *ngFor="let item of items.koleksi" value="{{ item.id }}" (ionSelect)="tombolsub(item)">{{ item.namasubkategori }}</ion-option>
         </ion-select>
         </ion-label>
@@ -61,7 +61,7 @@
         <ion-row>
             <ion-col *ngFor="let item2 of items.koleksi2" col-6>
                 <p align="center">
-                    <img *ngIf="item2.foto != ''" src="http://forkomperbekelbali.com/desa/public/fotoupload/{{item2.foto}}" class="picture-item">
+                    <img *ngIf="item2.foto != ''" src="http://localhost:8000/fotoupload/{{item2.foto}}" class="picture-item">
                     <img *ngIf="item2.foto == ''" src="assets/imgs/product.png" class="picture-item">
                 </p>
                 <h2><b>{{item2.namaproduk}}</b></h2>

@@ -1,0 +1,58 @@
+<ion-header>
+        <ion-navbar color="primary">
+            <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+            </button>
+            <ion-title>home-komentar</ion-title>
+        </ion-navbar>
+</ion-header>
+
+<ion-content style="background-color: whitesmoke">
+    <ion-card style="margin: 5px -5px 5px -5px; width: auto">
+        <ion-grid>
+            <ion-row>
+                <ion-col style="max-width: 60px; text-align: center" (click)="userprofile()">
+                    <img src="people.png" style="width: 40px; height: 40px; border-radius: 50%; margin: 0 auto">
+                    <ion-icon name="ios-chatbubbles-outline" style="color: gray; margin-top: 5px"><div style="font-size: 8px">25</div></ion-icon>
+                </ion-col>
+                <ion-col (click)="komentardetail()">
+                    <p><b>Nama Pembeli</b></p>
+                    <p style="color: rgb(186, 186, 186); font-size: 12px; margin-top: -6px">00 Desember 2018, 00:00 WIB</p>
+                    <p style="color: gray">Barang udah ready gan?</p>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card>
+
+    <ion-card style="margin: 5px -5px 5px -5px; width: auto">
+            <ion-grid>
+                <ion-row>
+                    <ion-col style="max-width: 60px; text-align: center">
+                        <img src="people.png" style="width: 40px; height: 40px; border-radius: 50%; margin: 0 auto">
+                        <ion-icon name="ios-chatbubbles-outline" style="color: gray; margin-top: 5px"><div style="font-size: 8px">12</div></ion-icon>
+                    </ion-col>
+                    <ion-col>
+                        <p><b>Nama Pembeli</b></p>
+                        <p style="color: rgb(186, 186, 186); font-size: 12px; margin-top: -6px">00 November 2018, 00:00 WIB</p>
+                        <p style="color: gray">ready gan?</p>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card>
+    
+        <ion-card style="margin: 5px -5px 5px -5px; width: auto">
+                <ion-grid>
+                    <ion-row>
+                        <ion-col style="max-width: 60px; text-align: center">
+                            <img src="people.png" style="width: 40px; height: 40px; border-radius: 50%; margin: 0 auto">
+                            <ion-icon name="ios-chatbubbles-outline" style="color: gray; margin-top: 5px"><div style="font-size: 8px">3</div></ion-icon>
+                        </ion-col>
+                        <ion-col>
+                            <p><b>Nama Pembeli</b></p>
+                            <p style="color: rgb(186, 186, 186); font-size: 12px; margin-top: -6px">00 Oktober 2018, 00:00 WIB</p>
+                            <p style="color: gray">Barang nya ada gan?</p>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-card>
+</ion-content>

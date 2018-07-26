@@ -210,7 +210,7 @@ export class TokoprodukCreatePage {
       headers: {}
     }
   
-    fileTransfer.upload(this.imageURI, 'http://forkomperbekelbali.com/desa/public/api/uploadproduk', options)
+    fileTransfer.upload(this.imageURI, 'http://localhost:8000/api/uploadproduk', options)
       .then((data) => {
       this.imageFileName = "upload.jpg";
       loader.dismiss();

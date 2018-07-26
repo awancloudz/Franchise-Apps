@@ -19,7 +19,7 @@ export class TokoprofileserviceProvider {
   //Deklarasi variabel
   private items:TokoProfileArray[]=[];
   //Memanggil URL Api
-  private url:string="http://forkomperbekelbali.com/desa/public/api/toko";
+  private url:string="http://localhost:8000/api/toko";
 
   constructor(public _http: Http) {
     

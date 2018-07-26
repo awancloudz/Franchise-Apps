@@ -15,8 +15,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class TokoprodukserviceProvider {
   private items:TokoprodukArray[]=[];
-  //private url:string="http://forkomperbekelbali.com/desa/public/api/kategoriproduk";
-  private url:string="http://forkomperbekelbali.com/desa/public/api/produktoko";
+  //private url:string="http://localhost:8000/api/kategoriproduk";
+  private url:string="http://localhost:8000/api/produktoko";
   constructor(public _http: Http) {
   }
 

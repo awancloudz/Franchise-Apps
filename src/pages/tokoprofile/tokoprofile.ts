@@ -144,7 +144,7 @@ export class TokoprofilePage {
     photos_awal.forEach(element => {
       this.platform.ready().then(() => {
         const fileTransfer:FileTransferObject = this.transfer.create();
-        const imageLocation = `http://forkomperbekelbali.com/desa/public/fotoupload/${element}`;
+        const imageLocation = `http://localhost:8000/fotoupload/${element}`;
         this.photos.push(imageLocation);
         /*fileTransfer.download(imageLocation, this.file.applicationDirectory + element).then((entry) => {
           this.photos.push(entry.toURL());
@@ -187,7 +187,7 @@ export class TokoprofilePage {
       headers: {}
     }
     
-    fileTransfer.upload(this.imageURI, 'http://forkomperbekelbali.com/desa/public/api/uploadtoko', options)
+    fileTransfer.upload(this.imageURI, 'http://localhost:8000/api/uploadtoko', options)
       .then((data) => {
       this.imageFileName = "image.jpg";
       loader.dismiss();
@@ -347,7 +347,7 @@ export class TokoCreatePage {
       headers: {}
     }
     
-    fileTransfer.upload(this.imageURI, 'http://forkomperbekelbali.com/desa/public/api/uploadtoko', options)
+    fileTransfer.upload(this.imageURI, 'http://localhost:8000/api/uploadtoko', options)
       .then((data) => {
       this.imageFileName = "image.jpg";
       loader.dismiss();

@@ -18,8 +18,8 @@
 </ion-header>
 
 
-<ion-content padding >
-<ion-list>
+<ion-content>
+<!-- <ion-list>
   
   <ion-input type="hidden" [(ngModel)]="id"></ion-input>
   <ion-input type="hidden" [(ngModel)]="id_warga"></ion-input>
@@ -42,11 +42,37 @@
   </ion-item>
   <ion-input type="hidden" [(ngModel)]="status"></ion-input>
 </ion-list>
+
   <ion-fab bottom right>
     <ion-buttons>
       <button ion-fab (click)="daftartoko()" style="margin-bottom:10px">
         <ion-icon name="checkmark" style="zoom:1.4"></ion-icon>
       </button>
     </ion-buttons>
-  </ion-fab>
+  </ion-fab> -->
+<div>
+  <ion-grid>
+    <ion-row>
+      <ion-col style="text-align: center">
+          <img src="people.png" style="height: 100px; width: 100px; border-radius: 50%">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
+
+<div style="margin-right: 8px">
+  <ion-item no-lines>
+    <ion-label stacked>Nama Toko</ion-label>
+    <ion-input type="text" style="background-color: rgb(230, 230, 230); border-radius: 5px; padding-left: 8px"></ion-input>
+  </ion-item>
+
+  <ion-item no-lines>
+    <ion-label stacked>Alamat</ion-label>
+    <ion-textarea rows="5" cols="5" style="background-color: rgb(230, 230, 230); border-radius: 5px; padding-left: 8px"></ion-textarea>
+  </ion-item>
+</div>
+
+<ion-buttons style="text-align: center; margin-top: 10px">
+  <button ion-button style="text-transform: none">Apply</button>
+</ion-buttons>
 </ion-content>

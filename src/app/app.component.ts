@@ -5,14 +5,14 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { OneSignal } from '@ionic-native/onesignal';
 
-import { HomePage } from '../pages/home/home';
+import { HomePage, HomeDetailPage, HomethumbnailPage, HomeprodukdetailPage, HometokoPage, HomechatPage, HomekomentarPage, HomekomentardetailPage, HomeuserPage, HomeratingPage } from '../pages/home/home';
 import { KategoriPage,KategoriDetailPage } from '../pages/kategori/kategori';
 import { PembelianPage,PembelianDetailPage } from '../pages/pembelian/pembelian';
 import { DompetPage } from '../pages/dompet/dompet';
 import { PesanPage,PesanDetailPage } from '../pages/pesan/pesan';
 import { SettingPage } from '../pages/setting/setting';
 import { ProfilePage } from '../pages/profile/profile';
-import { LoginPage} from '../pages/login/login';
+import { LoginPage, ForgotPage, DaftarPage} from '../pages/login/login';
 import { KeranjangPage } from '../pages/keranjang/keranjang';
 import { SearchPage } from '../pages/search/search';
 import { TokoPage } from '../pages/toko/toko';
@@ -23,6 +23,10 @@ import { TokopenjualanPage,TokopenjualanDetailPage } from '../pages/tokopenjuala
 import { TokoprodukPage, TokoprodukCreatePage } from '../pages/tokoproduk/tokoproduk';
 import { TokoCreatePage,TokoprofilePage } from '../pages/tokoprofile/tokoprofile';
 import { TokosearchPage } from '../pages/tokosearch/tokosearch';
+import { FilterPage } from '../pages/filter/filter';
+import { SortPage } from '../pages/sort/sort';
+import { DaftarkurirPage } from '../pages/daftarkurir/daftarkurir';
+import { InformasitokoPage } from '../pages/informasitoko/informasitoko';
 
 @Component({
   templateUrl: 'app.html'
@@ -30,9 +34,9 @@ import { TokosearchPage } from '../pages/tokosearch/tokosearch';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any = HomePage;
   level = "warga";
-  pages: Array<{title: string, icon: any, color: any ,component: any}>;
+  pages: Array<{title: string, icon: string,component: any}>;
   warga: Array<{nama: string}>;
 
   constructor(private storage: Storage,public platform: Platform, public statusBar: StatusBar, 
@@ -42,14 +46,14 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', icon: "home", color:"iconprimary", component: HomePage },
-      { title: 'Kategori', icon: "tags", color:"iconprimary", component: KategoriPage },
-      { title: 'Pembelian', icon: "money", color:"iconprimary", component: PembelianPage },
-      //{ title: 'Dompet', icon: "credit-card", color:"iconprimary", component: DompetPage },
-      //{ title: 'Pesan', icon: "envelope-o", color:"iconprimary", component: PesanPage },
-      //{ title: 'Setting', icon: "gears", color:"iconprimary", component: SettingPage },
-      { title: 'Profile',  icon: "user", color: "iconprimary", component: ProfilePage },
-      { title: 'Logout',  icon: "sign-out", color: "iconprimary", component: SettingPage },
+      { title: 'Home', icon: "sidemenu_icon/home.png", component: HomePage },
+      { title: 'Kategori', icon: "sidemenu_icon/kategori.png", component: KategoriPage },
+      { title: 'Pembelian', icon: "sidemenu_icon/pembelian.png", component: PembelianPage },
+      //{ title: 'Dompet', icon: "sidemenu_icon/home.png", component: DompetPage },
+      //{ title: 'Pesan', icon: "sidemenu_icon/home.png", component: PesanPage },
+      //{ title: 'Setting', icon: "sidemenu_icon/home.png", component: SettingPage },
+      { title: 'Profile',  icon: "sidemenu_icon/profile.png", component: ProfilePage },
+      { title: 'Logout',  icon: "sidemenu_icon/log_out.png", component: SettingPage },
     ];
 
   }

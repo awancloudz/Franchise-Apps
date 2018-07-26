@@ -5,13 +5,15 @@
   Ionic pages and navigation.
 -->
 
-<ion-content padding>
-  <div text-center>
+<ion-content>
+
+  <!-- <div text-center>
     <h2>E-Bumdes</h2>
     <ion-img width="120" height="120" src="logo.png" style="background-color: transparent;"></ion-img>
     <h3>DESA UBUNG KAJA</h3>
     <h4>Kec.Denpasar Utara - Denpasar, BALI</h4>
   </div>
+
   <ion-list>
     <ion-item>
       <ion-label floating>NIK (No.KTP)</ion-label>
@@ -27,5 +29,49 @@
       <p align="center">atau</p>
       <button ion-button color="secondary" block (click)="daftar()">Daftar</button>
     </div>
-  </ion-list>
+  </ion-list> -->
+
+<div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col style="text-align: center">
+        <img src="contoh_toko.png" style="height: 220px; width: auto">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div style="border: 1px solid #938bff; margin: 8px">
+    <ion-item no-lines style="width: auto; margin-left: 10px; margin-right: 17px">
+      <ion-label stacked>Account ID</ion-label>
+      <ion-input text-center type="text" style="background-color: rgb(230, 230, 230); border-radius: 15px; padding-left: 10px"></ion-input>
+    </ion-item>
+
+    <ion-item no-lines style="width: auto; margin-left: 10px; margin-right: 17px">
+      <ion-label stacked>Password</ion-label>
+      <ion-input text-center type="password" style="background-color: rgb(230, 230, 230); border-radius: 15px; padding-left: 10px"></ion-input>
+    </ion-item>
+
+    <ion-buttons style="text-align: center; margin-top: 10px; margin-bottom: 10px">
+        <button ion-button style="text-transform: none; border-radius: 5px; width: 80px">Login</button>
+    </ion-buttons>
+  </div>
+
+  <ion-grid style="text-align: center; margin-top: -15px">
+    <ion-row>
+      <ion-col>
+        <p style="color: gray">Buat akun baru?</p>
+        <button ion-button style="text-transform: none; border-radius: 5px; width: 100px; margin-top: -10px">Daftar Baru</button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button clear style="text-transform: none"><u>Lupa Password?</u></button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</div>
+
 </ion-content>

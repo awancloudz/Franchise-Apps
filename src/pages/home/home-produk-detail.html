@@ -1,0 +1,305 @@
+<ion-header>
+        <ion-navbar color="primary">
+            <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+            </button>
+            <ion-title>home-produk-detail</ion-title>
+        </ion-navbar>
+</ion-header>
+          
+<ion-content style="background-color: whitesmoke">
+    <div>
+        <ion-fab style="position: absolute" right top>
+            <button ion-fab (click)="tombolwishlist()" [color]="ionicNamedColor" style="height: 35px; width: 35px">
+                <ion-icon name="ios-heart" style="margin-top: 1px"></ion-icon>
+            </button>
+        </ion-fab>
+    </div>
+
+    <ion-slides style="height: 200px" pager="true">
+        <ion-slide>
+            <img src="home_slide_image/sample1.jpg">
+        </ion-slide>
+    </ion-slides>
+
+    <div style="margin: -10px -10px 0px -10px; background-color: white">
+        <ion-card>
+            <ion-grid>
+
+                <ion-row>
+                    <ion-col no-padding>
+                        <p style="font-size: 17px; line-height: 1.1">Sample Furniture Set 1 Sample Furniture Set 1 Sample Furniture Set 1 Sample Furniture Set 1</p>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col>
+                        <p style="font-size: 23px; color: #938bff; text-align: center">Rp 1.000.000</p>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card>
+    </div>
+
+    <div style="text-align: center; margin: -15px">
+        <ion-grid>
+            <ion-row>
+                <ion-col no-padding>
+                    <ion-card style="height: 60px; width: auto; margin-right: 5px; background-color: white" (click)="rating()">
+                        <ion-buttons style="padding: 12px">
+                            <img src="rating.png" style="height: 15px; width: auto; margin: 0 auto">
+                            <p style="color: gray; font-size: 13px; margin-top: 5px">(5) Ulasan</p>
+                        </ion-buttons>
+                    </ion-card>
+                </ion-col>
+    
+                <ion-col no-padding>
+                    <ion-card style="height: 60px; width: auto; margin-left: 5px; background-color: white" (click)="openDaftarkurir()">
+                        <ion-buttons style="padding: 7px">
+                            <img src="kurir.png" style="width: 27px; height: 27px; margin: 0 auto">
+                            <p style="color: gray; font-size: 13px; margin-top: 3px">Daftar Kurir</p>
+                        </ion-buttons>
+                    </ion-card>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+
+    <div style="text-align: center; margin: 0px -10px 0px -10px; background-color: white">
+        <ion-card>
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <img src="icon_detail_produk/stok.png" style="width: 40px; height: 40px; margin: 0 auto">
+                    <p style="color: gray; margin-top: 0px">Stok</p>
+                    <p>999</p>
+                </ion-col>
+
+                <ion-col>
+                    <img src="icon_detail_produk/terjual.png" style="width: 40px; height: 40px; margin: 0 auto">
+                    <p style="color: gray; margin-top: 0px">Terjual</p>
+                    <p>999</p>
+                </ion-col>
+
+                <ion-col>
+                    <img src="icon_detail_produk/dilihat.png" style="width: 40px; height: 40px; margin: 0 auto">
+                    <p style="color: gray; margin-top: 0px">Dilihat</p>
+                    <p>10.000</p>
+                </ion-col>
+
+                <ion-col>
+                    <img src="icon_detail_produk/berat.png" style="width: 40px; height: 40px; margin: 0 auto">
+                    <p style="color: gray; margin-top: 0px">Berat</p>
+                    <p>100 Kg</p>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card>
+    </div>
+
+    <!-- <div style="text-align: center">
+        <p style="font-size: 15px">
+            <del style="margin-right: 30px; color: gray">Rp 5.000.000</del>
+            <span style="font-size: 25px">Rp 1.000.000</span>
+        </p>
+    </div> -->
+    
+    <div style="margin: 0px -10px 0px -10px; background-color: white">
+        <ion-card padding>
+            <p style="font-size: 16px; text-align: center; margin-top: -5px; margin-bottom: 5px"><b>Diskripsi Produk</b></p>
+            <p style="color: gray">Mebel atau furnitur adalah perlengkapan rumah yang mencakup semua barang seperti kursi, meja, dan lemari. Mebel berasal dari kata movable, yang artinya bisa bergerak. Pada zaman dahulu meja kursi dan lemari relatif mudah digerakkan dari batu besar, tembok, dan atap. Sedangkan kata furniture berasal dari bahasa Prancis fourniture (1520–30 Masehi). Fourniture mempunyai asal kata fournir yang artinya furnish atau perabot rumah atau ruangan. Walaupun mebel dan furniture punya arti yang beda, tetapi yang ditunjuk sama yaitu meja, kursi, lemari, dan seterusnya.
+            Dalam kata lain, mebel atau furnitur adalah semua benda yang ada di rumah dan digunakan oleh penghuninya untuk duduk, berbaring, ataupun menyimpan benda kecil seperti pakaian atau cangkir. Mebel terbuat dari kayu, papan, kulit, sekrup, dll.
+            </p>
+        </ion-card>
+    </div>
+
+    <div style="margin: 0px -10px 0px -10px; background-color: white">
+        <ion-card>
+            <div>
+                <p style="font-size: 16px; text-align: center; margin-top: 5px; margin-bottom: 5px"><b>Penjual</b></p>
+            </div>
+
+            <ion-grid>
+                <ion-row>
+                    <ion-col style="max-width: 65px">
+                        <img src="xxx.jpg" style="border-radius: 50%; height: 55px; width: 55px" (click)="tombol_toko()">
+                    </ion-col>
+
+                    <ion-col>
+                        <p style="font-size: 16px"><b>eCommerce Nation</b></p>
+                        <img src="medal.png" style="width: 20px; height: 20px; margin-left: -5px">
+                    </ion-col>
+
+                    <ion-col style="max-width: 40px">
+                            <img src="premium.png" style="height: 30px; width: 30px">
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col col-6>
+                        <ion-item no-lines style="background-color: transparent; margin-left: -15px; margin-top: -10px">
+                                <p style="font-size: 14px; color: gray; height: 20px">Semarang</p>
+                                <ion-icon name="ios-pin-outline" item-start style="font-size: 19px; color: gray; margin-right: -25px"></ion-icon>
+                        </ion-item>
+
+                        <ion-item no-lines style="background-color: transparent; margin-left: -15px; margin-top: -25px">
+                                <p style="font-size: 14px; color: gray; height: 20px">2 Jam lalu</p>
+                                <ion-icon name="ios-time-outline" item-start style="font-size: 17px; color: gray; margin-right: -25px; margin-top: 14px"></ion-icon>
+                        </ion-item>
+                    </ion-col>
+
+                    <ion-col col-6>
+                            <button ion-button outline style="text-transform: none; width: 100%" (click)="chattoko()">
+                                <ion-icon name="ios-chatboxes-outline" style="padding-right: 5px; font-size: 20px"></ion-icon>Chat Toko
+                            </button>
+
+                            <button ion-button outline style="text-transform: none; width: 100%">
+                                <ion-icon name="ios-add-outline" style="padding-right: 5px; font-size: 28px; margin-top: -3px"></ion-icon>Favorit
+                            </button>
+                    </ion-col>
+                </ion-row>
+                
+            </ion-grid>
+        </ion-card>
+    </div>
+
+<div style="margin: 0px -10px 0px -10px; background-color: white">
+    <ion-card>
+        <div>
+            <p style="font-size: 16px; text-align: center; margin-top: 5px; margin-bottom: 5px"><b>Komentar Terakhir</b></p>
+        </div>
+
+        <ion-grid>
+            <ion-row>
+                <ion-col style="max-width: 65px">
+                    <img src="people.png" style="width: 55px; height: 55px; border-radius: 50%">
+                </ion-col>
+                <ion-col>
+                    <p><b>Nama Pembeli</b></p>
+                    <p style="color: rgb(186, 186, 186); font-size: 12px; margin-top: -6px">00 Desember 2018, 00:00 WIB</p>
+                    <p style="color: gray">Barang udah ready gan?</p>
+                </ion-col>
+            </ion-row>
+
+            <ion-row style="margin-left: 65px">
+                <ion-col style="max-width: 50px">
+                    <img src="people.png" style="width: 40px; height: 40px; border-radius: 50%">
+                    <p style="background-color:#838bff; border-radius: 5px; font-size: 8px; text-align: center; margin-top: 4px; color: white">Penjual</p>
+                </ion-col>
+                <ion-col>
+                    <p><b>Nama Penjual</b></p>
+                    <p style="color: rgb(186, 186, 186); font-size: 12px; margin-top: -6px">00 Desember 2018, 00:00 WIB</p>
+                    <p style="color: gray">ready gan</p>
+                </ion-col>
+            </ion-row>
+
+            <div style="border-top: 1px solid gainsboro; text-align: center; height: 40px">
+                <button ion-button color="primary" clear style="text-transform: none; margin-top: 2px" (click)="komentar()">Semua Komentar (100)</button>
+            </div>
+        </ion-grid>
+    </ion-card>
+</div>
+
+
+    <div style="margin: 0px -10px 0px -10px; background-color: white">
+        <ion-card >
+        <p style="font-size: 16px; text-align: center; margin-top: 5px; margin-bottom: 5px"><b>Daftar Produk Lain Dari Toko Tersebut</b></p>
+            <ion-scroll scrollX="true" style="white-space: nowrap; height: 230px" class="carousel">
+                <ion-grid>
+                    <ion-row style="display: inline-block; margin-left: -5px; margin-top: -5px">
+    
+                        <ion-col style="display: inline-block; width: 180px; margin: 0px -3px 0px 0px">
+                            <ion-card style="width: 170px; height: 220px; margin: 0px">
+                                <img src="home_slide_image/sample1.jpg">
+                                <p style="line-height: 1.1; margin: 5px" class="nama-produk-home">Sample Furniture Set 1 Sample Furniture Set 1 Sample Furniture Set 1</p>
+                                <p style="text-align: center; font-size: 13px; color: #838bff">Rp 10.000</p>
+                                <ion-item no-lines style="background-color: transparent; margin-top: -15px; margin-left: -13px">
+                                    <p style="margin-top: 6px; color: gray; font-size: 13px">(5)</p>
+                                    <img src="rating.png" style="height: 13px; width: auto; margin-right: 2px" item-start> 
+                                </ion-item>
+                                <ion-item no-lines style="background-color: transparent; margin-top: -22px; margin-left: -17px">
+                                    <p style="font-size: 12px; color: gray; height: 20px">Jakarta</p>
+                                    <ion-icon name="ios-pin-outline" item-start style="font-size: 16px; color: gray; margin-right: -27px"></ion-icon>
+                                </ion-item>
+                            </ion-card>
+                        </ion-col>
+    
+                        <ion-col style="display: inline-block; width: 180px; margin: 0px -3px 0px 0px">
+                            <ion-card style="width: 170px; height: 220px; margin: 0px">
+                                <img src="home_slide_image/sample2.jpg">
+                                <p style="line-height: 1.1; margin: 5px" class="nama-produk-home">Sample Furniture Set 2
+                                <p style="text-align: center; font-size: 13px; color: #838bff">Rp 100.000</p>
+                                <ion-item no-lines style="background-color: transparent; margin-top: -15px; margin-left: -13px">
+                                    <p style="margin-top: 6px; color: gray; font-size: 13px">(50)</p>
+                                    <img src="rating.png" style="height: 13px; width: auto; margin-right: 2px" item-start> 
+                                </ion-item>
+                                <ion-item no-lines style="background-color: transparent; margin-top: -22px; margin-left: -17px">
+                                    <p style="font-size: 12px; color: gray; height: 20px">Surabaya</p>
+                                    <ion-icon name="ios-pin-outline" item-start style="font-size: 16px; color: gray; margin-right: -27px"></ion-icon>
+                                </ion-item>
+                            </ion-card>
+                        </ion-col>
+    
+                        <ion-col style="display: inline-block; width: 180px; margin: 0px -3px 0px 0px">
+                            <ion-card style="width: 170px; height: 220px; margin: 0px">
+                                <img src="home_slide_image/sample3.jpg">
+                                <p style="line-height: 1.1; margin: 5px" class="nama-produk-home">Sample Furniture Set 3
+                                <p style="text-align: center; font-size: 13px; color: #838bff">Rp 1.000.000</p>
+                                <ion-item no-lines style="background-color: transparent; margin-top: -15px; margin-left: -13px">
+                                    <p style="margin-top: 6px; color: gray; font-size: 13px">(500)</p>
+                                    <img src="rating.png" style="height: 13px; width: auto; margin-right: 2px" item-start> 
+                                </ion-item>
+                                <ion-item no-lines style="background-color: transparent; margin-top: -22px; margin-left: -17px">
+                                    <p style="font-size: 12px; color: gray; height: 20px">Bandung</p>
+                                    <ion-icon name="ios-pin-outline" item-start style="font-size: 16px; color: gray; margin-right: -27px"></ion-icon>
+                                </ion-item>
+                            </ion-card>
+                        </ion-col>
+    
+                        <ion-col style="display: inline-block; width: 180px; margin: 0px -3px 0px 0px">
+                            <ion-card style="width: 170px; height: 220px; margin: 0px">
+                                <img src="home_slide_image/sample4.jpg">
+                                <p style="line-height: 1.1; margin: 5px" class="nama-produk-home">Sample Furniture Set 4
+                                <p style="text-align: center; font-size: 13px; color: #838bff">Rp 10.000.000</p>
+                                <ion-item no-lines style="background-color: transparent; margin-top: -15px; margin-left: -13px">
+                                    <p style="margin-top: 6px; color: gray; font-size: 13px">(5000)</p>
+                                    <img src="rating.png" style="height: 13px; width: auto; margin-right: 2px" item-start> 
+                                </ion-item>
+                                <ion-item no-lines style="background-color: transparent; margin-top: -22px; margin-left: -17px">
+                                    <p style="font-size: 12px; color: gray; height: 20px">Bogor</p>
+                                    <ion-icon name="ios-pin-outline" item-start style="font-size: 16px; color: gray; margin-right: -27px"></ion-icon>
+                                </ion-item>
+                            </ion-card>
+                        </ion-col>
+    
+                        <ion-col style="display: inline-block; width: 180px; margin: 0px -3px 0px 0px">
+                            <ion-card style="width: 170px; height: 220px; margin: 0px">
+                                <img src="home_slide_image/sample5.jpg">
+                                <p style="line-height: 1.1; margin: 5px" class="nama-produk-home">Sample Furniture Set 5
+                                <p style="text-align: center; font-size: 13px; color: #838bff">Rp 100.000.000</p>
+                                <ion-item no-lines style="background-color: transparent; margin-top: -15px; margin-left: -13px">
+                                    <p style="margin-top: 6px; color: gray; font-size: 13px">(50000)</p>
+                                    <img src="rating.png" style="height: 13px; width: auto; margin-right: 2px" item-start> 
+                                </ion-item>
+                                <ion-item no-lines style="background-color: transparent; margin-top: -22px; margin-left: -17px">
+                                    <p style="font-size: 12px; color: gray; height: 20px">Malang</p>
+                                    <ion-icon name="ios-pin-outline" item-start style="font-size: 16px; color: gray; margin-right: -27px"></ion-icon>
+                                </ion-item>
+                            </ion-card>
+                        </ion-col>
+    
+                    </ion-row>
+                </ion-grid>
+                </ion-scroll>
+            </ion-card>
+    </div>
+    
+    </ion-content>
+    
+    <ion-footer>
+                <ion-buttons style="text-align: center">
+                        <button ion-button color="primary" block style="height: 40px">
+                          <ion-icon name="cart" style="font-size: 25px"></ion-icon>
+                        </button>
+                        </ion-buttons>
+    </ion-footer>

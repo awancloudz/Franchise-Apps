@@ -16,7 +16,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class PembelianserviceProvider {
   private items:PembelianArray[]=[];
-  private url:string="http://forkomperbekelbali.com/desa/public/api/penjualan";
+  private url:string="http://localhost:8000/api/penjualan";
   constructor(public _http: Http) {
   }
   //Tampilkan

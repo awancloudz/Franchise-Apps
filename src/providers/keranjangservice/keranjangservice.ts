@@ -15,8 +15,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class KeranjangserviceProvider {
   private items:KeranjangArray[]=[];
-  //private url:string="http://forkomperbekelbali.com/desa/public/api/kategoriproduk";
-  private url:string="http://forkomperbekelbali.com/desa/public/api/keranjang";
+  //private url:string="http://localhost:8000/api/kategoriproduk";
+  private url:string="http://localhost:8000/api/keranjang";
   constructor(public _http: Http) {
   }
 

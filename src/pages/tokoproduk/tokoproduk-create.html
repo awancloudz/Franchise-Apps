@@ -1,17 +1,13 @@
-<!--
-  Generated template for the TokoprodukPage page.
+<ion-content>
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-content padding>
-  <ion-list>
+  <div style="margin-right: 7px">
     
-    <ion-item style="text-align: center">
-      <img src="assets/imgs/product.png" style="height:180px; width:180px; border-radius:10%">
+    <ion-item no-lines style="margin: 0 auto; width: 100px">
+      <img src="camera.png">
     </ion-item>
-    <!-- FOTO -->
-    <ion-item>
+
+    <!-- FOTO
+    <ion-item no-lines>
       Foto
       <ion-slides pager>
         <ion-slide *ngFor="let photo of photos; let id = index">
@@ -26,52 +22,74 @@
           <ion-toolbar></ion-toolbar>
         </ion-slide>
       </ion-slides>
-    </ion-item>
+    </ion-item> -->
+
     <ion-input type="hidden" [(ngModel)]="id"></ion-input>
-    <ion-item>
-      <ion-label floating>Kode Produk</ion-label>
-      <ion-input type="text" [(ngModel)]="kodeproduk"></ion-input>
+
+    <ion-item no-lines>
+      <ion-label stacked>Kode Produk</ion-label>
+      <ion-input type="text" [(ngModel)]="kodeproduk" style="background-color: rgb(230, 230, 230); border-radius: 5px; padding-left: 10px"></ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label floating>Nama Produk</ion-label>
-      <ion-input type="text" [(ngModel)]="namaproduk"></ion-input>
+    <ion-item no-lines>
+      <ion-label stacked>Nama Produk</ion-label>
+      <ion-input type="text" [(ngModel)]="namaproduk" style="background-color: rgb(230, 230, 230); border-radius: 5px; padding-left: 10px"></ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label floating>Kategori Produk</ion-label>
-      <ion-select [(ngModel)]="id_kategoriproduk" interface="popover">
+    <ion-item no-lines>
+      <ion-label stacked>Kategori Produk</ion-label>
+      <ion-select [(ngModel)]="id_kategoriproduk" interface="popover" style="background-color: rgb(230, 230, 230); border-radius: 5px; padding-left: 10px">
         <ion-option ion-item value="1">Sembako</ion-option>
       </ion-select>
     </ion-item>
 
-    <ion-item>
-      <ion-label floating>Sub Kategori Produk</ion-label>
-      <ion-select [(ngModel)]="id_subkategoriproduk" interface="popover">
+    <ion-item no-lines>
+      <ion-label stacked>Sub Kategori Produk</ion-label>
+      <ion-select [(ngModel)]="id_subkategoriproduk" interface="popover" style="background-color: rgb(230, 230, 230); border-radius: 5px; padding-left: 10px">
         <ion-option ion-item value="3">Beras</ion-option>
       </ion-select>
     </ion-item>
 
     <ion-input type="hidden" [(ngModel)]="id_toko"></ion-input>
 
-    <ion-item>
-      <ion-label floating>Stok</ion-label>
-      <ion-input type="number" [(ngModel)]="stok"></ion-input>
+    <ion-item no-lines>
+      <ion-label stacked>Stok</ion-label>
+      <ion-input type="number" [(ngModel)]="stok" style="background-color: rgb(230, 230, 230); border-radius: 5px; padding-left: 10px"></ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label floating>Harga</ion-label>
-      <ion-input type="number" [(ngModel)]="harga"></ion-input>
+    <ion-item no-lines>
+      <ion-label stacked>Harga</ion-label>
+      <ion-input type="number" [(ngModel)]="harga" style="background-color: rgb(230, 230, 230); border-radius: 5px; padding-left: 10px"></ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label floating>Diskon</ion-label>
-      <ion-input type="number" [(ngModel)]="diskon"></ion-input>
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col>
+            <ion-item no-lines>
+                <ion-label stacked>Berat</ion-label>
+                <ion-input type="number" [(ngModel)]="Berat" style="background-color: rgb(230, 230, 230); border-radius: 5px; padding-left: 10px"></ion-input>
+              </ion-item>
+        </ion-col>
+        <ion-col style="max-width: 130px">
+            <ion-item no-lines>
+                <ion-label stacked>Satuan</ion-label>
+                <ion-select [(ngModel)]="satuan" interface="popover" style="background-color: rgb(230, 230, 230); border-radius: 5px; padding-left: 10px">
+                  <ion-option ion-item value="1">Gram</ion-option>
+                  <ion-option ion-item value="2">Kg</ion-option>
+                </ion-select>
+              </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-item no-lines>
+      <ion-label stacked>Diskon (%)</ion-label>
+      <ion-input type="number" [(ngModel)]="diskon" style="background-color: rgb(230, 230, 230); border-radius: 5px; padding-left: 10px"></ion-input>
     </ion-item>
 
-  </ion-list>
+  </div>
 
-    <ion-fab bottom right>
+    <!-- <ion-fab bottom right>
       <ion-buttons>
         <button ion-fab style="margin-bottom:10px" (click)="simpanproduk()">
           <ion-icon name="md-checkmark" style="zoom:1.4"></ion-icon>
@@ -83,6 +101,9 @@
           <ion-icon name="ios-camera-outline" style="zoom:1.4" ></ion-icon>
         </button>
       </ion-buttons>
-    </ion-fab>
+    </ion-fab> -->
+<ion-buttons style="text-align: center; margin-top: 10px; margin-bottom: 10px">
+  <button ion-button (click)="simpanproduk()" style="text-transform: none">Confirm</button>
+</ion-buttons>
 
 </ion-content>
