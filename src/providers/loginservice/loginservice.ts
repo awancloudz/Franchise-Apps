@@ -21,20 +21,20 @@ export class LoginserviceProvider {
   //Deklarasi variabel
   private items:LoginArray[]=[];
   //Memanggil URL Api
-  private url:string="http://localhost:8000/api/loginuser";
-  private url2:string="http://localhost:8000/api/daftaruser";
-  private url3:string="http://localhost:8000/api/resetpassword";
-  private url4:string="http://localhost:8000/api/toko";
+  private url:string="http://192.168.1.8:8000/api/loginuser";
+  private url2:string="http://192.168.1.8:8000/api/daftaruser";
+  private url3:string="http://192.168.1.8:8000/api/resetpassword";
+  private url4:string="http://192.168.1.8:8000/api/toko";
   constructor(public _http: Http) {
   }
 
 //Cek Daftar
 loginuser(item:LoginArray){
-  return this._http.get(this.url+"/"+item.noktp+"/password/"+item.password)
+  return this._http.get(this.url+"/"+item.email+"/password/"+item.password)
   .map((response:Response)=>response.json());
 }
 cekdaftar(item:LoginArray){
-  return this._http.get(this.url2+"/"+item.noktp)
+  return this._http.get(this.url2+"/"+item.email)
   .map((response:Response)=>response.json());
 }
 cektoko(item:HomeArray){

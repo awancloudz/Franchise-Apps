@@ -1,4 +1,4 @@
 export class LoginArray {
-  constructor(public noktp:String, public password:String) {}
+  constructor(public email:String, public password:String) {}
   
   }

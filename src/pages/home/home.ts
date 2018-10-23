@@ -12,7 +12,6 @@ import { KategoriserviceProvider } from '../../providers/kategoriservice/kategor
 //Tambahkan Variabel Global
 import { KategoriArray } from '../../pages/kategori/kategoriarray';
 import { KategoriDetailPage } from '../../pages/kategori/kategori';
-import { UserinformationComponent } from '../../components/userinformation/userinformation';
 
 @Component({
   selector: 'home-page',
@@ -310,10 +309,6 @@ export class HomeuserPage {
 
   }
 
-  userinformation() {
-    let popover = this.popoverCtrl.create(UserinformationComponent);
-    popover.present();
-  }
 }
 
 @Component({

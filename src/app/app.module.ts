@@ -70,17 +70,15 @@ import { TokopemesananPageModule } from '../pages/tokopemesanan/tokopemesanan.mo
 import { TokopenjualanPageModule } from '../pages/tokopenjualan/tokopenjualan.module';
 import { TokoprodukPageModule } from '../pages/tokoproduk/tokoproduk.module';
 import { TokoPageModule } from '../pages/toko/toko.module';
-import { UserinformationComponent } from '../components/userinformation/userinformation';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage, HomeDetailPage, HomethumbnailPage, HomeprodukdetailPage, HometokoPage, HomechatPage, HomekomentarPage, HomekomentardetailPage, HomeuserPage, HomeratingPage,
     FilterPage,
-    SortPage,
-    DaftarkurirPage,
-    InformasitokoPage,
-    UserinformationComponent,
+    // SortPage,
+    // DaftarkurirPage,
+    // InformasitokoPage,
     //PembelianPage, PembelianDetailPage,PembelianCreatePage,
     //DompetPage,
     //PesanPage, PesanDetailPage,
@@ -143,7 +141,6 @@ import { UserinformationComponent } from '../components/userinformation/userinfo
     SortPage,
     DaftarkurirPage,
     InformasitokoPage,
-    UserinformationComponent,
   ],
   providers: [
     StatusBar,

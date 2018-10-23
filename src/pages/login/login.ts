@@ -30,10 +30,10 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
 })
 export class LoginPage {
   items:LoginArray[]=[];
-  noktp:String;
+  email:String;
   password:String;
   id:Number;
-  id_warga: Number;
+  id_user: Number;
   app_id: String;
   constructor(public nav: NavController,public platform: Platform,public actionSheetCtrl: ActionSheetController,
     public loadincontroller:LoadingController,public loginservice:LoginserviceProvider,public _toast:ToastController,
@@ -42,12 +42,7 @@ export class LoginPage {
   }
 
 ionViewDidLoad(){
-  /*this.storage.get('id_user').then((val) => {
-    if(val != null){
-      this.nav.setRoot(HomePage);
-    }
-  });*/
-  this.storage.get('status_toko').then((val) => {
+  /*this.storage.get('status_toko').then((val) => {
     this.storage.get('nama_warga').then((nama) => {
       if(nama != null){
         if(val == '2'){
@@ -59,6 +54,12 @@ ionViewDidLoad(){
         this.nav.setRoot(HomePage);
       }
     });
+  });*/
+
+  this.storage.get('nama_user').then((nama) => {
+    if(nama != null){
+      this.nav.setRoot(HomePage);
+    }
   });
 }
 //Cek Data Login
@@ -66,7 +67,7 @@ ceklogin(){
   //Pemberitahuan
   let gagal = this.alertCtrl.create({
     title: 'Informasi',
-    subTitle: 'Login Gagal, cek No.KTP/Password.',
+    subTitle: 'Login Gagal, cek Email/Password.',
     buttons: ['OK']
   });
   //Loading Data
@@ -79,22 +80,21 @@ ceklogin(){
   });
   loadingdata.present();
   //Mengambil value dari input field untuk dimasukkan ke UsulanArray
-  this.loginservice.loginuser(new LoginArray(this.noktp,this.password))
+  this.loginservice.loginuser(new LoginArray(this.email,this.password))
   .subscribe(
     (data:LoginArray)=>{
       //Seleksi Data dari server
       for(var key in data)
       {
-         if((data[key].noktp != null) && (data[key].password != null)){
+         if((data[key].email != null) && (data[key].password != null)){
             //Redirect menuju ke root HomePage * Wajib *
             this.storage.set('id_user', data[key].id);
-            this.storage.set('nama_warga', data[key].nama);
-            this.storage.set('no_ktp', data[key].noktp);
+            this.storage.set('nama_user', data[key].nama);
             this.storage.set('level', data[key].level);
-            this.storage.set('id_dusun', data[key].id_dusun);
-            this.storage.set('id_desa', data[key].id_profiledesa);
+            this.events.publish('user:mitra',data[key].nama);
+
             //Cek Toko
-            this.loginservice.cektoko(new HomeArray(this.id,data[key].id,this.app_id))
+            /*this.loginservice.cektoko(new HomeArray(this.id,data[key].id,this.app_id))
             .subscribe(
               (data2:HomeArray)=>{
                 for(var key2 in data2)
@@ -113,10 +113,10 @@ ceklogin(){
               },
               function(){
               }
-            );
+            );*/
             
             //Check App ID Notifikasi
-            this.oneSignal.getIds().then((ids) => {
+            /*this.oneSignal.getIds().then((ids) => {
               this.app_id = ids.userId;
               this.id_warga = data[key].id;
                 //Cek + Simpan Perangkat
@@ -130,7 +130,7 @@ ceklogin(){
                   }
                 );
                 //End Cek simpan perangkat
-            });
+            });*/
             //End Cek App ID
 
             //Redirect Home
@@ -204,11 +204,11 @@ export class DaftarPage {
 
 ngOnInit() {
   this.photos = [];
-  this.gbawal = "assets/img/bgfoto.png";
+  this.gbawal = "upload_placeholder.png";
   this.photos.push(this.gbawal);
 
   this.photos2 = [];
-  this.gbawal2 = "assets/img/bgfoto.png";
+  this.gbawal2 = "upload_placeholder.png";
   this.photos2.push(this.gbawal2);
 }
 

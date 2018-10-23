@@ -35,9 +35,9 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = LoginPage;
-  level = "warga";
+  //level = "mitra";
   pages: Array<{title: string, icon: string,component: any}>;
-  warga: Array<{nama: string}>;
+  mitra: Array<{nama: string}>;
 
   constructor(private storage: Storage,public platform: Platform, public statusBar: StatusBar, 
     public splashScreen: SplashScreen,private oneSignal: OneSignal,private events: Events) {
@@ -49,9 +49,6 @@ export class MyApp {
       { title: 'Home', icon: "sidemenu_icon/home.png", component: HomePage },
       { title: 'Kategori', icon: "sidemenu_icon/kategori.png", component: KategoriPage },
       { title: 'Pembelian', icon: "sidemenu_icon/pembelian.png", component: PembelianPage },
-      //{ title: 'Dompet', icon: "sidemenu_icon/home.png", component: DompetPage },
-      //{ title: 'Pesan', icon: "sidemenu_icon/home.png", component: PesanPage },
-      //{ title: 'Setting', icon: "sidemenu_icon/home.png", component: SettingPage },
       { title: 'Profile',  icon: "sidemenu_icon/profile.png", component: ProfilePage },
       { title: 'Logout',  icon: "sidemenu_icon/log_out.png", component: SettingPage },
     ];
@@ -75,12 +72,6 @@ export class MyApp {
 
       this.oneSignal.handleNotificationOpened().subscribe(() => {
         // do something when a notification is opened
-        if(this.level == "warga"){
-          this.nav.setRoot(PembelianPage);
-        }
-        else if(this.level == "toko"){
-          this.nav.setRoot(TokoPage);
-        }
       });
         
       this.oneSignal.endInit();
@@ -96,16 +87,9 @@ export class MyApp {
   //Fungsi Deteksi Level User
   listenToLoginEvents() {
 
-    this.events.subscribe('user:warga', (data) => {
-      this.level = "warga";
-      this.warga = [
-        { nama: data },
-      ];
-    });
-
-    this.events.subscribe('user:toko', (data) => {
-      this.level = "toko";
-      this.warga = [
+    this.events.subscribe('user:mitra', (data) => {
+      //this.level = "mitra";
+      this.mitra = [
         { nama: data },
       ];
     });
