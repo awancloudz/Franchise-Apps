@@ -1,3 +1,163 @@
 page-login {
 
 }
+
+.loginpage_image {
+    height: 200px;
+    width: auto;
+    margin: 20px 0px;
+}
+
+.loginpage_input {
+    border: 1px solid #938bff;
+    margin: 8px;
+    border-radius: 10px;
+}
+
+.loginpage_input ion-item {
+    width: auto;
+    margin-left: 10px;
+    margin-right: 17px;
+}
+
+.loginpage_input  ion-input {
+    background-color: #e8e8e8;
+    border-radius: 15px;
+    padding-left: 10px;
+}
+
+.loginpage_input ion-buttons {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.loginpage_input button {
+    text-transform: none;
+    border-radius: 5px;
+    width: 80px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.loginpage_button2 ion-col {
+    text-align: center;
+}
+
+.loginpage_button2 button {
+    text-transform: none;
+    border-radius: 5px;
+    margin-top: -5px;
+    
+}
+
+/* ------------------------------------------------------ */
+
+.button_icon {
+    font-size: 38px;
+}
+
+.daftarpage_form ion-item {
+    width: auto;
+    padding-right: 7px;
+}
+
+.daftarpage_form ion-input {
+    background-color: #e8e8e8;
+    border-radius: 5px;
+    padding-left: 8px;
+}
+
+.daftarpage_form ion-textarea {
+    background-color: #e8e8e8;
+    border-radius: 5px;
+    padding-left: 8px;
+}
+
+.daftarpage_verifikasi{
+    margin: 25px 7px 0px 7px;
+    border-top: 1px solid gainsboro;
+}
+
+.daftarpage_verifikasi_title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+.daftarpage_verifikasi ion-grid {
+    margin-top: -20px;
+}
+
+.daftarpage_verifikasi_title2 {
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.daftarpage_verifikasi ion-buttons {
+    text-align: center;
+}
+
+.daftarpage_verifikasi img {
+    width: 150px;
+    height: auto;
+}
+
+/* ------------------------------------------------ */
+
+.informasipendaftaran_img {
+    width: 100vh;
+    height: auto;
+}
+
+.informasipendaftaran_persyaratan {
+    margin: 10px;
+}
+
+.informasipendaftaran_persyaratan_title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: -15px;
+}
+
+.informasipendaftaran_persyaratan ion-buttons {
+    text-align: center;
+    text-transform: none;
+    margin-top: -15px;
+}
+
+.informasipendaftaran_persyaratan div {
+    text-transform: none;
+}
+.informasipendaftaran_persyaratan ion-icon {
+    padding-right: 7px;
+}
+
+.informasipendaftaran_keterangan {
+    margin: 30px 10px 10px 10px;
+}
+
+.informasipendaftaran_keterangan ion-grid {
+    margin: -20px 10px 25px 5px;
+}
+
+.informasipendaftaran_keterangan ion-col {
+    height: 40px;
+}
+
+.informasipendaftaran_col_number {
+    max-width: 25px;
+}
+
+.informasipendaftaran_nama {
+    text-align: center;
+    font-weight: bold;
+    font-size: 17px;
+    margin-top: -2px;
+}
+
+.informasipendaftaran_nomor {
+    text-align: center;
+    margin-top: -10px;
+}

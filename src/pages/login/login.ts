@@ -154,12 +154,19 @@ ceklogin(){
     }
   );
 }
+
 daftar(){
   this.nav.push(DaftarPage);
 }
+
 lupapassword(){
   this.nav.push(ForgotPage);
 }
+
+informasipendaftaran (){
+  this.nav.push(InformasipendaftaranPage);
+}
+
 }
 
 @Component({
@@ -429,4 +436,18 @@ export class ForgotPage {
 ceklupa(){
   
 }
+}
+
+@Component({
+  templateUrl: 'informasi-pendaftaran.html',
+})
+
+export class InformasipendaftaranPage {
+
+  constructor(
+    public nav: NavController,public platform: Platform,public actionSheetCtrl: ActionSheetController,
+    public loadincontroller:LoadingController,public loginservice:LoginserviceProvider,public _toast:ToastController,
+    public alertCtrl: AlertController) {
+  }
+
 }

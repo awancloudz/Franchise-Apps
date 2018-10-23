@@ -1,10 +1,3 @@
-<!--
-  Generated template for the LoginPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-
 <ion-content>
 
   <!-- <div text-center>
@@ -36,38 +29,36 @@
   <ion-grid>
     <ion-row>
       <ion-col style="text-align: center">
-        <img src="contoh_toko.png" style="height: 220px; width: auto">
+        <img src="login_image/store.png" class="loginpage_image">
       </ion-col>
     </ion-row>
   </ion-grid>
 
-  <div style="border: 1px solid #938bff; margin: 8px">
-    <ion-item no-lines style="width: auto; margin-left: 10px; margin-right: 17px">
+  <div class="loginpage_input">
+    <ion-item no-lines>
       <ion-label stacked>Account ID</ion-label>
-      <ion-input text-center type="text" style="background-color: rgb(230, 230, 230); border-radius: 15px; padding-left: 10px"></ion-input>
+      <ion-input text-center type="text"></ion-input>
     </ion-item>
 
-    <ion-item no-lines style="width: auto; margin-left: 10px; margin-right: 17px">
+    <ion-item no-lines>
       <ion-label stacked>Password</ion-label>
-      <ion-input text-center type="password" style="background-color: rgb(230, 230, 230); border-radius: 15px; padding-left: 10px"></ion-input>
+      <ion-input text-center type="password"></ion-input>
     </ion-item>
 
-    <ion-buttons style="text-align: center; margin-top: 10px; margin-bottom: 10px">
-        <button ion-button style="text-transform: none; border-radius: 5px; width: 80px">Login</button>
+    <ion-buttons>
+        <button ion-button>Login</button>
     </ion-buttons>
   </div>
 
-  <ion-grid style="text-align: center; margin-top: -15px">
+  <ion-grid class="loginpage_button2">
     <ion-row>
       <ion-col>
-        <p style="color: gray">Buat akun baru?</p>
-        <button ion-button style="text-transform: none; border-radius: 5px; width: 100px; margin-top: -10px">Daftar Baru</button>
+        <button ion-button (click)="daftar()">Daftar</button>
       </ion-col>
     </ion-row>
-
     <ion-row>
       <ion-col>
-        <button ion-button clear style="text-transform: none"><u>Lupa Password?</u></button>
+        <button ion-button outline (click)="informasipendaftaran()" style="margin-top: 10px">Informasi Pendaftaran</button>
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -1,105 +1,92 @@
-<!--
-  Generated template for the LoginPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
     <ion-navbar color="primary">
-      
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
       </button>
-      
-      <ion-title>Daftar Baru</ion-title>
-    
+      <ion-title style="margin-left: -12px">Pendaftaran Mitra</ion-title>
+      <ion-buttons end>
+        <button ion-button (click)="cekdaftar()">
+          <ion-icon name="ios-checkmark-circle-outline" class="button_icon"></ion-icon>
+        </button>
+    </ion-buttons>
     </ion-navbar>
-  
   </ion-header>
 
 <ion-content>
+  <div class="daftarpage_form">
+    <ion-item no-lines >
+      <ion-label stacked>No.KTP</ion-label>
+      <ion-input text-center type="number"  [(ngModel)]="noktp"></ion-input>
+    </ion-item>
 
-    <div>
-      
-      <ion-item no-lines style="width: auto; padding-right: 7px">
-        <ion-label stacked>NIK (No.KTP)</ion-label>
-        <ion-input type="number" style="background-color: rgb(230, 230, 230); border-radius: 5px; padding-left: 8px" [(ngModel)]="username"></ion-input>
-      </ion-item>
+    <ion-item no-lines>
+      <ion-label stacked>Nama</ion-label>
+      <ion-input text-center type="text" [(ngModel)]="nama"></ion-input>
+    </ion-item>
 
-      <ion-item no-lines style="width: auto; padding-right: 7px">
-        <ion-label stacked>No. Handphone</ion-label>
-        <ion-input type="number" style="background-color: rgb(230, 230, 230); border-radius: 5px; padding-left: 8px" [(ngModel)]="nohp"></ion-input>
-      </ion-item>
+    <ion-item no-lines>
+      <ion-label stacked>Alamat</ion-label>
+      <ion-textarea text-center rows="3" [(ngModel)]="alamat"></ion-textarea>
+    </ion-item>
 
-      <ion-item no-lines style="width: auto; padding-right: 7px">
-        <ion-label stacked>Email</ion-label>
-        <ion-input type="email" style="background-color: rgb(230, 230, 230); border-radius: 5px; padding-left: 8px" [(ngModel)]="email"></ion-input>
-      </ion-item>
+    <ion-item no-lines>
+      <ion-label stacked>No. Handphone</ion-label>
+      <ion-input text-center type="number" [(ngModel)]="nohp"></ion-input>
+    </ion-item>
 
-      <ion-item no-lines style="width: auto; padding-right: 7px">
-        <ion-label stacked>Password</ion-label>
-        <ion-input type="password" style="background-color: rgb(230, 230, 230); border-radius: 5px; padding-left: 8px" [(ngModel)]="password"></ion-input>
-      </ion-item>
+    <ion-item no-lines>
+      <ion-label stacked>Email</ion-label>
+      <ion-input text-center type="email" [(ngModel)]="email"></ion-input>
+    </ion-item>
 
-      <ion-input type="hidden" [(ngModel)]="fotoktp"></ion-input>
-      <ion-input type="hidden" [(ngModel)]="fotowajah"></ion-input>
+  </div>
 
-      <ion-card>
+  <ion-input type="hidden" [(ngModel)]="fotoktp"></ion-input>
+  <ion-input type="hidden" [(ngModel)]="fotowajah"></ion-input>
 
-        <p style="text-align: center; font-size: 16px; margin-top: 5px"><b>Verifikasi Identitas</b></p>
+  <div class="daftarpage_verifikasi">
 
-        <ion-grid>
+    <p class="daftarpage_verifikasi_title">Verifikasi Identitas</p>
 
-            <ion-row>
-                <ion-col (click)="takeKTP()">
+    <ion-grid>
+      <ion-row>
+        <ion-col (click)="takeKTP()">
+          <p class="daftarpage_verifikasi_title2">Foto KTP</p>
+            <!-- <div *ngFor="let photo of photos; let id = index">
+              <img [src]="photo"><br>
+            </div> -->
+          <ion-buttons>
+            <img src="login_image/photo_placeholder.png">
+          </ion-buttons>
 
-                    <p style="text-align: center; font-size: 14px"><b>Foto KTP</b></p>
+          <p style="text-align: left; font-size: 12px">
+            Pastikan foto KTP yang diupload :<br>
+            1. Terlihat jelas (Fokus pada KTP, tidak buram)<br>
+            2. Foto Asli (bukan fotocopy, hasil scan dan tidak editan)<br>
+            3. Jangan memasukkan foto selain KTP.
+          </p>
+        </ion-col>
+      </ion-row>
 
-                    <!-- <div *ngFor="let photo of photos; let id = index">
-                      <img [src]="photo"><br>
-                    </div> -->
-                    <ion-buttons>
-                      <img src="upload_placeholder.png" style="width: 80px; height: auto; margin: 0 auto">
-                    </ion-buttons>
+      <ion-row>
+        <ion-col (click)="takeWajah()">
+          <p class="daftarpage_verifikasi_title2">Foto Selfie dengan KTP</p>
+            <!-- <div *ngFor="let photo2 of photos2; let id = index">
+              <img [src]="photo2"><br>
+            </div> -->
+          <ion-buttons>
+            <img src="login_image/photo_placeholder.png">
+          </ion-buttons>
 
-                    <p style="text-align: left; font-size: 12px">
-                      Pastikan foto KTP yang diupload :<br>
-                      1. Terlihat jelas (Fokus pada KTP, tidak buram)<br>
-                      2. Foto Asli (bukan fotocopy, hasil scan dan tidak editan)<br>
-                      3. Jangan memasukkan foto selain KTP.
-                    </p>
+          <p style="text-align: left; font-size: 12px">
+            Pastikan foto KTP yang diupload :<br>
+            1. Letakkan KTP Anda dekat dengan wajah Anda<br>
+            2. Pastikan wajah dan foto KTP Anda terlihat jelas
+          </p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 
-                </ion-col>
-            </ion-row>
-
-            <ion-row>
-                <ion-col (click)="takeWajah()">
-
-                    <p style="text-align: center; font-size: 14px"><b>Foto Selfie dengan KTP</b></p>
-
-                      <!-- <div *ngFor="let photo2 of photos2; let id = index">
-                        <img [src]="photo2"><br>
-                      </div> -->
-                    <ion-buttons>
-                      <img src="upload_placeholder.png" style="width: 80px; height: auto; margin: 0 auto">
-                    </ion-buttons>
-
-                    <p style="text-align: left; font-size: 12px">
-                      Pastikan foto KTP yang diupload :<br>
-                      1. Letakkan KTP Anda dekat dengan wajah Anda<br>
-                      2. Pastikan wajah dan foto KTP Anda terlihat jelas
-                    </p>
-              </ion-col>
-            </ion-row>
-
-        </ion-grid>
-      </ion-card>
-    </div>
-
-    <ion-buttons style="text-align: center; margin-top: 10px; margin-bottom: 10px">
-        <button ion-button style="text-transform: none; border-radius: 5px; width: 80px" (click)="cekdaftar()">Confirm</button>
-    </ion-buttons>
-
-  </ion-content>
+</ion-content>
   

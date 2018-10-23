@@ -29,7 +29,7 @@ import { TokopenjualanPage,TokopenjualanDetailPage } from '../pages/tokopenjuala
 import { TokoprodukPage,TokoprodukCreatePage } from '../pages/tokoproduk/tokoproduk';
 import { TokoprofilePage,TokoCreatePage } from '../pages/tokoprofile/tokoprofile';
 import { TokosearchPage } from '../pages/tokosearch/tokosearch';
-import { LoginPage,DaftarPage,ForgotPage } from '../pages/login/login';
+import { LoginPage, DaftarPage, ForgotPage, InformasipendaftaranPage } from '../pages/login/login';
 import { ProfilePage } from '../pages/profile/profile';
 import { FilterPage } from '../pages/filter/filter';
 import { SortPage } from '../pages/sort/sort';
@@ -129,7 +129,7 @@ import { UserinformationComponent } from '../components/userinformation/userinfo
     SettingPage,
     KeranjangPage, KeranjangcreatePage,
     SearchPage,
-    LoginPage,DaftarPage,ForgotPage,
+    LoginPage, DaftarPage, ForgotPage, InformasipendaftaranPage,
     TokoPage,
     TokokategoriPage,TokokategoriDetailPage,
     TokokeranjangPage,TokokeranjangPage2,TokokeranjangCreatePage,TokokeranjangCreatePage2,

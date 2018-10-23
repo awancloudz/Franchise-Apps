@@ -12,7 +12,7 @@ import { DompetPage } from '../pages/dompet/dompet';
 import { PesanPage,PesanDetailPage } from '../pages/pesan/pesan';
 import { SettingPage } from '../pages/setting/setting';
 import { ProfilePage } from '../pages/profile/profile';
-import { LoginPage, ForgotPage, DaftarPage} from '../pages/login/login';
+import { LoginPage, ForgotPage, DaftarPage, InformasipendaftaranPage} from '../pages/login/login';
 import { KeranjangPage } from '../pages/keranjang/keranjang';
 import { SearchPage } from '../pages/search/search';
 import { TokoPage } from '../pages/toko/toko';
@@ -34,7 +34,7 @@ import { InformasitokoPage } from '../pages/informasitoko/informasitoko';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = LoginPage;
   level = "warga";
   pages: Array<{title: string, icon: string,component: any}>;
   warga: Array<{nama: string}>;
