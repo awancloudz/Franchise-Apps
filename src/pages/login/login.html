@@ -1,68 +1,52 @@
-<ion-content>
-
-  <!-- <div text-center>
-    <h2>E-Bumdes</h2>
-    <ion-img width="120" height="120" src="logo.png" style="background-color: transparent;"></ion-img>
-    <h3>DESA UBUNG KAJA</h3>
-    <h4>Kec.Denpasar Utara - Denpasar, BALI</h4>
-  </div>
-
-  <ion-list>
-    <ion-item>
-      <ion-label floating>NIK (No.KTP)</ion-label>
-      <ion-input type="text" [(ngModel)]="noktp"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-input type="password" [(ngModel)]="password"></ion-input>
-    </ion-item>
-    <div padding>
-      <a style="text-decoration: none" (click)="lupapassword()">Lupa kata sandi ?</a>
-      <button ion-button color="primary" block (click)="ceklogin()">Masuk</button>
-      <p align="center">atau</p>
-      <button ion-button color="secondary" block (click)="daftar()">Daftar</button>
-    </div>
-  </ion-list> -->
+<ion-content style="background-image: url('login_image/background_official_logo.png'); background-repeat: no-repeat; background-position: center">
 
 <div>
-
   <ion-grid>
     <ion-row>
       <ion-col style="text-align: center">
-        <img src="login_image/store.png" class="loginpage_image">
+        <img src="login_image/official_logo.png" class="loginpage_image">
       </ion-col>
     </ion-row>
   </ion-grid>
+</div>
 
-  <div class="loginpage_input">
+<div class="loginpage_input">
+  <div class="loginpage_form">
     <ion-item no-lines>
-      <ion-label stacked>Email</ion-label>
+      <ion-label stacked style="color: white">Email</ion-label>
       <ion-input text-center type="text" [(ngModel)]="email"></ion-input>
     </ion-item>
 
     <ion-item no-lines>
-      <ion-label stacked>Password</ion-label>
+      <ion-label stacked style="color: white">Password</ion-label>
       <ion-input text-center type="password" [(ngModel)]="password"></ion-input>
     </ion-item>
 
     <ion-buttons>
-        <button ion-button (click)="ceklogin()">Masuk</button>
+        <button ion-button color="secondary" (click)="ceklogin()">Masuk</button>
     </ion-buttons>
   </div>
 
-  <ion-grid class="loginpage_button2">
-    <ion-row>
-      <ion-col>
-        <button ion-button (click)="daftar()">Daftar</button>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <button ion-button outline (click)="informasipendaftaran()" style="margin-top: 10px">Informasi Pendaftaran</button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <div>  
+    <ion-grid>
+      <ion-row class="loginpage_button">
+        <ion-col>
+          <p>Berminat jadi mitra kami?
+            <button ion-button clear color="light" (click)="daftar()">Daftar</button>
+          </p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="loginpage_button2">
+        <ion-col>
+          <ion-buttons>
+          <button ion-button clear color="light" (click)="informasipendaftaran()" style="margin-top: -8px">Informasi Pendaftaran</button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 
 </div>
+
 
 </ion-content>

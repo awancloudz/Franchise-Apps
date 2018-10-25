@@ -75,7 +75,7 @@ import { TokoPageModule } from '../pages/toko/toko.module';
   declarations: [
     MyApp,
     HomePage, HomeDetailPage, HomethumbnailPage, HomeprodukdetailPage, HometokoPage, HomechatPage, HomekomentarPage, HomekomentardetailPage, HomeuserPage, HomeratingPage,
-    FilterPage,
+    //FilterPage,
     // SortPage,
     // DaftarkurirPage,
     // InformasitokoPage,
@@ -137,10 +137,10 @@ import { TokoPageModule } from '../pages/toko/toko.module';
     TokoprofilePage,TokoCreatePage,
     TokosearchPage,
     ProfilePage,
-    FilterPage,
-    SortPage,
-    DaftarkurirPage,
-    InformasitokoPage,
+    //FilterPage,
+    //SortPage,
+    //DaftarkurirPage,
+    //InformasitokoPage,
   ],
   providers: [
     StatusBar,
