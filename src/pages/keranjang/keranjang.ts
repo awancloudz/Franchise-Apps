@@ -31,7 +31,7 @@ export class KeranjangPage {
 
   }
 
-/*   //Tampil data awal
+//Tampil data awal
 ionViewDidLoad() {
   //Loading bar
   let loadingdata=this.loadincontroller.create({
@@ -54,7 +54,7 @@ ionViewDidLoad() {
     }
   );
   });
-} */
+} 
 tombolhapus(item){
 //Alert Konfirmasi
 let confirm = this.alertCtrl.create({
@@ -167,7 +167,7 @@ private currentNumber = 1;
 })
 export class KeranjangcreatePage {
   id:Number
-  id_warga:Number;
+  id_users:Number;
   item2;
   items:KeranjangArray[]=[];
   stok:any;

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, Platform, ActionSheetController, LoadingController ,ToastController,AlertController, ModalController, PopoverController } from 'ionic-angular';
-import { KeranjangPage } from '../../pages/keranjang/keranjang';
+import { KeranjangPage,KeranjangcreatePage } from '../../pages/keranjang/keranjang';
 import { SearchPage } from '../../pages/search/search';
 import { FilterPage } from '../filter/filter';
 import { SortPage } from '../sort/sort';
@@ -9,20 +9,29 @@ import { InformasitokoPage } from '../informasitoko/informasitoko';
 
 //Tambahkan Provider
 import { KategoriserviceProvider } from '../../providers/kategoriservice/kategoriservice';
+import { HomeserviceProvider } from '../../providers/homeservice/homeservice';
 //Tambahkan Variabel Global
 import { KategoriArray } from '../../pages/kategori/kategoriarray';
+import { HomeProdukArray } from '../../pages/home/homeprodukarray';
 import { KategoriDetailPage } from '../../pages/kategori/kategori';
+import { KeranjangArray } from '../keranjang/keranjangarray';
 
 @Component({
   selector: 'home-page',
   templateUrl: 'home.html',
-  entryComponents: [ KeranjangPage,SearchPage,KategoriDetailPage ],
+  entryComponents: [ KeranjangPage,SearchPage,KategoriDetailPage,KeranjangcreatePage ],
 })
 export class HomePage {
-
-  
   carousel_case: string;
-  items:KategoriArray[]=[];
+  id:Number;
+  id_kategori:String;
+  kodeproduk:String;
+  namaproduk:String;
+  stok:Number;
+  harga:Number;
+  diskon:Number;
+  foto:String;
+  items:HomeProdukArray[]=[];
 
   constructor (public nav: NavController,
               public platform: Platform,
@@ -30,7 +39,8 @@ export class HomePage {
               public alertCtrl: AlertController,
               public loadincontroller:LoadingController,
               public _toast:ToastController,
-              public kategoriservice:KategoriserviceProvider) {
+              public kategoriservice:KategoriserviceProvider,
+              public homeservice:HomeserviceProvider) {
     //TOMBOL EXIT
     this.platform.ready().then(() => {
       this.platform.registerBackButtonAction(() => {
@@ -60,14 +70,14 @@ export class HomePage {
   //Tampil data awal
 ionViewDidLoad() {
   //Loading bar
-  /* let loadingdata=this.loadincontroller.create({
-    content:"Loading..."
+  let loadingdata=this.loadincontroller.create({
+    content:"Loading Produk..."
   });
   loadingdata.present();
   //Tampilkan data dari server
-  this.kategoriservice.tampilkankategori().subscribe(
+  this.homeservice.tampilkanproduk().subscribe(
     //Jika data sudah berhasil di load
-    (data:KategoriArray[])=>{
+    (data:HomeProdukArray[])=>{
       this.items=data;
     },
     //Jika Error
@@ -77,7 +87,7 @@ ionViewDidLoad() {
     function(){
       loadingdata.dismiss();
     }
-  ); */
+  ); 
 }
 
   tombolkeranjang() {
@@ -100,7 +110,19 @@ ionViewDidLoad() {
     this.carousel_case = "terpopuler";
   }
 
-  
+  tombolbeli(item) {
+    let alert = this.alertCtrl.create({
+      title: 'Informasi',
+      subTitle: 'Stok Kosong',
+      buttons: ['OK']
+    });
+    if(item.stok < 1){
+      alert.present();
+    }
+    else{
+      this.nav.push(KeranjangcreatePage, {item2: item});
+    }
+  }
 }
 
 @Component({

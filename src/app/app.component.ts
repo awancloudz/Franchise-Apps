@@ -34,7 +34,7 @@ import { InformasitokoPage } from '../pages/informasitoko/informasitoko';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = KeranjangPage;
+  rootPage: any = LoginPage;
   //level = "mitra";
   pages: Array<{title: string, icon: string,component: any}>;
   mitra: Array<{nama: string}>;

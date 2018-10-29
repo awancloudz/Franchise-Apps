@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 //Tambahakan aksiusul
 import { HomeArray } from '../../pages/home/homearray';
 import { HomeArray2 } from '../../pages/home/homearray2';
+import { HomeProdukArray } from '../../pages/home/homeprodukarray';
 //Tambahkan Response,Request,Header
 import { Http,Response,RequestOptions,Headers } from '@angular/http';
 //Tambahkan Obervable
@@ -20,13 +21,15 @@ export class HomeserviceProvider {
   //Deklarasi variabel
   private items:HomeArray[]=[];
   private items2:HomeArray2[]=[];
+  private item3s:HomeProdukArray[]=[];
   //Memanggil URL Api
   private url:string="http://localhost:8000/api/perangkat";
   private url2:string="http://localhost:8000/api/perangkattoko";
+  private url3:string="http://localhost:8000/api/produktoko";
   constructor(public _http: Http) {
   }
   //Cek + Tambah perangkat
-  tambahperangkat(item:HomeArray){``
+  tambahperangkat(item:HomeArray){
     let body = JSON.stringify(item);
     console.log(body);
     let headers = new Headers({ 'Content-Type': 'application/json' });
@@ -43,5 +46,10 @@ export class HomeserviceProvider {
     return this._http.post(this.url2,
                   body, options)
                  .map((response:Response)=>response.json());
+  }
+  tampilkanproduk()
+  {
+   return this._http.get(this.url3)
+   .map((response:Response)=>response.json());
   }
 }

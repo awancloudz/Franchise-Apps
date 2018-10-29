@@ -49,15 +49,15 @@
   </ion-card>
 -->
 
-  <ion-card>
+  <ion-card *ngFor="let item of items.koleksi">
     <ion-grid>
     <ion-row>
       <ion-col>
-        <p class="keranjangpage_namabarang">Nama Barang Nama Barang Nama Barang Nama Barang</p>
+        <p class="keranjangpage_namabarang">{{ item.produk.namaproduk }}</p>
       </ion-col>
 
       <ion-col class="delete_col">
-        <button ion-button icon-only clear>
+        <button ion-button icon-only clear (click)="tombolhapus(item)">
           <ion-icon name="md-trash" class="delete_icon"></ion-icon>
         </button>
       </ion-col>
@@ -65,7 +65,7 @@
 
     <ion-row>
       <ion-col style="max-width: 120px">
-        <img src="home_menu/sample1.jpg">
+        <img src="http://localhost:8000/fotoupload/{{item.produk.foto}}">
       </ion-col>
 
       <ion-col style="max-width: 75px">
@@ -86,58 +86,13 @@
           </button>
         </ion-buttons>
 
-        <p class="keranjangpage_qty">Rp 1.000.000<br>
-                                    100 Kg<br>
-                                    Rp 10.000.000.-</p>
+        <p class="keranjangpage_qty">Rp {{item.produk.harga}},-<br>
+                                    1 Kg<br>
+                                    Rp {{ item.jumlah * item.produk.harga }}.-</p>
       </ion-col>
     </ion-row>
   </ion-grid>
   </ion-card>
-
-  <ion-card >
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <p class="keranjangpage_namabarang">Nama Barang Nama Barang Nama Barang Nama Barang</p>
-        </ion-col>
-
-        <ion-col class="delete_col">
-            <button ion-button icon-only clear>
-              <ion-icon name="md-trash" class="delete_icon"></ion-icon>
-            </button>
-        </ion-col>
-      </ion-row>
-
-      <ion-row>
-        <ion-col style="max-width: 120px">
-          <img src="home_menu/sample2.jpg">
-        </ion-col>
-
-        <ion-col style="max-width: 75px">
-            <p class="keranjangpage_info">Jumlah<br>
-                                          Harga<br>
-                                        <b>Total Berat</b><br>
-                                        <b>Sub-Total</b></p>
-        </ion-col>
-
-        <ion-col>
-          <ion-buttons style="margin-top: 7px">
-            <button ion-button icon-only outline (click)="decrement()" class="keranjangpage_decrement">
-              <ion-icon name="ios-remove"></ion-icon>
-            </button>
-            {{currentNumber}}
-            <button ion-button icon-only outline (click)="increment()" class="keranjangpage_increment">
-              <ion-icon name="ios-add"></ion-icon>
-            </button>
-          </ion-buttons>
-
-          <p class="keranjangpage_qty">Rp 1.000.000<br>
-                                      100 Kg<br>
-                                      Rp 10.000.000.-</p>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    </ion-card>
 
 </ion-content>
 <!--
@@ -157,13 +112,19 @@
 </ion-footer>
 -->
 
-<ion-footer>
+<ion-footer *ngFor="let item2 of items.koleksi2">
   <ion-row>
-    <ion-col style="text-align: center">
-      <p><b>Total :</b> Rp 20.000.000.-</p>
+    <ion-col style="max-width: 110px">
+      <button ion-button block color="success" style="text-transform: none" *ngIf="item2.subtotal != 0" (click)="tombolbeli()">Belanja</button>
+    </ion-col>
+    <ion-col style="text-align: center" *ngIf="item2.subtotal == 0">
+      <p><b>[ Keranjang Kosong ]</b></p>
+    </ion-col>
+    <ion-col style="text-align: center" *ngIf="item2.subtotal != 0">
+      <p><b>Total :</b> Rp {{item2.subtotal}}.-</p>
     </ion-col>
     <ion-col style="max-width: 110px">
-      <button ion-button block color="secondary" style="text-transform: none">Kirim</button>
+      <button ion-button block color="secondary" style="text-transform: none" *ngIf="item2.subtotal != 0">Pembayaran</button>
     </ion-col>
   </ion-row>
 </ion-footer>
