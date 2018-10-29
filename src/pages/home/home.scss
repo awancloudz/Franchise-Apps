@@ -3,7 +3,7 @@ page-home {
 }
 .carousel {
     ::-webkit-scrollbar { display: none !important};
-    }
+}
 
 .nama-produk {
         display: block;
@@ -39,4 +39,51 @@ page-home {
     width: auto;
     margin: 0px 0px 0px 0px;
     border-radius: 8px;
+}
+
+/* --------------------------------------------------------------------------------------------- */
+
+.homepage_slides ion-slides {
+    height: 200px;
+}
+
+.homepage_menu h5 {
+    text-align: center;
+    margin: 10px 0px;
+}
+
+.homepage_menu ion-col {
+    padding: 0;
+}
+
+.homepage_menu ion-card {
+    margin: 3px;
+    width: auto;
+    height: auto;
+}
+
+.homepage_menu h6 {
+    font-size: 15px;
+    line-height: 1.0;
+    white-space: normal;
+    margin: 5px;
+    height: 30px;
+    overflow-y: scroll;
+}
+
+.homepage_menu div {
+    text-align: center;
+    margin: -5px 0px 10px 0px;
+}
+
+.homepage_menu p {
+    color: #EF0085;
+    text-align: center;
+    font-size: 17px;
+}
+
+.homepage_menu button {
+    text-transform: none;
+    font-size: 15px;
+    height: 28px;
 }

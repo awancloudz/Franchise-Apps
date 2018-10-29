@@ -31,7 +31,7 @@ export class KeranjangPage {
 
   }
 
-  //Tampil data awal
+/*   //Tampil data awal
 ionViewDidLoad() {
   //Loading bar
   let loadingdata=this.loadincontroller.create({
@@ -54,7 +54,7 @@ ionViewDidLoad() {
     }
   );
   });
-}
+} */
 tombolhapus(item){
 //Alert Konfirmasi
 let confirm = this.alertCtrl.create({

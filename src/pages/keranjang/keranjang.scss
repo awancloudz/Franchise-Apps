@@ -1,48 +1,74 @@
 page-keranjang {
-    
-.card-container {
-    height: 130px;
-    width: 95% !important;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 10px !important;
-    position: relative;
+
+.keranjangpage_content {
+    background-color: whitesmoke;
     padding: 0px;
 }
 
-.xxxx {
-    max-width: 90px;
+.keranjangpage_content ion-card {
+    margin: 5px;
+    height: auto;
+    width: auto;
 }
 
-.picture-item {
-    border-radius: 10px;
-    width: 80px;
-    height: 95px;
+.keranjangpage_content img {
+    width: 110px;
+    height: 100%;
 }
 
-.dropdown-quantity {
-    margin-top: 3px;
-    width: 80px;
-    text-align: center;
-
+.keranjangpage_namabarang {
+    line-height: 1.1;
+    white-space: normal;
 }
 
-.yyyy {
-    width: auto !important;
-    height: 130px;
-    text-align: left;
+.keranjangpage_decrement {
+    width: 25px;
+    height: 25px;
+    margin-right: 8px;
+    margin-top: -10px;
 }
 
-.harga-barang {
-    padding-top: 30px;
+.keranjangpage_decrement ion-icon {
+    padding-top: 3px;
 }
 
-.zzzz {
-    max-width: 35px !important;
+.keranjangpage_increment {
+    width: 25px;
+    height: 25px;
+    margin-left: 8px;
+    margin-top: -10px;
 }
 
-.delete-button {
-    padding-top: 40px;
-    padding-left: 1px;
+.keranjangpage_increment ion-icon {
+    padding-top: 3px;
 }
+
+.delete_col {
+    max-width: 30px;
+}
+
+.delete_col button {
+    margin-left: -10px;
+    margin-top: -5px;
+}
+
+.delete_icon {
+    color: black;
+}
+
+.keranjangpage_info {
+    line-height: 27px;
+    font-size: 13px;
+    margin-top: 2px;
+}
+
+.keranjangpage_qty {
+    line-height: 27px;
+    font-size: 13px;
+}
+
+ion-footer {
+    background-color: white;
+}
+
 }
