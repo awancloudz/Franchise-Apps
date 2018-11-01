@@ -19,6 +19,7 @@ import { Storage } from '@ionic/storage';
 export class PembelianPage {
 
   items:PembelianArray[]=[];
+  pembelian : String;
 
   constructor ( public nav: NavController,public platform: Platform,public actionSheetCtrl: ActionSheetController,
     public alertCtrl: AlertController,public loadincontroller:LoadingController,public _toast:ToastController,
@@ -50,7 +51,7 @@ export class PembelianPage {
     });
   }
 
-  ionViewDidLoad() {
+/*   ionViewDidLoad() {
     //Loading bar
     let loadingdata=this.loadincontroller.create({
       content:"Loading..."
@@ -72,10 +73,14 @@ export class PembelianPage {
       }
     );
     });
-  }
+  } */
 
   pembeliandetail (item) {
     this.nav.push (PembelianDetailPage, {item: item});
+  }
+
+  ionViewWillEnter(){
+    this.pembelian = "order";
   }
 }
 
