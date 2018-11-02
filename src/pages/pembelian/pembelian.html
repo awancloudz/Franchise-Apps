@@ -9,25 +9,8 @@
   
   
 <ion-content class="pembelian_content">
-<!-- <ion-list *ngFor="let item of items">
-  <ion-item-group> 
-    <ion-item-divider color="light" style="height:25px">{{item.tanggal}}
-      <ion-badge *ngIf="item.status == 'order'" color="primary" item-end>Order</ion-badge>
-      <ion-badge *ngIf="item.status == 'kirim'" color="pending" item-end>Dikirim</ion-badge>
-      <ion-badge *ngIf="item.status == 'selesai'" color="secondary" item-end>Sukses</ion-badge>
-    </ion-item-divider>
-     
-    <button ion-item style="margin-top: -20px; height: 75px" (click)="pembeliandetail(item)">
-      <ion-item>
-        <h5>Kode Transaksi : <b>#{{item.id}}</b></h5>
-        <h5>Total Pembayaran : <b>Rp {{item.subtotal}},-</b></h5>
-      </ion-item>
-    </button>
-  </ion-item-group>
-</ion-list> -->
-
 <div>
-  <ion-segment [(ngModel)]="pembelian">
+  <ion-segment [(ngModel)]="category">
     <ion-segment-button value="order">
       <ion-buttons>
         <img src="pembelian_icon/order.png">
@@ -46,7 +29,7 @@
         <p>Kirim</p>
       </ion-buttons>
     </ion-segment-button>
-    <ion-segment-button value="sukses">
+    <ion-segment-button value="selesai">
       <ion-buttons>
         <img src="pembelian_icon/sukses.png">
         <p>Sukses</p>
@@ -55,18 +38,19 @@
   </ion-segment>
 </div>
 
-<div [ngSwitch]="pembelian">
+<div [ngSwitch]="category" swipeSegment [tabsList]="categories" [(currentTab)]="category" (tabChanged)="onTabChanged($event)" class="swipe-area">
+  <div *ngFor="let item of items" >
   <ion-list *ngSwitchCase="'order'">
-    <ion-card>
+    <ion-card *ngIf="item.status =='order'">
       <ion-item-group> 
         <ion-item-divider color="divider" class="tanggal_transaksi">
-          Kamis, 01 November 2018
+          {{ item.tanggal }}
         </ion-item-divider>
            
-        <button ion-item class="isi_transaksi">
+        <button ion-item class="isi_transaksi" (click)="pembeliandetail(item)">
           <ion-item>
-            <h5>Kode Transaksi : <b>1234567890</b></h5>
-            <h5>Total Pembayaran : <b>Rp 1.000.000,-</b></h5>
+            <h5>Kode Transaksi : <b>{{ item.id }}</b></h5>
+            <h5>Total Pembayaran : <b>Rp {{ item.subtotal }},-</b></h5>
           </ion-item>
         </button>
       </ion-item-group>
@@ -74,16 +58,16 @@
   </ion-list>
 
   <ion-list *ngSwitchCase="'proses'">
-    <ion-card>
+    <ion-card *ngIf="item.status =='proses'">
       <ion-item-group> 
         <ion-item-divider color="divider" class="tanggal_transaksi">
-          Jumat, 02 November 2018
+          {{ item.tanggal }}
         </ion-item-divider>
            
-        <button ion-item class="isi_transaksi">
+        <button ion-item class="isi_transaksi" (click)="pembeliandetail(item)">
           <ion-item>
-            <h5>Kode Transaksi : <b>1234567890</b></h5>
-            <h5>Total Pembayaran : <b>Rp 1.000.000,-</b></h5>
+            <h5>Kode Transaksi : <b>{{ item.id }}</b></h5>
+            <h5>Total Pembayaran : <b>Rp {{ item.subtotal }},-</b></h5>
           </ion-item>
         </button>
       </ion-item-group>
@@ -91,38 +75,39 @@
   </ion-list>
 
   <ion-list *ngSwitchCase="'kirim'">
-      <ion-card>
-          <ion-item-group> 
-            <ion-item-divider color="divider" class="tanggal_transaksi">
-              Sabtu, 03 November 2018
-            </ion-item-divider>
-               
-            <button ion-item class="isi_transaksi">
-              <ion-item>
-                <h5>Kode Transaksi : <b>1234567890</b></h5>
-                <h5>Total Pembayaran : <b>Rp 1.000.000,-</b></h5>
-              </ion-item>
-            </button>
-          </ion-item-group>
-        </ion-card>
+    <ion-card *ngIf="item.status =='kirim'">
+      <ion-item-group> 
+        <ion-item-divider color="divider" class="tanggal_transaksi">
+          {{ item.tanggal }}
+        </ion-item-divider>
+           
+        <button ion-item class="isi_transaksi" (click)="pembeliandetail(item)">
+          <ion-item>
+            <h5>Kode Transaksi : <b>{{ item.id }}</b></h5>
+            <h5>Total Pembayaran : <b>Rp {{ item.subtotal }},-</b></h5>
+          </ion-item>
+        </button>
+      </ion-item-group>
+    </ion-card>
   </ion-list>
 
-  <ion-list *ngSwitchCase="'sukses'">
-      <ion-card>
-          <ion-item-group> 
-            <ion-item-divider color="divider" class="tanggal_transaksi">
-              Minggu, 04 November 2018
-            </ion-item-divider>
-               
-            <button ion-item class="isi_transaksi">
-              <ion-item>
-                <h5>Kode Transaksi : <b>1234567890</b></h5>
-                <h5>Total Pembayaran : <b>Rp 1.000.000,-</b></h5>
-              </ion-item>
-            </button>
-          </ion-item-group>
-        </ion-card>        
+  <ion-list *ngSwitchCase="'selesai'">
+    <ion-card *ngIf="item.status =='selesai'">
+      <ion-item-group> 
+        <ion-item-divider color="divider" class="tanggal_transaksi">
+          {{ item.tanggal }}
+        </ion-item-divider>
+           
+        <button ion-item class="isi_transaksi" (click)="pembeliandetail(item)">
+          <ion-item>
+            <h5>Kode Transaksi : <b>{{ item.id }}</b></h5>
+            <h5>Total Pembayaran : <b>Rp {{ item.subtotal }},-</b></h5>
+          </ion-item>
+        </button>
+      </ion-item-group>
+    </ion-card>        
   </ion-list>
+  </div>
 </div>
 </ion-content>
   

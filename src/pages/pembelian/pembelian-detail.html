@@ -24,23 +24,24 @@
     <ion-item-group>
 
       <ion-item-divider color="light" style="height: 35px" *ngFor="let item2 of items.koleksi2">{{item2.tanggal}}
-        <ion-badge *ngIf="item2.status == 'order'" color="primary" item-end>Order</ion-badge>
-        <ion-badge *ngIf="item2.status == 'kirim'" color="pending" item-end>Dikirim</ion-badge>
-        <ion-badge *ngIf="item2.status == 'selesai'" color="secondary" item-end>Sukses</ion-badge>
+        <ion-badge *ngIf="item2.status == 'order'" color="primary" item-end>Pesanan Baru</ion-badge>
+        <ion-badge *ngIf="item2.status == 'proses'" color="secondary" item-end>Sedang Diproses</ion-badge>
+        <ion-badge *ngIf="item2.status == 'kirim'" color="pending" item-end>Sedang Dikirim</ion-badge>
+        <ion-badge *ngIf="item2.status == 'selesai'" color="success" item-end>Pembelian Sukses</ion-badge>
       </ion-item-divider>
     
       <ion-card class="pembelian-container" *ngFor="let item of items.koleksi">
         
         <ion-row no-padding>  
           <ion-col class="pembelian-col-x">             
-            <img src="http://localhost:8000/fotoupload/{{item.produktoko.foto}}" class="pembelian-picture-item">
+            <img src="http://localhost:8000/fotoupload/{{item.produk.foto}}" class="pembelian-picture-item">
           </ion-col>
     
           <ion-col class="pembelian-col-y">
-            <h2><b>{{item.produktoko.namaproduk}} #{{item.produktoko.kodeproduk}}</b></h2>
+            <h2><b>{{item.produk.namaproduk}} #{{item.produk.kodeproduk}}</b></h2>
             <br>
             <h3>Jumlah :<b>{{item.jumlah}}</b></h3>
-            <h3>Total Harga :<b> Rp {{ item.jumlah * item.produktoko.harga }},-</b></h3>
+            <h3>Total Harga :<b> Rp {{ item.jumlah * item.produk.harga }},-</b></h3>
           </ion-col>      
         </ion-row>
 
@@ -52,7 +53,8 @@
 <ion-footer style="text-align:center">
   <h6 *ngFor="let item2 of items.koleksi2">Total Pembayaran : <b>Rp {{ item2.subtotal }},-</b></h6>
   <ion-buttons>
-    <button *ngIf="item.status == 'kirim'" ion-button block style="text-transform: none" (click)="tombolselesai(item)">Sudah Diterima</button>
+    <button *ngIf="item.status == 'order'" color="secondary" ion-button block style="text-transform: none">Konfirmasi Pembayaran</button>
+    <button *ngIf="item.status == 'kirim'" color="secondary" ion-button block style="text-transform: none" (click)="tombolselesai(item)">Konfirmasi Terima Barang</button>
 </ion-buttons>
 </ion-footer>
     

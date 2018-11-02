@@ -52,11 +52,10 @@
     <ion-row>
       <ion-col (click)="takeKTP()">
         <p class="daftarpage_verifikasi_title2">Foto KTP</p>
-          <!-- <div *ngFor="let photo of photos; let id = index">
-            <img [src]="photo"><br>
-          </div> -->
         <ion-buttons>
-          <img src="login_image/photo_placeholder.png">
+          <div *ngFor="let photo of photos; let id = index">
+            <img [src]="photo">
+          </div>
         </ion-buttons>
 
         <p style="text-align: left; font-size: 12px">
@@ -71,11 +70,10 @@
     <ion-row>
       <ion-col (click)="takeWajah()">
         <p class="daftarpage_verifikasi_title2">Foto Selfie dengan KTP</p>
-          <!-- <div *ngFor="let photo2 of photos2; let id = index">
-            <img [src]="photo2"><br>
-          </div> -->
         <ion-buttons>
-          <img src="login_image/photo_placeholder.png">
+          <div *ngFor="let photo2 of photos2; let id = index">
+            <img [src]="photo2"><br>
+          </div>
         </ion-buttons>
 
         <p style="text-align: left; font-size: 12px">

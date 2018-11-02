@@ -124,7 +124,7 @@
       <p><b>Total :</b> Rp {{item2.subtotal}}.-</p>
     </ion-col>
     <ion-col style="max-width: 110px">
-      <button ion-button block color="secondary" style="text-transform: none" *ngIf="item2.subtotal != 0">Pembayaran</button>
+      <button ion-button block color="secondary" style="text-transform: none" *ngIf="item2.subtotal != 0" (click)="tombolkirim(item2)">Pembayaran</button>
     </ion-col>
   </ion-row>
 </ion-footer>

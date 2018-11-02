@@ -204,11 +204,11 @@ export class DaftarPage {
 
 ngOnInit() {
   this.photos = [];
-  this.gbawal = "upload_placeholder.png";
+  this.gbawal = "login_image/photo_placeholder.png";
   this.photos.push(this.gbawal);
 
   this.photos2 = [];
-  this.gbawal2 = "upload_placeholder.png";
+  this.gbawal2 = "login_image/photo_placeholder.png";
   this.photos2.push(this.gbawal2);
 }
 
@@ -362,7 +362,7 @@ cekdaftar(){
         //Cek KTP
         if(data[key].noktp != null){
           //Cek FOto
-          if((this.photos != "assets/img/bgfoto.png") && (this.photos2 != "assets/img/bgfoto.png")){
+          if((this.photos != "login_image/photo_placeholder.png") && (this.photos2 != "login_image/photo_placeholder.png")){
             //Set
             this.id_dusun = data[key].id_dusun;
             this.name = data[key].nama;

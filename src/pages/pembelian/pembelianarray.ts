@@ -1,9 +1,10 @@
 export class PembelianArray {
 
   constructor ( public id:Number,
-                public id_warga:Number,
-                public id_toko:Number,
-                public tanggal:String,
+                public id_users:Number,
+                public tanggal:Date,
+                public totaldiskon:Number,
+                public totalbelanja:Number,
                 public subtotal:Number,
                 public status:String){}
                 
