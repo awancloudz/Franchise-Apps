@@ -71,7 +71,6 @@
       <ion-col style="max-width: 75px">
         <p class="keranjangpage_info">Jumlah<br>
                                       Harga<br>
-                                      <b>Total Berat</b><br>
                                       <b>Sub-Total</b></p>
       </ion-col>
 
@@ -87,8 +86,7 @@
         </ion-buttons>
 
         <p class="keranjangpage_qty">Rp {{item.produk.harga}},-<br>
-                                    1 Kg<br>
-                                    Rp {{ item.jumlah * item.produk.harga }}.-</p>
+                                    <b>Rp {{ item.jumlah * item.produk.harga }}.-</b></p>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -113,18 +111,23 @@
 -->
 
 <ion-footer *ngFor="let item2 of items.koleksi2">
-  <ion-row>
-    <ion-col style="max-width: 110px">
-      <button ion-button block color="success" style="text-transform: none" *ngIf="item2.subtotal != 0" (click)="tombolbeli()">Belanja</button>
+  <ion-row class="keranjang_row_harga">
+    <ion-col style="text-align: center" *ngIf="item2.subtotal != 0">
+      <p><b>Total Harga : Rp {{item2.subtotal}}.-</b></p>
     </ion-col>
     <ion-col style="text-align: center" *ngIf="item2.subtotal == 0">
       <p><b>[ Keranjang Kosong ]</b></p>
     </ion-col>
-    <ion-col style="text-align: center" *ngIf="item2.subtotal != 0">
-      <p><b>Total :</b> Rp {{item2.subtotal}}.-</p>
-    </ion-col>
-    <ion-col style="max-width: 110px">
-      <button ion-button block color="secondary" style="text-transform: none" *ngIf="item2.subtotal != 0" (click)="tombolkirim(item2)">Pembayaran</button>
+  </ion-row>
+
+  <ion-row class="keranjang_row_button">
+    <ion-col>
+      <button ion-button block color="success" style="text-transform: none" *ngIf="item2.subtotal != 0" (click)="tombolbeli()">Lanjut Belanja</button>
+      </ion-col>
+    <ion-col>
+      <button ion-button block color="secondary" style="text-transform: none" *ngIf="item2.subtotal != 0" (click)="tombolkirim(item2)">Pembayaran
+      <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+      </button>
     </ion-col>
   </ion-row>
 </ion-footer>

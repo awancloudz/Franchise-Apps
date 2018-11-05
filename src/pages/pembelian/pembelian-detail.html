@@ -1,24 +1,12 @@
-<!--
-  Generated template for the PembelianPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-    
+<ion-header> 
   <ion-navbar color="primary">
-    
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    
-    <ion-title style="margin-left: -15px">Detail Pembelian</ion-title>
-        
+    <ion-title style="margin-left: -12px">Detail Pembelian</ion-title>
   </ion-navbar>
-    
 </ion-header>
-    
-    
+
 <ion-content>
   <ion-list>
     <ion-item-group>
@@ -29,9 +17,41 @@
         <ion-badge *ngIf="item2.status == 'kirim'" color="pending" item-end>Sedang Dikirim</ion-badge>
         <ion-badge *ngIf="item2.status == 'selesai'" color="success" item-end>Pembelian Sukses</ion-badge>
       </ion-item-divider>
-    
+
+      <ion-card *ngFor="let item of items.koleksi">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <div>
+                <p class="pembeliandetail_namabarang"><b>{{ item.produk.namaproduk }}</b><p>
+                <p class="pembeliandetail_kodebarang">#{{item.produk.kodeproduk}}</p>
+              </div>
+            </ion-col>
+          </ion-row>
+      
+          <ion-row>
+            <ion-col style="max-width: 120px">
+              <img src="http://localhost:8000/fotoupload/{{item.produk.foto}}">
+            </ion-col>
+      
+            <ion-col style="max-width: 75px">
+              <p class="pembeliandetail_info">Jumlah<br>
+                                              Harga<br>
+                                            <b>Sub-Total</b></p>
+            </ion-col>
+      
+            <ion-col>
+              <p class="pembeliandetail_qty">{{item.jumlah}}<br>
+                                          Rp {{item.produk.harga}},-<br>
+                                          <b>Rp {{ item.jumlah * item.produk.harga }}.-</b></p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+
+<!-- 
       <ion-card class="pembelian-container" *ngFor="let item of items.koleksi">
-        
+    
         <ion-row no-padding>  
           <ion-col class="pembelian-col-x">             
             <img src="http://localhost:8000/fotoupload/{{item.produk.foto}}" class="pembelian-picture-item">
@@ -45,16 +65,27 @@
           </ion-col>      
         </ion-row>
 
-      </ion-card>
+      </ion-card> -->
     </ion-item-group>
   </ion-list>
 </ion-content>
 
-<ion-footer style="text-align:center">
-  <h6 *ngFor="let item2 of items.koleksi2">Total Pembayaran : <b>Rp {{ item2.subtotal }},-</b></h6>
-  <ion-buttons>
-    <button *ngIf="item.status == 'order'" color="secondary" ion-button block style="text-transform: none">Konfirmasi Pembayaran</button>
-    <button *ngIf="item.status == 'kirim'" color="secondary" ion-button block style="text-transform: none" (click)="tombolselesai(item)">Konfirmasi Terima Barang</button>
-</ion-buttons>
+<ion-footer>
+  <ion-grid style="background-color: white; text-align: center">
+    <ion-row style="height: 30px">
+      <ion-col>
+        <p style="margin-top: 3px" *ngFor="let item2 of items.koleksi2"><b>Total Pembayaran : Rp {{ item2.subtotal }},-</b></p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-buttons>
+          <button *ngIf="item.status == 'order'" color="secondary" ion-button block style="text-transform: none">Konfirmasi Pembayaran</button>
+          <button *ngIf="item.status == 'kirim'" color="secondary" ion-button block style="text-transform: none" (click)="tombolselesai(item)">Konfirmasi Terima Barang</button>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-footer>
     

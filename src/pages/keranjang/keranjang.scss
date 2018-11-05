@@ -1,8 +1,8 @@
 page-keranjang {
 
 .keranjangpage_content {
-    background-color: whitesmoke;
     padding: 0px;
+    height: 85%;
 }
 
 .keranjangpage_content ion-card {
@@ -19,6 +19,7 @@ page-keranjang {
 .keranjangpage_namabarang {
     line-height: 1.1;
     white-space: normal;
+    font-weight: bold;
 }
 
 .keranjangpage_decrement {
@@ -71,4 +72,20 @@ ion-footer {
     background-color: white;
 }
 
+.keranjang_row_harga {
+    height: 30px;
+
+        ion-col {
+            margin-top: -8px;
+        }
+    
+}
+
+.keranjang_row_button {
+
+    ion-icon {
+        margin-left: 10px;
+        zoom: 1.3;
+    }
+}
 }
