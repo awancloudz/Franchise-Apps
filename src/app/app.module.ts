@@ -15,7 +15,7 @@ import { OneSignal } from '@ionic-native/onesignal';
 import { MyApp } from './app.component';
 import { HomePage, HomeDetailPage, HomethumbnailPage, HomeprodukdetailPage, HometokoPage, HomechatPage, HomekomentarPage, HomekomentardetailPage, HomeuserPage, HomeratingPage } from '../pages/home/home';
 import { KategoriPage,KategoriDetailPage, KategoriDetailPage2 } from '../pages/kategori/kategori';
-import { PembelianPage,PembelianDetailPage,PembelianCreatePage } from '../pages/pembelian/pembelian';
+import { PembelianPage,PembelianDetailPage,PembelianCreatePage,PembelianKonfirmasiPage } from '../pages/pembelian/pembelian';
 import { DompetPage } from '../pages/dompet/dompet';
 import { PesanPage,PesanDetailPage } from '../pages/pesan/pesan';
 import { SettingPage } from '../pages/setting/setting';
@@ -121,7 +121,7 @@ import { TokoPageModule } from '../pages/toko/toko.module';
     MyApp,
     HomePage, HomeDetailPage, HomethumbnailPage, HomeprodukdetailPage, HometokoPage, HomechatPage, HomekomentarPage, HomekomentardetailPage, HomeuserPage, HomeratingPage,
     KategoriPage, KategoriDetailPage,KategoriDetailPage2,
-    PembelianPage, PembelianDetailPage,PembelianCreatePage,
+    PembelianPage, PembelianDetailPage,PembelianCreatePage,PembelianKonfirmasiPage,
     DompetPage,
     PesanPage, PesanDetailPage,
     SettingPage,

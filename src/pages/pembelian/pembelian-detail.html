@@ -48,24 +48,6 @@
           </ion-row>
         </ion-grid>
       </ion-card>
-
-<!-- 
-      <ion-card class="pembelian-container" *ngFor="let item of items.koleksi">
-    
-        <ion-row no-padding>  
-          <ion-col class="pembelian-col-x">             
-            <img src="http://localhost:8000/fotoupload/{{item.produk.foto}}" class="pembelian-picture-item">
-          </ion-col>
-    
-          <ion-col class="pembelian-col-y">
-            <h2><b>{{item.produk.namaproduk}} #{{item.produk.kodeproduk}}</b></h2>
-            <br>
-            <h3>Jumlah :<b>{{item.jumlah}}</b></h3>
-            <h3>Total Harga :<b> Rp {{ item.jumlah * item.produk.harga }},-</b></h3>
-          </ion-col>      
-        </ion-row>
-
-      </ion-card> -->
     </ion-item-group>
   </ion-list>
 </ion-content>
@@ -81,7 +63,7 @@
     <ion-row>
       <ion-col>
         <ion-buttons>
-          <button *ngIf="item.status == 'order'" color="secondary" ion-button block style="text-transform: none">Konfirmasi Pembayaran</button>
+          <button *ngIf="item.status == 'order'" color="secondary" ion-button block style="text-transform: none" (click)="tombolkonfirmasi(item)">Konfirmasi Pembayaran</button>
           <button *ngIf="item.status == 'kirim'" color="secondary" ion-button block style="text-transform: none" (click)="tombolselesai(item)">Konfirmasi Terima Barang</button>
         </ion-buttons>
       </ion-col>

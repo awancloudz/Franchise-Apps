@@ -80,15 +80,10 @@ export class PembelianPage {
     this.nav.push (PembelianDetailPage, {item: item});
   }
 
-  // ionViewWillEnter(){
-  //   this.pembelian = "order";
-  // }
-  
   onTabChanged(tabName) {
     this.category = tabName;
   }
 }
-
 
 @Component({
   selector: 'page-create-pembelian',
@@ -138,6 +133,7 @@ ionViewDidLoad(item2) {
         //Push
         loadingdata.dismiss();
         this.nav.setRoot(PembelianPage);
+        //this.nav.setRoot(PembelianKonfirmasiPage, {item: item2});
       },
       function(error){
 
@@ -198,7 +194,13 @@ ionViewDidLoad() {
 }
 
 tombolselesai(item){
-  //Loading bar
+//Pemberitahuan
+let alert = this.alertCtrl.create({
+  title: 'Informasi',
+  subTitle: 'Pembelian Selesai, terima kasih.',
+  buttons: ['OK']
+});
+//Loading bar
 let loadingdata=this.loadincontroller.create({
   content:"Loading..."
 });
@@ -217,7 +219,55 @@ this.pembelianservice.editpembelian(new PembelianArray(this.item.id,this.item.id
   //Tutup Loading
   function(){
     loadingdata.dismiss();
+    alert.present();
   }
 );
 }
+tombolkonfirmasi(item){
+  this.nav.push (PembelianKonfirmasiPage, {item: item});
 }
+
+}
+
+@Component({
+  selector: 'page-verifikasi-pembelian',
+  templateUrl: 'pembelian-konfirmasi.html',
+})
+export class PembelianKonfirmasiPage {
+  item;
+  items:PembelianArray[]=[];
+  constructor(params: NavParams, public nav: NavController,public platform: Platform,public actionSheetCtrl: ActionSheetController,public alertCtrl: AlertController,
+    public loadincontroller:LoadingController,public _toast:ToastController,public pembelianservice:PembelianserviceProvider) {
+    this.item = params.data.item;
+    //Hapus Back
+    let backAction =  platform.registerBackButtonAction(() => {
+      this.nav.pop();
+      backAction();
+    },2)
+  }
+
+//Tampil data awal
+ionViewDidLoad() {
+  //Loading bar
+  let loadingdata=this.loadincontroller.create({
+    content:"Loading..."
+  });
+  loadingdata.present();
+  //Tampilkan data dari server
+  this.pembelianservice.tampilkandetail(new PembelianArray(this.item.id,this.item.id_users,this.item.tanggal,this.item.totaldiskon,this.item.totalbelanja,this.item.subtotal,this.item.status)).subscribe(
+    //Jika data sudah berhasil di load
+    (data:PembelianArray[])=>{
+      this.items=data;
+    },
+    //Jika Error
+    function (error){   
+    },
+    //Tutup Loading
+    function(){
+      loadingdata.dismiss();
+    }
+  );
+}
+}
+
+

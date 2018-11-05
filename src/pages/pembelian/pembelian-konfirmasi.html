@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  <ion-title style="margin-left: -12px">Konfirmasi Pembayaran</ion-title>   
+  </ion-navbar> 
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+            <p><u>No.Rekening Pembayaran :</u>
+            <br><b>1.BCA 12345678 a.n GJO Pusat</b>
+            <br><b>2.BRI 12345678 a.n GJO Pusat</b>
+            <br><b>3.Mandiri 12345678 a.n GJO Pusat</b>
+          </p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+  <ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div>
+            <p><b>No.Order</b></p>
+            <p><b>Total yang Harus Dibayar</b></p>
+            <p><b>Upload Bukti Pembayaran</b></p>
+            <p>
+              <button ion-button full style="text-transform: none ; text-align: center" color="secondary">
+                <ion-icon name="images" style="zoom:1.6 ; padding-right: 5px"></ion-icon>Dari Gallery
+              </button>
+            </p>
+          </div>
+        </ion-col>
+        <ion-col>
+            <p><b>: #{{ item.id }}</b></p>
+            <p><b>: Rp.{{ item.subtotal }},-</b></p>
+            <p><br></p>
+            <p>
+              <button ion-button full style="text-transform: none ; text-align: center" color="secondary">
+                <ion-icon name="camera" style="zoom:1.6 ; padding-right: 5px" ></ion-icon>Ambil Foto
+              </button>
+            </p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-col style="text-align: center">
+            <img src="login_image/photo_placeholder.png">
+          </ion-col>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+</ion-content>
+<ion-footer>
+</ion-footer>
