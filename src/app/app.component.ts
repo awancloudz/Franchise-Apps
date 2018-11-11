@@ -7,7 +7,9 @@ import { OneSignal } from '@ionic-native/onesignal';
 
 import { HomePage, HomeDetailPage, HomethumbnailPage, HomeprodukdetailPage, HometokoPage, HomechatPage, HomekomentarPage, HomekomentardetailPage, HomeuserPage, HomeratingPage } from '../pages/home/home';
 import { KategoriPage,KategoriDetailPage } from '../pages/kategori/kategori';
+import { PenjualanPage, PenjualandetailPage} from '../pages/penjualan/penjualan';
 import { PembelianPage,PembelianDetailPage,PembelianKonfirmasiPage } from '../pages/pembelian/pembelian';
+import { MitraPage, MitradetailPage } from '../pages/mitra/mitra';
 import { DompetPage } from '../pages/dompet/dompet';
 import { PesanPage,PesanDetailPage } from '../pages/pesan/pesan';
 import { SettingPage } from '../pages/setting/setting';
@@ -34,7 +36,7 @@ import { InformasitokoPage } from '../pages/informasitoko/informasitoko';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = KeranjangPage;
+  rootPage: any = MitradetailPage;
   //level = "mitra";
   pages: Array<{title: string, icon: string,component: any}>;
   mitra: Array<{nama: string}>;
@@ -48,7 +50,9 @@ export class MyApp {
     this.pages = [
       { title: 'Home', icon: "sidemenu_icon/home.png", component: HomePage },
       { title: 'Kategori', icon: "sidemenu_icon/kategori.png", component: KategoriPage },
+      { title: 'Penjualan', icon: "sidemenu_icon/penjualan.png", component: PenjualanPage },
       { title: 'Pembelian', icon: "sidemenu_icon/pembelian.png", component: PembelianPage },
+      { title: 'Mitra', icon: "sidemenu_icon/mitra.png", component: MitraPage },
       { title: 'Profile',  icon: "sidemenu_icon/profile.png", component: ProfilePage },
       { title: 'Logout',  icon: "sidemenu_icon/log_out.png", component: SettingPage },
     ];

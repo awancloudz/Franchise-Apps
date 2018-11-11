@@ -1,0 +1,204 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title style="margin-left: -12px">Penjualan</ion-title>
+  </ion-navbar>
+
+  <div>
+      <ion-segment [(ngModel)]="category">
+        <ion-segment-button value="order">
+          <ion-buttons>
+            <img src="pembelian_icon/order.png">
+            <p>Order</p>
+          </ion-buttons>
+        </ion-segment-button>
+        <ion-segment-button value="proses">
+          <ion-buttons>
+            <img src="pembelian_icon/proses.png">
+            <p>Proses</p>
+          </ion-buttons>
+        </ion-segment-button>
+        <ion-segment-button value="kirim">
+          <ion-buttons>
+            <img src="pembelian_icon/kirim.png">
+            <p>Kirim</p>
+          </ion-buttons>
+        </ion-segment-button>
+        <ion-segment-button value="sukses">
+          <ion-buttons>
+            <img src="pembelian_icon/sukses.png">
+            <p>Sukses</p>
+          </ion-buttons>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
+</ion-header>
+
+
+<ion-content class="segment_content">
+
+  <div [ngSwitch]="category">
+    <div>
+      <ion-list *ngSwitchCase="'order'">
+        <ion-card (click)="penjualandetail()">
+          <ion-item-group> 
+            <ion-item-divider color="divider" class="tanggal_transaksi">
+              00 November 2018
+            </ion-item-divider>
+              
+            <button ion-item class="isi_transaksi">
+              <ion-item>
+                <h5>Kode Transaksi : <b>1234567890</b></h5>
+                <h5>Total Pembayaran : <b>Rp 1.000.000,-</b></h5>
+              </ion-item>
+            </button>
+          </ion-item-group>
+        </ion-card>
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'proses'">
+        <ion-card>
+          <ion-item-group> 
+            <ion-item-divider color="divider" class="tanggal_transaksi">
+              08 November 2018
+            </ion-item-divider>
+              
+            <button ion-item class="isi_transaksi">
+              <ion-item>
+                <h5>Kode Transaksi : <b>1234567890</b></h5>
+                <h5>Total Pembayaran : <b>Rp 1.000.000,-</b></h5>
+              </ion-item>
+            </button>
+          </ion-item-group>
+        </ion-card>
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'kirim'">
+        <ion-card>
+          <ion-item-group> 
+            <ion-item-divider color="divider" class="tanggal_transaksi">
+              15 November 2018
+            </ion-item-divider>
+              
+            <button ion-item class="isi_transaksi">
+              <ion-item>
+                <h5>Kode Transaksi : <b>1234567890</b></h5>
+                <h5>Total Pembayaran : <b>Rp 1.000.000,-</b></h5>
+              </ion-item>
+            </button>
+          </ion-item-group>
+        </ion-card>
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'sukses'" >
+        <ion-card>
+          <ion-item-group> 
+            <ion-item-divider color="divider" class="tanggal_transaksi">
+              00 November 2018
+            </ion-item-divider>
+              
+            <button ion-item class="isi_transaksi">
+              <ion-item>
+                <h5>Kode Transaksi : <b>1234567890</b></h5>
+                <h5>Total Pembayaran : <b>Rp 1.000.000,-</b></h5>
+              </ion-item>
+            </button>
+          </ion-item-group>
+        </ion-card>
+
+        <ion-card>
+          <ion-item-group> 
+            <ion-item-divider color="divider" class="tanggal_transaksi">
+              27 November 2018
+            </ion-item-divider>
+              
+            <button ion-item class="isi_transaksi">
+              <ion-item>
+                <h5>Kode Transaksi : <b>1234567890</b></h5>
+                <h5>Total Pembayaran : <b>Rp 1.000.000,-</b></h5>
+              </ion-item>
+            </button>
+          </ion-item-group>
+        </ion-card>
+
+        <ion-card>
+          <ion-item-group> 
+            <ion-item-divider color="divider" class="tanggal_transaksi">
+              27 November 2018
+            </ion-item-divider>
+              
+            <button ion-item class="isi_transaksi">
+              <ion-item>
+                <h5>Kode Transaksi : <b>1234567890</b></h5>
+                <h5>Total Pembayaran : <b>Rp 1.000.000,-</b></h5>
+              </ion-item>
+            </button>
+          </ion-item-group>
+        </ion-card>
+
+        <ion-card>
+          <ion-item-group> 
+            <ion-item-divider color="divider" class="tanggal_transaksi">
+              27 November 2018
+            </ion-item-divider>
+              
+            <button ion-item class="isi_transaksi">
+              <ion-item>
+                <h5>Kode Transaksi : <b>1234567890</b></h5>
+                <h5>Total Pembayaran : <b>Rp 1.000.000,-</b></h5>
+              </ion-item>
+            </button>
+          </ion-item-group>
+        </ion-card>
+
+        <ion-card>
+          <ion-item-group> 
+            <ion-item-divider color="divider" class="tanggal_transaksi">
+              27 November 2018
+            </ion-item-divider>
+              
+            <button ion-item class="isi_transaksi">
+              <ion-item>
+                <h5>Kode Transaksi : <b>1234567890</b></h5>
+                <h5>Total Pembayaran : <b>Rp 1.000.000,-</b></h5>
+              </ion-item>
+            </button>
+          </ion-item-group>
+        </ion-card>
+        
+        <ion-card>
+          <ion-item-group> 
+            <ion-item-divider color="divider" class="tanggal_transaksi">
+              27 November 2018
+            </ion-item-divider>
+              
+            <button ion-item class="isi_transaksi">
+              <ion-item>
+                <h5>Kode Transaksi : <b>1234567890</b></h5>
+                <h5>Total Pembayaran : <b>Rp 1.000.000,-</b></h5>
+              </ion-item>
+            </button>
+          </ion-item-group>
+        </ion-card>
+
+      </ion-list>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col id="penjualan_pendapatan">
+        <p>Total Pendapatan :<br>
+          Rp 1.000.000.000,-</p>
+      </ion-col>
+      <ion-col col-4 id="penjualan_filter">
+          <button ion-button block color="secondary" (click)="openFilter()">Filter</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

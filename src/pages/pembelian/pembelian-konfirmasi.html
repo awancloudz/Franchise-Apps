@@ -6,55 +6,85 @@
   <ion-title style="margin-left: -12px">Konfirmasi Pembayaran</ion-title>   
   </ion-navbar> 
 </ion-header>
-<ion-content>
-  <ion-card>
-    <ion-grid>
+
+<ion-content style="background-color: whitesmoke">
+
+  <ion-card class="pembeliankonfirmasi_card1">
+    <ion-list>
+      <ion-item>
+        <p>Nomor Rekening Pembayaran</p>
+      </ion-item>
+
+      <ion-item no-padding>
+        <img src="bank_logo/bca.png">
+        <ion-note item-end>
+          1234567890
+        </ion-note>
+      </ion-item>
+
+      <ion-item no-padding>
+        <img src="bank_logo/bri.png">
+        <ion-note item-end>
+          1234567890
+        </ion-note>
+      </ion-item>
+
+      <ion-item no-padding>
+        <img src="bank_logo/bni.png">
+        <ion-note item-end>
+          1234567890
+        </ion-note>
+      </ion-item>
+
+      <ion-item no-padding>
+        <img src="bank_logo/mandiri.png">
+        <ion-note item-end>
+          1234567890
+        </ion-note>
+      </ion-item>
+
+      <h6>*Semua Rekening Atas Nama <span>GJO Pusat</span></h6>
+    </ion-list>
+  </ion-card>
+
+  <ion-card class="pembeliankonfirmasi_card2">
+    <ion-grid class="pembeliankonfirmasi_biaya">
       <ion-row>
+        <ion-col col-4>
+            <p>No. Order</p>
+            <p>Total Biaya</p>
+        </ion-col>
         <ion-col>
-            <p><u>No.Rekening Pembayaran :</u>
-            <br><b>1.BCA 12345678 a.n GJO Pusat</b>
-            <br><b>2.BRI 12345678 a.n GJO Pusat</b>
-            <br><b>3.Mandiri 12345678 a.n GJO Pusat</b>
-          </p>
+            <p>: #{{ item.id }}</p>
+            <p>: Rp {{ item.subtotal }},-</p>
         </ion-col>
       </ion-row>
     </ion-grid>
-  </ion-card>
-  <ion-card>
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <div>
-            <p><b>No.Order</b></p>
-            <p><b>Total yang Harus Dibayar</b></p>
-            <p><b>Upload Bukti Pembayaran</b></p>
-            <p>
-              <button ion-button full style="text-transform: none ; text-align: center" color="secondary">
-                <ion-icon name="images" style="zoom:1.6 ; padding-right: 5px"></ion-icon>Dari Gallery
-              </button>
-            </p>
-          </div>
-        </ion-col>
-        <ion-col>
-            <p><b>: #{{ item.id }}</b></p>
-            <p><b>: Rp.{{ item.subtotal }},-</b></p>
-            <p><br></p>
-            <p>
-              <button ion-button full style="text-transform: none ; text-align: center" color="secondary">
-                <ion-icon name="camera" style="zoom:1.6 ; padding-right: 5px" ></ion-icon>Ambil Foto
-              </button>
-            </p>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-col style="text-align: center">
-            <img src="login_image/photo_placeholder.png">
+
+
+    <div class="pembeliankonfirmasi_upload">
+      <p>Upload Bukti Pembayaran</p>
+
+      <img src="login_image/photo_placeholder.png">
+
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <button ion-button full style="text-transform: none ; text-align: center" color="secondary">
+              <ion-icon name="images" style="zoom:1.6 ; padding-right: 5px"></ion-icon>Dari Gallery
+            </button>
           </ion-col>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+          <ion-col>
+            <button ion-button full style="text-transform: none ; text-align: center" color="secondary">
+              <ion-icon name="camera" style="zoom:1.6 ; padding-right: 5px" ></ion-icon>Ambil Foto
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      
+    </div>
   </ion-card>
+  
 </ion-content>
 <ion-footer>
 </ion-footer>

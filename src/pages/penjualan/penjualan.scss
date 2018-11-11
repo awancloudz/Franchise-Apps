@@ -1,0 +1,130 @@
+page-penjualan {
+
+ion-segment {
+    margin-top: 0px;
+
+    ion-segment-button {
+        text-transform: none !important;
+        font-size: 14px !important;
+        height: 60px !important;
+    
+        ion-buttons {
+            margin-top: 5px;
+            
+            img {
+                height: 30px;
+                width: auto;
+            }
+    
+            p {
+                margin-top: -25px;
+            }
+
+        }
+        
+    }
+}
+
+.tanggal_transaksi {
+    height: 30px;
+}
+
+.isi_transaksi {
+    margin-top: -20px;
+    height: 75px;
+}
+
+.segment_content {
+    top: 0;
+}
+
+ion-footer {
+    
+    ion-grid {
+        height: 60px;
+
+        #penjualan_pendapatan {
+            text-align: center;
+
+            p {
+                margin-top: -5px;
+                font-weight: bold;
+                line-height: 1.5;
+            }
+        }
+    
+        #penjualan_filter {
+
+            button {
+                text-transform: none;
+            }
+        }
+    }
+    
+}
+
+/* ------------------------------------------------------------------------------------------------ */
+
+.penjualandetail_keterangan {
+    font-weight: bold;
+}
+
+.penjualandetail_foto {
+    margin: 0px 10px;
+
+    p {
+        text-align: center;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    img {
+        
+        width: auto;
+        height: auto;
+    }
+}
+
+.penjualandetail_title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.penjualandetail_namabarang {
+    line-height: 1.1;
+    white-space: normal;
+}
+
+.penjualandetail_kodebarang {
+    font-size: 14px;
+}
+
+.penjualandetail_info {
+    line-height: 27px;
+    font-size: 13px;
+    margin-top: 2px;
+}
+
+.penjualandetail_qty {
+    line-height: 27px;
+    font-size: 13px;
+    margin-top: 2px;
+}
+
+ion-footer {
+
+    p {
+        text-align: center;
+        font-weight: bold;
+        margin-top: 0px;
+        line-height: 1.4;
+    }
+    h6 {
+        text-transform: none;
+        font-size: 15px;
+        margin-top: 8px;
+        font-weight: 500;
+    }
+}
+}

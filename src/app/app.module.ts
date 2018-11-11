@@ -15,7 +15,9 @@ import { OneSignal } from '@ionic-native/onesignal';
 import { MyApp } from './app.component';
 import { HomePage, HomeDetailPage, HomethumbnailPage, HomeprodukdetailPage, HometokoPage, HomechatPage, HomekomentarPage, HomekomentardetailPage, HomeuserPage, HomeratingPage } from '../pages/home/home';
 import { KategoriPage,KategoriDetailPage, KategoriDetailPage2 } from '../pages/kategori/kategori';
+import { PenjualanPage, PenjualandetailPage } from '../pages/penjualan/penjualan';
 import { PembelianPage,PembelianDetailPage,PembelianCreatePage,PembelianKonfirmasiPage } from '../pages/pembelian/pembelian';
+import { MitraPage, MitradetailPage } from '../pages/mitra/mitra';
 import { DompetPage } from '../pages/dompet/dompet';
 import { PesanPage,PesanDetailPage } from '../pages/pesan/pesan';
 import { SettingPage } from '../pages/setting/setting';
@@ -59,6 +61,7 @@ import { LoginPageModule } from '../pages/login/login.module';
 import { ProfilePageModule } from '../pages/profile/profile.module';
 import { TokoprofilePageModule } from '../pages/tokoprofile/tokoprofile.module';
 import { TokosearchPageModule } from '../pages/tokosearch/tokosearch.module';
+import { PenjualanPageModule } from '../pages/penjualan/penjualan.module';
 import { PembelianPageModule } from '../pages/pembelian/pembelian.module';
 import { PesanPageModule } from '../pages/pesan/pesan.module';
 import { SettingPageModule } from '../pages/setting/setting.module';
@@ -75,11 +78,13 @@ import { TokoPageModule } from '../pages/toko/toko.module';
   declarations: [
     MyApp,
     HomePage, HomeDetailPage, HomethumbnailPage, HomeprodukdetailPage, HometokoPage, HomechatPage, HomekomentarPage, HomekomentardetailPage, HomeuserPage, HomeratingPage,
-    //FilterPage,
+    FilterPage,
     // SortPage,
     // DaftarkurirPage,
     // InformasitokoPage,
+    //PenjualanPage, PenjualandetailPage,
     //PembelianPage, PembelianDetailPage,PembelianCreatePage,
+    MitraPage, MitradetailPage,
     //DompetPage,
     //PesanPage, PesanDetailPage,
     //SettingPage,
@@ -103,6 +108,7 @@ import { TokoPageModule } from '../pages/toko/toko.module';
     DompetPageModule,
     ProfilePageModule,
     TokoprofilePageModule,
+    PenjualanPageModule,
     PembelianPageModule,
     PesanPageModule,
     SettingPageModule,
@@ -121,7 +127,9 @@ import { TokoPageModule } from '../pages/toko/toko.module';
     MyApp,
     HomePage, HomeDetailPage, HomethumbnailPage, HomeprodukdetailPage, HometokoPage, HomechatPage, HomekomentarPage, HomekomentardetailPage, HomeuserPage, HomeratingPage,
     KategoriPage, KategoriDetailPage,KategoriDetailPage2,
+    PenjualanPage, PenjualandetailPage,
     PembelianPage, PembelianDetailPage,PembelianCreatePage,PembelianKonfirmasiPage,
+    MitraPage, MitradetailPage,
     DompetPage,
     PesanPage, PesanDetailPage,
     SettingPage,
@@ -137,7 +145,7 @@ import { TokoPageModule } from '../pages/toko/toko.module';
     TokoprofilePage,TokoCreatePage,
     TokosearchPage,
     ProfilePage,
-    //FilterPage,
+    FilterPage,
     //SortPage,
     //DaftarkurirPage,
     //InformasitokoPage,

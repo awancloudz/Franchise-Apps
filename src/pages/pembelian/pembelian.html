@@ -4,39 +4,40 @@
       <ion-icon name="menu"></ion-icon>
     </button>
   <ion-title style="margin-left: -12px">Pembelian</ion-title>   
-  </ion-navbar> 
+  </ion-navbar>
+
+  <div>
+    <ion-segment [(ngModel)]="category">
+      <ion-segment-button value="order">
+        <ion-buttons>
+          <img src="pembelian_icon/order.png">
+          <p>Order</p>
+        </ion-buttons>
+      </ion-segment-button>
+      <ion-segment-button value="proses">
+        <ion-buttons>
+          <img src="pembelian_icon/proses.png">
+          <p>Proses</p>
+        </ion-buttons>
+      </ion-segment-button>
+      <ion-segment-button value="kirim">
+        <ion-buttons>
+          <img src="pembelian_icon/kirim.png">
+          <p>Kirim</p>
+        </ion-buttons>
+      </ion-segment-button>
+      <ion-segment-button value="selesai">
+        <ion-buttons>
+          <img src="pembelian_icon/sukses.png">
+          <p>Sukses</p>
+        </ion-buttons>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
 </ion-header>
   
   
 <ion-content class="pembelian_content">
-<div>
-  <ion-segment [(ngModel)]="category">
-    <ion-segment-button value="order">
-      <ion-buttons>
-        <img src="pembelian_icon/order.png">
-        <p>Order</p>
-      </ion-buttons>
-    </ion-segment-button>
-    <ion-segment-button value="proses">
-      <ion-buttons>
-        <img src="pembelian_icon/proses.png">
-        <p>Proses</p>
-      </ion-buttons>
-    </ion-segment-button>
-    <ion-segment-button value="kirim">
-      <ion-buttons>
-        <img src="pembelian_icon/kirim.png">
-        <p>Kirim</p>
-      </ion-buttons>
-    </ion-segment-button>
-    <ion-segment-button value="selesai">
-      <ion-buttons>
-        <img src="pembelian_icon/sukses.png">
-        <p>Sukses</p>
-      </ion-buttons>
-    </ion-segment-button>
-  </ion-segment>
-</div>
 
 <div [ngSwitch]="category" swipeSegment [tabsList]="categories" [(currentTab)]="category" (tabChanged)="onTabChanged($event)" class="swipe-area">
   <div *ngFor="let item of items" >

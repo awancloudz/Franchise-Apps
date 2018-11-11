@@ -1,0 +1,74 @@
+page-mitra {
+
+.mitra_content {
+    margin-top: 5px;
+}
+
+ion-segment {
+
+    ion-segment-button {
+        min-height: 55px;
+    }
+    p {
+        text-transform: none;
+        margin-top: 7px;
+        font-size: 16px;
+        font-weight: 500;
+    }
+}
+
+ion-card {
+    height: 50px;
+
+    ion-buttons {
+        margin-top: -8px;
+    }  
+}
+
+.mitra_nama {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+.mitra_kota {
+    color: gray;
+}
+
+/* -------------------------------------------------------------------------------------------- */
+
+.mitradetail_nama {
+
+    ion-grid {
+        margin-top: 5px;
+
+        p {
+            margin-top: -5px;
+            font-weight: 500;
+        }
+    }
+}
+
+.mitradetail_title_img {
+    text-align: center;
+
+    p {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    img {
+        width: 80%;
+        height: auto;
+    }
+}
+
+ion-footer {
+    p {
+        text-transform: none;
+        font-size: 16px;
+    }
+}
+}
