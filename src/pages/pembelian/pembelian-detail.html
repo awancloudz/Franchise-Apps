@@ -12,7 +12,8 @@
     <ion-item-group>
 
       <ion-item-divider color="light" style="height: 35px" *ngFor="let item2 of items.koleksi2">{{item2.tanggal}}
-        <ion-badge *ngIf="item2.status == 'order'" color="primary" item-end>Pesanan Baru</ion-badge>
+        <ion-badge *ngIf="item2.status == 'order' && item.bukti == ''" color="primary" item-end>Belum Dibayar</ion-badge>
+        <ion-badge *ngIf="item2.status == 'order' && item.bukti != ''" color="success" item-end>Pembayaran Diterima</ion-badge>
         <ion-badge *ngIf="item2.status == 'proses'" color="secondary" item-end>Sedang Diproses</ion-badge>
         <ion-badge *ngIf="item2.status == 'kirim'" color="pending" item-end>Sedang Dikirim</ion-badge>
         <ion-badge *ngIf="item2.status == 'selesai'" color="success" item-end>Pembelian Sukses</ion-badge>
@@ -61,10 +62,12 @@
     </ion-row>
 
     <ion-row>
-      <ion-col>
+      <ion-col *ngFor="let item2 of items.koleksi2">
         <ion-buttons>
-          <button *ngIf="item.status == 'order'" color="secondary" ion-button block style="text-transform: none" (click)="tombolkonfirmasi(item)">Konfirmasi Pembayaran</button>
-          <button *ngIf="item.status == 'kirim'" color="secondary" ion-button block style="text-transform: none" (click)="tombolselesai(item)">Konfirmasi Terima Barang</button>
+            <button *ngIf="item2.status == 'order' && item2.bukti != ''" color="secondary" ion-button block style="text-transform: none" (click)="tombolkonfirmasi(item2)">Data Pembayaran</button>
+          <button *ngIf="item2.status == 'order' && item2.bukti == ''" color="secondary" ion-button block style="text-transform: none" (click)="tombolkonfirmasi(item2)">Konfirmasi Pembayaran</button>
+          <button *ngIf="item2.status == 'order' && item2.bukti == ''" color="danger" ion-button block style="text-transform: none" (click)="tombolbatal(item2)">Batalkan Pesanan</button>
+          <button *ngIf="item2.status == 'kirim'" color="secondary" ion-button block style="text-transform: none" (click)="tombolselesai(item2)">Konfirmasi Terima Barang</button>
         </ion-buttons>
       </ion-col>
     </ion-row>

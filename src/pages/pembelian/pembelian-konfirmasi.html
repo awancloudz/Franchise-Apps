@@ -4,11 +4,16 @@
       <ion-icon name="menu"></ion-icon>
     </button>
   <ion-title style="margin-left: -12px">Konfirmasi Pembayaran</ion-title>   
+  <ion-buttons end *ngIf="item.bukti == ''">
+    <button ion-button (click)="updatebukti()">
+      <ion-icon name="ios-checkmark-circle-outline" class="button_icon"></ion-icon>
+    </button>
+  </ion-buttons>
   </ion-navbar> 
 </ion-header>
 
 <ion-content style="background-color: whitesmoke">
-
+  <ion-input type="hidden" [(ngModel)]="bukti"></ion-input>
   <ion-card class="pembeliankonfirmasi_card1">
     <ion-list>
       <ion-item>
@@ -51,21 +56,22 @@
     <ion-grid class="pembeliankonfirmasi_biaya">
       <ion-row>
         <ion-col col-4>
-            <p>No. Order</p>
+            <p>Kode Transaksi</p>
             <p>Total Biaya</p>
         </ion-col>
         <ion-col>
-            <p>: #{{ item.id }}</p>
+            <p>: #{{ item.kodepenjualan }}</p>
             <p>: Rp {{ item.subtotal }},-</p>
         </ion-col>
       </ion-row>
     </ion-grid>
 
-
-    <div class="pembeliankonfirmasi_upload">
+    <div class="pembeliankonfirmasi_upload" *ngIf="item.bukti == ''">
       <p>Upload Bukti Pembayaran</p>
 
-      <img src="login_image/photo_placeholder.png">
+      <div *ngFor="let photo of photos; let id = index">
+        <img [src]="photo">
+      </div>
 
       <ion-grid>
         <ion-row>
@@ -74,15 +80,22 @@
               <ion-icon name="images" style="zoom:1.6 ; padding-right: 5px"></ion-icon>Dari Gallery
             </button>
           </ion-col>
-          <ion-col>
+          <ion-col (click)="takeBukti(1)">
             <button ion-button full style="text-transform: none ; text-align: center" color="secondary">
               <ion-icon name="camera" style="zoom:1.6 ; padding-right: 5px" ></ion-icon>Ambil Foto
             </button>
           </ion-col>
         </ion-row>
       </ion-grid>
-      
     </div>
+    <div class="pembeliankonfirmasi_upload" *ngIf="item.bukti != ''">
+      <p>Data Bukti Pembayaran</p>
+
+      <div *ngFor="let photo of photos; let id = index">
+        <img [src]="photo">
+      </div>
+      </div>
+
   </ion-card>
   
 </ion-content>

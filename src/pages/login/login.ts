@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Events,NavController, NavParams, Platform, ActionSheetController, LoadingController ,ToastController,AlertController } from 'ionic-angular';
+import { Events,NavController, NavParams, Platform, ActionSheetController, LoadingController ,ToastController,AlertController,normalizeURL } from 'ionic-angular';
+//import { WebView } from '@ionic-native/ionic-webview/ngx';
 //Tambahkan Provider
 import { LoginserviceProvider } from '../../providers/loginservice/loginservice';
 //Tambahkan Variabel Global
@@ -15,6 +16,7 @@ import { HomeArray } from '../../pages/home/homearray';
 import { OneSignal } from '@ionic-native/onesignal';
 //Camera
 import {Camera, CameraOptions} from '@ionic-native/camera';
+import { File } from '@ionic-native/file';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 /**
  * Generated class for the LoginPage page.
@@ -33,7 +35,7 @@ export class LoginPage {
   email:String;
   password:String;
   id:Number;
-  id_user: Number;
+  id_users: Number;
   app_id: String;
   constructor(public nav: NavController,public platform: Platform,public actionSheetCtrl: ActionSheetController,
     public loadincontroller:LoadingController,public loginservice:LoginserviceProvider,public _toast:ToastController,
@@ -42,24 +44,18 @@ export class LoginPage {
   }
 
 ionViewDidLoad(){
-  /*this.storage.get('status_toko').then((val) => {
-    this.storage.get('nama_warga').then((nama) => {
+  this.storage.get('level').then((val) => {
+    this.storage.get('nama_user').then((nama) => {
       if(nama != null){
-        if(val == '2'){
-          this.events.publish('user:warga',nama);
+        if(val == 'admin'){
+          this.events.publish('user:admin',nama);
         }
-        else if( val == '1'){
-          this.events.publish('user:toko',nama);
+        else if(val == 'mitra'){
+          this.events.publish('user:mitra',nama);
         }
         this.nav.setRoot(HomePage);
       }
     });
-  });*/
-
-  this.storage.get('nama_user').then((nama) => {
-    if(nama != null){
-      this.nav.setRoot(HomePage);
-    }
   });
 }
 //Cek Data Login
@@ -91,36 +87,19 @@ ceklogin(){
             this.storage.set('id_user', data[key].id);
             this.storage.set('nama_user', data[key].nama);
             this.storage.set('level', data[key].level);
-            this.events.publish('user:mitra',data[key].nama);
-
-            //Cek Toko
-            /*this.loginservice.cektoko(new HomeArray(this.id,data[key].id,this.app_id))
-            .subscribe(
-              (data2:HomeArray)=>{
-                for(var key2 in data2)
-                {
-                  if(data2[key2].kodetoko != null){
-                    this.events.publish('user:toko',data[key].nama);
-                    this.storage.set('status_toko', 1);
-                  }
-                  else{
-                    this.events.publish('user:warga',data[key].nama);
-                    this.storage.set('status_toko', 2);
-                  }
-                }
-              },
-              function(error){
-              },
-              function(){
-              }
-            );*/
+            if(data[key].level == 'admin'){
+              this.events.publish('user:admin',data[key].nama);
+            }
+            else if(data[key].level == 'mitra'){
+              this.events.publish('user:mitra',data[key].nama);
+            }
             
             //Check App ID Notifikasi
-            /*this.oneSignal.getIds().then((ids) => {
+            this.oneSignal.getIds().then((ids) => {
               this.app_id = ids.userId;
-              this.id_warga = data[key].id;
+              this.id_users = data[key].id;
                 //Cek + Simpan Perangkat
-                this.homeservice.tambahperangkat(new HomeArray(this.id,this.id_warga,this.app_id))
+                this.homeservice.tambahperangkat(new HomeArray(this.id,this.id_users,this.app_id))
                 .subscribe(
                   (data:HomeArray)=>{
                   },
@@ -130,7 +109,7 @@ ceklogin(){
                   }
                 );
                 //End Cek simpan perangkat
-            });*/
+            });
             //End Cek App ID
 
             //Redirect Home
@@ -186,20 +165,19 @@ export class DaftarPage {
   gbawal2:String;
   items:LoginArray[]=[];
   id:Number;
-  name:String;
-  username:String;
+  nama:String;
+  email:String;
   password:String;
   level:String;
   status:Number;
   nohp:String;
-  email:String;
-  id_dusun:Number;
   fotoktp:String;
   fotowajah:String;
   constructor(
     public nav: NavController,public platform: Platform,public actionSheetCtrl: ActionSheetController,
     public loadincontroller:LoadingController,public loginservice:LoginserviceProvider,public _toast:ToastController,
-    public alertCtrl: AlertController,private storage: Storage,private camera: Camera,private transfer: FileTransfer) {
+    public alertCtrl: AlertController,private storage: Storage,private camera: Camera,private transfer: FileTransfer,
+    private file: File) {
   }
 
 ngOnInit() {
@@ -220,10 +198,16 @@ takeKTP() {
     mediaType: this.camera.MediaType.PICTURE,
   }
   this.camera.getPicture(options).then((imageData) => {
-      this.imageURI = imageData;
+      var nama = imageData.substr(imageData.lastIndexOf('/') + 1);
+      // var path = imageData.substr(0, imageData.lastIndexOf('/') + 1);
+      // this.file.copyFile(path, nama, this.file.dataDirectory, "ktp.jpg");
+      // var gantiurl = this.file.dataDirectory + "ktp.jpg";
+      //this.imageURI = this.webview.convertFileSrc(imageData);
+      this.imageURI = normalizeURL(imageData);
       this.photos.splice(0, 1);
       this.photos.push(this.imageURI);
       this.photos.reverse();
+      this.fotoktp = "ktp_" + nama;
     }, (err) => {
       console.log(err);
       this.presentToast(err);
@@ -236,12 +220,15 @@ takeWajah(){
     destinationType: this.camera.DestinationType.FILE_URI,
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE,
+    cameraDirection: 1,
   }
   this.camera.getPicture(options).then((imageData2) => {
-      this.imageURI2 = imageData2;
+      var nama = imageData2.substr(imageData2.lastIndexOf('/') + 1);
+      this.imageURI2 = normalizeURL(imageData2);
       this.photos2.splice(0, 1);
       this.photos2.push(this.imageURI2);
       this.photos2.reverse();
+      this.fotowajah = "wajah_" + nama;
     }, (err) => {
       console.log(err);
       this.presentToast(err);
@@ -249,10 +236,10 @@ takeWajah(){
 }
 
 uploadFile() {
-  let loader = this.loadincontroller.create({
+  let loader1 = this.loadincontroller.create({
     content: "Uploading KTP..."
   });
-  loader.present();
+  loader1.present();
   const fileTransfer: FileTransferObject = this.transfer.create();
   
   let options: FileUploadOptions = {
@@ -267,20 +254,20 @@ uploadFile() {
   fileTransfer.upload(this.imageURI, 'http://localhost:8000/api/uploadktp', options)
     .then((data) => {
     this.imageFileName = "image.jpg";
-    loader.dismiss();
+    loader1.dismiss();
     this.presentToast("Upload KTP Sukses");
   }, (err) => {
     console.log(err);
-    loader.dismiss();
+    loader1.dismiss();
     this.presentToast(err);
   });
 }
 
 uploadFile2() {
-  let loader = this.loadincontroller.create({
+  let loader2 = this.loadincontroller.create({
     content: "Uploading Selfie & KTP..."
   });
-  loader.present();
+  loader2.present();
   const fileTransfer2: FileTransferObject = this.transfer.create();
   
   let options2: FileUploadOptions = {
@@ -295,11 +282,11 @@ uploadFile2() {
   fileTransfer2.upload(this.imageURI2, 'http://localhost:8000/api/uploadwajah', options2)
     .then((data2) => {
     this.imageFileName2 = "image.jpg";
-    loader.dismiss();
+    loader2.dismiss();
     this.presentToast("Upload Selfie & KTP Sukses");
   }, (err) => {
     console.log(err);
-    loader.dismiss();
+    loader2.dismiss();
     this.presentToast(err);
   });
 }
@@ -340,7 +327,7 @@ cekdaftar(){
   });
   let gagal = this.alertCtrl.create({
     title: 'Informasi',
-    subTitle: 'No.KTP Belum Terdaftar. Silahkan hubungi Perangkat Desa anda.',
+    subTitle: 'Email sudah pernah terdaftar sebelumnya.',
     buttons: ['OK']
   });
   let info = this.alertCtrl.create({
@@ -352,27 +339,23 @@ cekdaftar(){
       content:"Proses Verifikasi..."
   });
   loadingdata.present();
-  //Mengambil value dari input field untuk dimasukkan ke UsulanArray
-  this.loginservice.cekdaftar(new LoginArray(this.username,this.password))
+  //Mengambil value dari input field untuk dimasukkan ke Array
+  this.loginservice.cekdaftar(new LoginArray(this.email,this.password))
   .subscribe(
     (data:DaftarArray)=>{
       //Seleksi Data dari server
       for(var key in data)
-      {
-        //Cek KTP
-        if(data[key].noktp != null){
+      { 
+        //Cek Email
+        if(data[key].email == null){
           //Cek FOto
           if((this.photos != "login_image/photo_placeholder.png") && (this.photos2 != "login_image/photo_placeholder.png")){
-            //Set
-            this.id_dusun = data[key].id_dusun;
-            this.name = data[key].nama;
-            this.level = "warga";
+            //Set status awal
+            this.level = "mitra";
             this.status = 1;
-            this.fotoktp = "ktp_" + this.username + ".jpg";
-            this.fotowajah = "wajah_" + this.username + ".jpg";
             
             loadingdata.present();
-            this.loginservice.daftaruser(new DaftarArray(this.id,this.name,this.username,this.password,this.level,this.status,this.id_dusun,this.fotoktp,this.fotowajah,this.nohp,this.email))
+            this.loginservice.daftaruser(new DaftarArray(this.id,this.nama,this.email,this.level,this.status,this.fotoktp,this.fotowajah,this.nohp))
             .subscribe(
               (data:DaftarArray)=>{
                 this.uploadFile();

@@ -25,6 +25,11 @@ export class PembelianserviceProvider {
    return this._http.get(this.url+"/"+user)
    .map((response:Response)=>response.json());
   }
+  tampilkanverifikasi(item:PembelianArray)
+  {
+   return this._http.get(this.url+"/verifikasi/"+item.kodepenjualan)
+   .map((response:Response)=>response.json());
+  }
   tampilkandetail(item:PembelianArray)
   {
    return this._http.get(this.url+"/detail/"+item.id)
@@ -45,6 +50,15 @@ export class PembelianserviceProvider {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     return this._http.put(this.url,
+                  body, options)
+                 .map((response:Response)=>response.json());
+  }
+  //Verifikasi pembelian
+  verifikasipembelian(item:PembelianArray){
+    let body = JSON.stringify(item);
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this._http.put(this.url+"/verifikasi",
                   body, options)
                  .map((response:Response)=>response.json());
   }

@@ -2,26 +2,24 @@
   <ion-header>
     <ion-item color="primary" style="text-align: center">
         <img style= "height: 100px; width: 100px" src="sidemenu_icon/people.png">
-        <!--<ion-title><p *ngFor="let user of warga" style="text-align:center;font-size: 18px" >{{ user.nama }}</p></ion-title>-->
-        <p style="font-size: 20px">John Doe</p>
+        <p style="font-size: 20px" *ngFor="let profile of user">{{ profile.nama }}</p>
     </ion-item>
   </ion-header>
 
   <ion-content>
-    <ion-list no-lines style="border-bottom: 1px solid gainsboro">
-      <button menuClose ion-item icon-left *ngFor="let p of pages" (click)="openPage(p)" style="border-top: 1px solid gainsboro; border-bottom: 1px solid gainsboro">
+    <ion-list no-lines style="border-bottom: 1px solid gainsboro" *ngIf="level == 'admin'">
+      <button menuClose ion-item icon-left *ngFor="let p of pages_admin" (click)="openPage(p)" style="border-top: 1px solid gainsboro; border-bottom: 1px solid gainsboro">
         <img width="30px" height="30px" src="{{ p.icon }}" item-left>
         {{p.title}}
       </button>
     </ion-list>
-
+    <ion-list no-lines style="border-bottom: 1px solid gainsboro" *ngIf="level == 'mitra'">
+      <button menuClose ion-item icon-left *ngFor="let p of pages_mitra" (click)="openPage(p)" style="border-top: 1px solid gainsboro; border-bottom: 1px solid gainsboro">
+        <img width="30px" height="30px" src="{{ p.icon }}" item-left>
+        {{p.title}}
+      </button>
+    </ion-list>
     <ion-footer>
-         <button menuClose ion-item icon-left position="bottom" (click)="tomboltoko()" *ngIf="level == 'toko'">
-          <img width="30px" height="30px" src="sidemenu_icon/toko.png" item-left>
-          Toko Saya</button>
-          <button menuClose ion-item icon-left position="bottom" (click)="daftartoko()" *ngIf="level == 'warga'">
-            <img width="30px" height="30px" src="sidemenu_icon/toko.png" item-left>
-          Buat Toko</button>
     </ion-footer>
   </ion-content>
 

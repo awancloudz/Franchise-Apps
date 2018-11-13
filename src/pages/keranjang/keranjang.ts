@@ -145,7 +145,7 @@ tombolbeli() {
   this.nav.setRoot(HomePage);
 }
 tombolkirim(item2) {
-  this.nav.setRoot(PembelianCreatePage, { item2: item2 });
+  this.nav.setRoot(PembelianCreatePage, { item: item2 });
 }
 
 private currentNumber = 1;

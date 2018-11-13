@@ -46,11 +46,13 @@
       <ion-item-group> 
         <ion-item-divider color="divider" class="tanggal_transaksi">
           {{ item.tanggal }}
+          <ion-badge *ngIf="item.bukti == ''" color="primary" item-end>Belum Dibayar</ion-badge>
+          <ion-badge *ngIf="item.bukti != ''" color="success" item-end>Pembayaran Diterima</ion-badge>
         </ion-item-divider>
            
         <button ion-item class="isi_transaksi" (click)="pembeliandetail(item)">
           <ion-item>
-            <h5>Kode Transaksi : <b>{{ item.id }}</b></h5>
+            <h5>Kode Transaksi : <b>{{ item.kodepenjualan }}</b></h5>
             <h5>Total Pembayaran : <b>Rp {{ item.subtotal }},-</b></h5>
           </ion-item>
         </button>
@@ -63,11 +65,12 @@
       <ion-item-group> 
         <ion-item-divider color="divider" class="tanggal_transaksi">
           {{ item.tanggal }}
+          <ion-badge color="secondary" item-end>Sedang Diproses</ion-badge>
         </ion-item-divider>
            
         <button ion-item class="isi_transaksi" (click)="pembeliandetail(item)">
           <ion-item>
-            <h5>Kode Transaksi : <b>{{ item.id }}</b></h5>
+            <h5>Kode Transaksi : <b>{{ item.kodepenjualan }}</b></h5>
             <h5>Total Pembayaran : <b>Rp {{ item.subtotal }},-</b></h5>
           </ion-item>
         </button>
@@ -80,11 +83,12 @@
       <ion-item-group> 
         <ion-item-divider color="divider" class="tanggal_transaksi">
           {{ item.tanggal }}
+          <ion-badge color="pending" item-end>Sedang Dikirim</ion-badge>
         </ion-item-divider>
            
         <button ion-item class="isi_transaksi" (click)="pembeliandetail(item)">
           <ion-item>
-            <h5>Kode Transaksi : <b>{{ item.id }}</b></h5>
+            <h5>Kode Transaksi : <b>{{ item.kodepenjualan }}</b></h5>
             <h5>Total Pembayaran : <b>Rp {{ item.subtotal }},-</b></h5>
           </ion-item>
         </button>
@@ -97,11 +101,12 @@
       <ion-item-group> 
         <ion-item-divider color="divider" class="tanggal_transaksi">
           {{ item.tanggal }}
+          <ion-badge color="success" item-end>Pembelian Sukses</ion-badge>
         </ion-item-divider>
            
         <button ion-item class="isi_transaksi" (click)="pembeliandetail(item)">
           <ion-item>
-            <h5>Kode Transaksi : <b>{{ item.id }}</b></h5>
+            <h5>Kode Transaksi : <b>{{ item.kodepenjualan }}</b></h5>
             <h5>Total Pembayaran : <b>Rp {{ item.subtotal }},-</b></h5>
           </ion-item>
         </button>

@@ -11,6 +11,8 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
 import { Camera} from '@ionic-native/camera';
 //Push Notifications
 import { OneSignal } from '@ionic-native/onesignal';
+//WebView
+//import { WebView } from '@ionic-native/ionic-webview/ngx';
 
 import { MyApp } from './app.component';
 import { HomePage, HomeDetailPage, HomethumbnailPage, HomeprodukdetailPage, HometokoPage, HomechatPage, HomekomentarPage, HomekomentardetailPage, HomeuserPage, HomeratingPage } from '../pages/home/home';
@@ -73,18 +75,20 @@ import { TokopemesananPageModule } from '../pages/tokopemesanan/tokopemesanan.mo
 import { TokopenjualanPageModule } from '../pages/tokopenjualan/tokopenjualan.module';
 import { TokoprodukPageModule } from '../pages/tokoproduk/tokoproduk.module';
 import { TokoPageModule } from '../pages/toko/toko.module';
+import { FilterPageModule } from '../pages/filter/filter.module';
+import { MitraPageModule } from '../pages/mitra/mitra.module';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage, HomeDetailPage, HomethumbnailPage, HomeprodukdetailPage, HometokoPage, HomechatPage, HomekomentarPage, HomekomentardetailPage, HomeuserPage, HomeratingPage,
-    FilterPage,
-    // SortPage,
-    // DaftarkurirPage,
-    // InformasitokoPage,
+    //FilterPage,
+    //SortPage,
+    //DaftarkurirPage,
+    //InformasitokoPage,
     //PenjualanPage, PenjualandetailPage,
     //PembelianPage, PembelianDetailPage,PembelianCreatePage,
-    MitraPage, MitradetailPage,
+    //MitraPage, MitradetailPage,
     //DompetPage,
     //PesanPage, PesanDetailPage,
     //SettingPage,
@@ -121,6 +125,8 @@ import { TokoPageModule } from '../pages/toko/toko.module';
     TokoprodukPageModule,
     TokosearchPageModule,
     TokoPageModule,
+    FilterPageModule,
+    MitraPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -174,6 +180,7 @@ import { TokoPageModule } from '../pages/toko/toko.module';
     HomeserviceProvider,
     ProfileserviceProvider,
     TokoprofileserviceProvider,
+    //WebView
   ]
 })
 export class AppModule {}

@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform, ActionSheetController, LoadingController ,ToastController,AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, ActionSheetController, LoadingController ,ToastController,AlertController,normalizeURL } from 'ionic-angular';
 //Tambahkan Provider
 import { PembelianserviceProvider } from '../../providers/pembelianservice/pembelianservice';
 import { PembelianArray } from './pembelianarray';
 import { Storage } from '@ionic/storage';
+//Camera
+import {Camera, CameraOptions} from '@ionic-native/camera';
+import { File } from '@ionic-native/file';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 /**
  * Generated class for the PembelianPage page.
  *
@@ -90,18 +94,20 @@ export class PembelianPage {
   templateUrl: 'pembelian.html',
 })
 export class PembelianCreatePage {
-  item2;
+  item;
   id:Number
+  kodepenjualan:String;
   id_users:Number;
   totaldiskon:Number;
   totalbelanja:Number;
   subtotal:Number;
   tanggal:Date;
   status:String;
+  bukti:String;
   items:PembelianArray[]=[];
   constructor(public params: NavParams,public nav: NavController,public platform: Platform,public actionSheetCtrl: ActionSheetController,public alertCtrl: AlertController,
-    public loadincontroller:LoadingController,public _toast:ToastController,public pembelianservise:PembelianserviceProvider) {
-    this.item2 = params.data.item2;
+    public loadincontroller:LoadingController,public _toast:ToastController,public pembelianservice:PembelianserviceProvider,private storage: Storage) {
+    this.item = params.data.item;
     //Hapus Back
     let backAction =  platform.registerBackButtonAction(() => {
       this.nav.pop();
@@ -110,11 +116,13 @@ export class PembelianCreatePage {
   }
 
   //Tampil data awal
-ionViewDidLoad(item2) {
-  this.id_users = this.item2.user;
-  this.subtotal = this.item2.subtotal;
-  this.status = this.item2.status;
+ionViewDidLoad(item) {
+  this.kodepenjualan = this.item.kodepenjualan;
+  this.id_users = this.item.user;
+  this.subtotal = this.item.subtotal;
+  this.status = this.item.status;
   this.tanggal = new Date();
+  
     //Pemberitahuan
     let alert = this.alertCtrl.create({
       title: 'Informasi',
@@ -127,16 +135,15 @@ ionViewDidLoad(item2) {
     });
     loadingdata.present();
     //Mengambil value dari input field untuk dimasukkan ke UsulanArray
-    this.pembelianservise.tambahpembelian(new PembelianArray(this.id,this.id_users,this.tanggal,this.totaldiskon,this.totalbelanja,this.subtotal,this.status))
+    this.pembelianservice.tambahpembelian(new PembelianArray(this.id,this.kodepenjualan,this.id_users,this.tanggal,this.totaldiskon,this.totalbelanja,this.subtotal,this.status,this.bukti))
     .subscribe(
       (data:PembelianArray)=>{
         //Push
         loadingdata.dismiss();
-        this.nav.setRoot(PembelianPage);
-        //this.nav.setRoot(PembelianKonfirmasiPage, {item: item2});
+        this.nav.setRoot(PembelianKonfirmasiPage, {item: this.item});
       },
       function(error){
-
+        loadingdata.dismiss();
       },
       function(){
         alert.present();
@@ -153,11 +160,14 @@ ionViewDidLoad(item2) {
 export class PembelianDetailPage {
   item;
   id:Number
-  id_warga:Number;
-  id_toko:Number;
+  kodepenjualan:String;
+  id_users:Number;
+  totaldiskon:Number;
+  totalbelanja:Number;
   subtotal:Number;
-  tanggal:String;
+  tanggal:Date;
   status:String;
+  bukti:String;
   items:PembelianArray[]=[];
   
   constructor(params: NavParams, public nav: NavController,public platform: Platform,public actionSheetCtrl: ActionSheetController,public alertCtrl: AlertController,
@@ -171,14 +181,14 @@ export class PembelianDetailPage {
   }
 
 //Tampil data awal
-ionViewDidLoad() {
+ionViewDidLoad(item) {
   //Loading bar
   let loadingdata=this.loadincontroller.create({
     content:"Loading..."
   });
   loadingdata.present();
   //Tampilkan data dari server
-  this.pembelianservice.tampilkandetail(new PembelianArray(this.item.id,this.item.id_users,this.item.tanggal,this.item.totaldiskon,this.item.totalbelanja,this.item.subtotal,this.item.status)).subscribe(
+  this.pembelianservice.tampilkandetail(new PembelianArray(this.item.id,this.item.kodepenjualan,this.item.id_users,this.item.tanggal,this.item.totaldiskon,this.item.totalbelanja,this.item.subtotal,this.item.status,this.item.bukti)).subscribe(
     //Jika data sudah berhasil di load
     (data:PembelianArray[])=>{
       this.items=data;
@@ -206,7 +216,7 @@ let loadingdata=this.loadincontroller.create({
 });
 loadingdata.present();
 //Tampilkan data dari server
-this.pembelianservice.editpembelian(new PembelianArray(this.item.id,this.item.id_users,this.item.tanggal,this.item.totaldiskon,this.item.totalbelanja,this.item.subtotal,this.item.status))
+this.pembelianservice.editpembelian(new PembelianArray(this.item.id,this.item.kodepenjualan,this.item.id_users,this.item.tanggal,this.item.totaldiskon,this.item.totalbelanja,this.item.subtotal,this.item.status,this.item.bukti))
 .subscribe(
   //Jika data sudah berhasil di load
   (data:PembelianArray[])=>{
@@ -223,8 +233,40 @@ this.pembelianservice.editpembelian(new PembelianArray(this.item.id,this.item.id
   }
 );
 }
+
 tombolkonfirmasi(item){
   this.nav.push (PembelianKonfirmasiPage, {item: item});
+}
+
+tombolbatal(item){
+//Pemberitahuan
+let alert = this.alertCtrl.create({
+  title: 'Informasi',
+  subTitle: 'Pesanan sudah dibatalkan',
+  buttons: ['OK']
+});
+//Loading bar
+let loadingdata=this.loadincontroller.create({
+  content:"Loading..."
+});
+loadingdata.present();
+//Tampilkan data dari server
+this.pembelianservice.hapuspembelian(new PembelianArray(this.item.id,this.item.kodepenjualan,this.item.id_users,this.item.tanggal,this.item.totaldiskon,this.item.totalbelanja,this.item.subtotal,this.item.status,this.item.bukti))
+.subscribe(
+  //Jika data sudah berhasil di load
+  (data:PembelianArray[])=>{
+    this.items=data;
+    this.nav.setRoot(PembelianPage);
+  },
+  //Jika Error
+  function (error){   
+  },
+  //Tutup Loading
+  function(){
+    loadingdata.dismiss();
+    alert.present();
+  }
+);
 }
 
 }
@@ -234,10 +276,26 @@ tombolkonfirmasi(item){
   templateUrl: 'pembelian-konfirmasi.html',
 })
 export class PembelianKonfirmasiPage {
+  //Bukti Pembayaran
+  public photos : any;
+  public imageURI:any;
+  public imageFileName:any;
+
+  gbawal:String;
   item;
   items:PembelianArray[]=[];
+  id:Number
+  kodepenjualan:String;
+  id_users:Number;
+  totaldiskon:Number;
+  totalbelanja:Number;
+  subtotal:Number;
+  tanggal:Date;
+  status:String;
+  bukti:String;
   constructor(params: NavParams, public nav: NavController,public platform: Platform,public actionSheetCtrl: ActionSheetController,public alertCtrl: AlertController,
-    public loadincontroller:LoadingController,public _toast:ToastController,public pembelianservice:PembelianserviceProvider) {
+    public loadincontroller:LoadingController,public _toast:ToastController,public pembelianservice:PembelianserviceProvider,private storage: Storage,private camera: Camera,private transfer: FileTransfer,
+    private file: File) {
     this.item = params.data.item;
     //Hapus Back
     let backAction =  platform.registerBackButtonAction(() => {
@@ -254,7 +312,7 @@ ionViewDidLoad() {
   });
   loadingdata.present();
   //Tampilkan data dari server
-  this.pembelianservice.tampilkandetail(new PembelianArray(this.item.id,this.item.id_users,this.item.tanggal,this.item.totaldiskon,this.item.totalbelanja,this.item.subtotal,this.item.status)).subscribe(
+  this.pembelianservice.tampilkanverifikasi(new PembelianArray(this.item.id,this.item.kodepenjualan,this.item.id_users,this.item.tanggal,this.item.totaldiskon,this.item.totalbelanja,this.item.subtotal,this.item.status,this.item.bukti)).subscribe(
     //Jika data sudah berhasil di load
     (data:PembelianArray[])=>{
       this.items=data;
@@ -268,6 +326,127 @@ ionViewDidLoad() {
     }
   );
 }
+
+ngOnInit() {
+  this.photos = [];
+  if(this.item.bukti == ''){
+    this.gbawal = "login_image/photo_placeholder.png";
+  }
+  else if(this.item.bukti != ''){
+    this.gbawal = "http://localhost:8000/verifikasi/" + this.item.bukti;
+  }
+  this.photos.push(this.gbawal);
+}
+
+takeBukti(source: any) {
+  const options : CameraOptions = {
+    quality: 25, // picture quality
+    destinationType: this.camera.DestinationType.FILE_URI,
+    encodingType: this.camera.EncodingType.JPEG,
+    mediaType: this.camera.MediaType.PICTURE,
+    sourceType: source,
+  }
+  this.camera.getPicture(options).then((imageData) => {
+      var nama = imageData.substr(imageData.lastIndexOf('/') + 1);
+      this.imageURI = normalizeURL(imageData);
+      this.photos.splice(0, 1);
+      this.photos.push(this.imageURI);
+      this.photos.reverse();
+      this.bukti = "bukti_" + nama;
+    }, (err) => {
+      console.log(err);
+      this.presentToast(err);
+  });
+}
+
+updatebukti(item){
+//Pemberitahuan
+let alert = this.alertCtrl.create({
+  title: 'Informasi',
+  subTitle: 'Verifikasi Pembayaran Sukses',
+  buttons: [
+    {
+      text: 'OK',
+      handler: () => {
+        this.nav.setRoot(PembelianPage);
+      }
+    }
+  ]
+});
+//Loading bar
+let loadingdata=this.loadincontroller.create({
+  content:"Memproses Pembayaran..."
+});
+let info = this.alertCtrl.create({
+  title: 'Tidak Terhubung ke server',
+  message: 'Silahkan Periksa koneksi internet anda...',
+});
+loadingdata.present();
+//Tampilkan data dari server
+this.pembelianservice.verifikasipembelian(new PembelianArray(this.item.id,this.item.kodepenjualan,this.item.id_users,this.item.tanggal,this.item.totaldiskon,this.item.totalbelanja,this.item.subtotal,this.item.status,this.bukti))
+.subscribe(
+  //Jika data sudah berhasil di load
+  (data:PembelianArray[])=>{
+    this.items=data;
+    this.uploadFile();
+  },
+  //Jika Error
+  function (error){
+    //Jika Koneksi Tidak ada
+    if(error.status == 0){
+      info.present();
+    }
+    loadingdata.dismiss();   
+  },
+  //Tutup Loading
+  function(){
+    loadingdata.dismiss();
+    alert.present();
+  }
+);
+}
+uploadFile() {
+  let loader1 = this.loadincontroller.create({
+    content: "Uploading Bukti Pembayaran..."
+  });
+  loader1.present();
+  const fileTransfer: FileTransferObject = this.transfer.create();
+  
+  let options: FileUploadOptions = {
+    fileKey: 'file3',
+    params: {'fotobukti' : this.bukti},
+    fileName: 'image.jpg',
+    chunkedMode: false,
+    mimeType: "image/jpeg",
+    headers: {}
+  }
+  
+  fileTransfer.upload(this.imageURI, 'http://localhost:8000/api/uploadbukti', options)
+    .then((data) => {
+    this.imageFileName = "image.jpg";
+    loader1.dismiss();
+    this.presentToast("Upload Bukti Pembayaran Sukses");
+    //this.nav.setRoot(PembelianPage);
+  }, (err) => {
+    console.log(err);
+    loader1.dismiss();
+    this.presentToast(err);
+  });
+}
+presentToast(msg) {
+  let toast = this._toast.create({
+    message: msg,
+    duration: 3000,
+    position: 'bottom'
+  });
+
+  toast.onDidDismiss(() => {
+    console.log('Tutup');
+  });
+
+  toast.present();
+}
+
 }
 
 

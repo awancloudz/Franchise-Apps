@@ -38,7 +38,7 @@ cekdaftar(item:LoginArray){
   .map((response:Response)=>response.json());
 }
 cektoko(item:HomeArray){
-  return this._http.get(this.url4+"/"+item.id_warga)
+  return this._http.get(this.url4+"/"+item.id_users)
   .map((response:Response)=>response.json());
 }
 daftaruser(item:DaftarArray){

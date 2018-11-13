@@ -36,10 +36,11 @@ import { InformasitokoPage } from '../pages/informasitoko/informasitoko';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = MitradetailPage;
-  //level = "mitra";
-  pages: Array<{title: string, icon: string,component: any}>;
-  mitra: Array<{nama: string}>;
+  rootPage: any = LoginPage;
+  level = "";
+  pages_admin: Array<{title: string, icon: string,component: any}>;
+  pages_mitra: Array<{title: string, icon: string,component: any}>;
+  user: Array<{nama: string}>;
 
   constructor(private storage: Storage,public platform: Platform, public statusBar: StatusBar, 
     public splashScreen: SplashScreen,private oneSignal: OneSignal,private events: Events) {
@@ -47,12 +48,16 @@ export class MyApp {
     this.listenToLoginEvents();
 
     // used for an example of ngFor and navigation
-    this.pages = [
+    this.pages_admin = [
       { title: 'Home', icon: "sidemenu_icon/home.png", component: HomePage },
-      { title: 'Kategori', icon: "sidemenu_icon/kategori.png", component: KategoriPage },
       { title: 'Penjualan', icon: "sidemenu_icon/penjualan.png", component: PenjualanPage },
-      { title: 'Pembelian', icon: "sidemenu_icon/pembelian.png", component: PembelianPage },
       { title: 'Mitra', icon: "sidemenu_icon/mitra.png", component: MitraPage },
+      { title: 'Logout',  icon: "sidemenu_icon/log_out.png", component: SettingPage },
+    ];
+    this.pages_mitra = [
+      { title: 'Home', icon: "sidemenu_icon/home.png", component: HomePage },
+      // { title: 'Kategori', icon: "sidemenu_icon/kategori.png", component: KategoriPage },
+      { title: 'Pembelian', icon: "sidemenu_icon/pembelian.png", component: PembelianPage },
       { title: 'Profile',  icon: "sidemenu_icon/profile.png", component: ProfilePage },
       { title: 'Logout',  icon: "sidemenu_icon/log_out.png", component: SettingPage },
     ];
@@ -66,7 +71,7 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
-      this.oneSignal.startInit('b842e2bc-4de5-4cd7-b808-142b2917496f', '672351446553');
+      this.oneSignal.startInit('1ad6386b-54f8-42b2-8cbd-d893468b9935', '379725851282');
 
       this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
 
@@ -90,18 +95,17 @@ export class MyApp {
 
   //Fungsi Deteksi Level User
   listenToLoginEvents() {
-
-    this.events.subscribe('user:mitra', (data) => {
-      //this.level = "mitra";
-      this.mitra = [
+    this.events.subscribe('user:admin', (data) => {
+      this.level = "admin";
+      this.user = [
         { nama: data },
       ];
     });
-  }
-  tomboltoko () {
-    this.nav.setRoot (TokoPage);
-  }
-  daftartoko () {
-    this.nav.setRoot (TokoCreatePage);
+    this.events.subscribe('user:mitra', (data) => {
+      this.level = "mitra";
+      this.user = [
+        { nama: data },
+      ];
+    });
   }
 }
