@@ -8,45 +8,62 @@
 </ion-header>
 
 <ion-content>
-
-<div class="mitradetail_nama">
-  <ion-grid>
-    <ion-row>
-      <ion-col col-3>
-        <p>Nama</p>
-      </ion-col>
-      <ion-col>
-        <p>: Fusce non condimentum Fusce non condimentum Fusce non condimentum</p>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-3>
-        <p>Alamat</p>
-      </ion-col>
-      <ion-col>
-        <p>:  Mauris venenatis porttitor felis, eget tempus leo imperdiet bibendum Mauris venenatis porttitor felis, eget tempus leo imperdiet bibendum</p>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</div>
-
-<div class="mitradetail_title_img">
-  <div>
-    <p>Foto KTP</p>
-    <img src="login_image/photo_placeholder.png">
+<div *ngFor="let item of items">
+  <div class="mitradetail_nama">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-3>
+          <p>Nama</p>
+        </ion-col>
+        <ion-col>
+          <p>: {{ item.nama }}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-3>
+          <p>Alamat</p>
+        </ion-col>
+        <ion-col>
+          <p>: {{ item.alamat }}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-3>
+          <p>Email</p>
+        </ion-col>
+        <ion-col>
+          <p>: {{ item.email }}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-3>
+          <p>No.HP</p>
+        </ion-col>
+        <ion-col>
+          <p>: {{ item.nohp }}</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
-  <div>
-  <p>Foto Selfie + KTP</p>
-  <img src="login_image/photo_placeholder.png">
-</div>
-</div>
 
+  <div class="mitradetail_title_img">
+    <div>
+      <p>Foto KTP</p>
+      <img src="http://localhost:8000/verifikasi/{{ item.fotoktp }}">
+    </div>
+    <div>
+    <p>Foto Selfie + KTP</p>
+    <img src="http://localhost:8000/verifikasi/{{ item.fotowajah }}">
+    </div>
+  </div>
+</div>
 
     
 </ion-content>
 
-<ion-footer>
-  <ion-buttons>
-    <button ion-button block color="secondary"><p>Verifikasi</p></button>
+<ion-footer style="background-color: white; text-align: center">
+  <ion-buttons *ngFor="let item of items">
+    <button ion-button block color="secondary" *ngIf="item.status == 1" (click)="tombolproses(item)"><p>Aktifkan Akun</p></button>
+    <button ion-button block color="danger" *ngIf="item.status == 2" (click)="tombolproses(item)"><p>Suspend Akun</p></button>
   </ion-buttons>
 </ion-footer>

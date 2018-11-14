@@ -208,7 +208,14 @@ tombolselesai(item){
 let alert = this.alertCtrl.create({
   title: 'Informasi',
   subTitle: 'Pembelian Selesai, terima kasih.',
-  buttons: ['OK']
+  buttons: [
+    {
+      text: 'OK',
+      handler: () => {
+        this.nav.setRoot(PembelianPage);
+      }
+    }
+  ]
 });
 //Loading bar
 let loadingdata=this.loadincontroller.create({
@@ -221,7 +228,6 @@ this.pembelianservice.editpembelian(new PembelianArray(this.item.id,this.item.ko
   //Jika data sudah berhasil di load
   (data:PembelianArray[])=>{
     this.items=data;
-    this.nav.setRoot(PembelianPage);
   },
   //Jika Error
   function (error){   

@@ -46,6 +46,7 @@ import { KategoriserviceProvider } from '../providers/kategoriservice/kategorise
 import { KategoriPageModule } from '../pages/kategori/kategori.module';
 import { KeranjangserviceProvider } from '../providers/keranjangservice/keranjangservice';
 import { PembelianserviceProvider } from '../providers/pembelianservice/pembelianservice';
+import { PenjualanserviceProvider } from '../providers/penjualanservice/penjualanservice';
 import { SearchserviceProvider } from '../providers/searchservice/searchservice';
 import { TokoprodukserviceProvider } from '../providers/tokoprodukservice/tokoprodukservice';
 import { TokokategoriserviceProvider } from '../providers/tokokategoriservice/tokokategoriservice';
@@ -58,6 +59,7 @@ import { LoginserviceProvider } from '../providers/loginservice/loginservice';
 import { HomeserviceProvider } from '../providers/homeservice/homeservice';
 import { ProfileserviceProvider } from '../providers/profileservice/profileservice';
 
+import { SwipeSegmentDirectiveModule } from '../directives/swipesegment.module';
 import { DompetPageModule } from '../pages/dompet/dompet.module';
 import { LoginPageModule } from '../pages/login/login.module';
 import { ProfilePageModule } from '../pages/profile/profile.module';
@@ -77,6 +79,7 @@ import { TokoprodukPageModule } from '../pages/tokoproduk/tokoproduk.module';
 import { TokoPageModule } from '../pages/toko/toko.module';
 import { FilterPageModule } from '../pages/filter/filter.module';
 import { MitraPageModule } from '../pages/mitra/mitra.module';
+import { MitraserviceProvider } from '../providers/mitraservice/mitraservice';
 
 @NgModule({
   declarations: [
@@ -107,6 +110,7 @@ import { MitraPageModule } from '../pages/mitra/mitra.module';
     HttpModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
+    SwipeSegmentDirectiveModule,
     KategoriPageModule,
     LoginPageModule,
     DompetPageModule,
@@ -167,6 +171,7 @@ import { MitraPageModule } from '../pages/mitra/mitra.module';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     KategoriserviceProvider,
     KeranjangserviceProvider,
+    PenjualanserviceProvider,
     PembelianserviceProvider,
     SearchserviceProvider,
     LoginserviceProvider,
@@ -180,6 +185,7 @@ import { MitraPageModule } from '../pages/mitra/mitra.module';
     HomeserviceProvider,
     ProfileserviceProvider,
     TokoprofileserviceProvider,
+    MitraserviceProvider,
     //WebView
   ]
 })

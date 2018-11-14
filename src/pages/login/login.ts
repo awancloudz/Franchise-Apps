@@ -165,6 +165,7 @@ export class DaftarPage {
   gbawal2:String;
   items:LoginArray[]=[];
   id:Number;
+  alamat:String;
   nama:String;
   email:String;
   password:String;
@@ -355,7 +356,7 @@ cekdaftar(){
             this.status = 1;
             
             loadingdata.present();
-            this.loginservice.daftaruser(new DaftarArray(this.id,this.nama,this.email,this.level,this.status,this.fotoktp,this.fotowajah,this.nohp))
+            this.loginservice.daftaruser(new DaftarArray(this.id,this.nama,this.alamat,this.email,this.level,this.status,this.fotoktp,this.fotowajah,this.nohp))
             .subscribe(
               (data:DaftarArray)=>{
                 this.uploadFile();

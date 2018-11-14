@@ -7,7 +7,7 @@
   </ion-navbar>
 
   <div>
-    <ion-segment [(ngModel)]="mitra">
+    <ion-segment [(ngModel)]="category">
       <ion-segment-button value="calon_mitra">
         <ion-buttons>
           <p>Calon Mitra</p>
@@ -25,33 +25,14 @@
 
 <ion-content class="mitra_content">
 
-  <div [ngSwitch]="mitra">
+  <div [ngSwitch]="category" swipeSegment [tabsList]="categories" [(currentTab)]="category" (tabChanged)="onTabChanged($event)" class="swipe-area">
+    <div *ngFor="let item of items" >
     <ion-list *ngSwitchCase="'calon_mitra'">
-      <ion-card (click)="mitradetail()">
+      <ion-card (click)="mitradetail(item)" *ngIf="item.status == 1">
         <ion-buttons>
           <ion-item>
-            <h6 class="mitra_nama">Mauris quis accumsan Mauris quis accumsan</h6>
-            <p class="mitra_kota">Semarang</p>
-            <ion-icon item-right name="ios-arrow-dropright"></ion-icon>
-          </ion-item>
-        </ion-buttons>
-      </ion-card>
-
-      <ion-card (click)="mitradetail()">
-        <ion-buttons>
-          <ion-item>
-            <h6 class="mitra_nama">Mauris quis accumsan</h6>
-            <p class="mitra_kota">Bogor</p>
-            <ion-icon item-right name="ios-arrow-dropright"></ion-icon>
-          </ion-item>
-        </ion-buttons>
-      </ion-card>
-
-      <ion-card (click)="mitradetail()">
-        <ion-buttons>
-          <ion-item>
-            <h6 class="mitra_nama">Mauris quis accumsan</h6>
-            <p class="mitra_kota">Tangerang</p>
+            <h6 class="mitra_nama">{{ item.nama }}</h6>
+            <p class="mitra_kota">{{ item.alamat }}</p>
             <ion-icon item-right name="ios-arrow-dropright"></ion-icon>
           </ion-item>
         </ion-buttons>
@@ -59,36 +40,17 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'mitra_aktif'">
-      <ion-card>
+      <ion-card (click)="mitradetail(item)" *ngIf="item.status == 2">
         <ion-buttons>
           <ion-item>
-            <h6 class="mitra_nama">Quisque dapibus Quisque dapibus Quisque dapibus</h6>
-            <p class="mitra_kota">Surabaya</p>
-            <ion-icon item-right name="ios-arrow-dropright"></ion-icon>
-          </ion-item>
-        </ion-buttons>
-      </ion-card>
-
-      <ion-card>
-        <ion-buttons>
-          <ion-item>
-            <h6 class="mitra_nama">Quisque dapibus</h6>
-            <p class="mitra_kota">Pekalongan</p>
-            <ion-icon item-right name="ios-arrow-dropright"></ion-icon>
-          </ion-item>
-        </ion-buttons>
-      </ion-card>
-
-      <ion-card>
-        <ion-buttons>
-          <ion-item>
-            <h6 class="mitra_nama">Quisque dapibus</h6>
-            <p class="mitra_kota">Solo</p>
+            <h6 class="mitra_nama">{{ item.nama }}</h6>
+            <p class="mitra_kota">{{ item.alamat }}</p>
             <ion-icon item-right name="ios-arrow-dropright"></ion-icon>
           </ion-item>
         </ion-buttons>
       </ion-card>
     </ion-list>
+    </div>
   </div>
 
 </ion-content>

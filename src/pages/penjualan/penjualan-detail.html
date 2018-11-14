@@ -9,13 +9,29 @@
 
 <ion-content>
 
-    <ion-grid class="penjualandetail_keterangan">
+    <ion-grid class="penjualandetail_keterangan" *ngFor="let item2 of items.koleksi2">
+        <ion-row>
+            <ion-col col-3>
+                Tanggal
+            </ion-col>
+            <ion-col>
+                : {{ item2.tanggal }}
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-3>
+                No.Transaksi
+            </ion-col>
+            <ion-col>
+                : {{ item2.kodepenjualan }}
+            </ion-col>
+        </ion-row>
         <ion-row>
             <ion-col col-3>
                 Nama
             </ion-col>
             <ion-col>
-                : Vivamus sed laoreet urna
+                : {{ item2.users.nama }}
             </ion-col>
         </ion-row>
         <ion-row>
@@ -23,33 +39,35 @@
                 Alamat
             </ion-col>
             <ion-col>
-                : Ut tincidunt risus lorem, in suscipit
+                : {{ item2.users.alamat }}
             </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+              <div class="penjualandetail_foto">
+                <p>Foto Bukti Transfer</p>
+                <img src="http://localhost:8000/verifikasi/{{ item2.bukti }}">
+              </div>
+          </ion-col>
         </ion-row>
     </ion-grid>
 
-    <div class="penjualandetail_foto">
-        <p>Foto Bukti Transfer</p>
-        <img src="login_image/photo_placeholder.png">
-    </div>
-
     <div>
         <p class="penjualandetail_title">Daftar Produk</p>
-
-        <ion-card>
+        <ion-card *ngFor="let item of items.koleksi">
             <ion-grid>
               <ion-row>
                 <ion-col>
                   <div>
-                    <p class="penjualandetail_namabarang"><b>Sampel Produk 1</b><p>
-                    <p class="penjualandetail_kodebarang">#1234567890</p>
+                    <p class="penjualandetail_namabarang"><b>{{ item.produk.namaproduk }}</b><p>
+                    <p class="penjualandetail_kodebarang">#{{ item.produk.kodeproduk }}</p>
                   </div>
                 </ion-col>
               </ion-row>
           
               <ion-row>
                 <ion-col style="max-width: 120px">
-                  <img src="home_menu/sample1.jpg">
+                  <img src="http://localhost:8000/fotoupload/{{item.produk.foto}}">
                 </ion-col>
           
                 <ion-col style="max-width: 75px">
@@ -59,71 +77,9 @@
                 </ion-col>
           
                 <ion-col>
-                  <p class="penjualandetail_qty">10<br>
-                                              Rp 5000,-<br>
-                                              <b>Rp 50.000.-</b></p>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-card>
-
-          <ion-card>
-            <ion-grid>
-              <ion-row>
-                <ion-col>
-                  <div>
-                    <p class="penjualandetail_namabarang"><b>Sampel Produk 2</b><p>
-                    <p class="penjualandetail_kodebarang">#1234567890</p>
-                  </div>
-                </ion-col>
-              </ion-row>
-          
-              <ion-row>
-                <ion-col style="max-width: 120px">
-                  <img src="home_menu/sample2.jpg">
-                </ion-col>
-          
-                <ion-col style="max-width: 75px">
-                  <p class="penjualandetail_info">Jumlah<br>
-                                                  Harga<br>
-                                                <b>Sub-Total</b></p>
-                </ion-col>
-          
-                <ion-col>
-                  <p class="penjualandetail_qty">10<br>
-                                              Rp 5000,-<br>
-                                              <b>Rp 50.000.-</b></p>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-card>
-
-          <ion-card>
-            <ion-grid>
-              <ion-row>
-                <ion-col>
-                  <div>
-                    <p class="penjualandetail_namabarang"><b>Sampel Produk 3</b><p>
-                    <p class="penjualandetail_kodebarang">#1234567890</p>
-                  </div>
-                </ion-col>
-              </ion-row>
-          
-              <ion-row>
-                <ion-col style="max-width: 120px">
-                  <img src="home_menu/sample3.jpg">
-                </ion-col>
-          
-                <ion-col style="max-width: 75px">
-                  <p class="penjualandetail_info">Jumlah<br>
-                                                  Harga<br>
-                                                <b>Sub-Total</b></p>
-                </ion-col>
-          
-                <ion-col>
-                  <p class="penjualandetail_qty">10<br>
-                                              Rp 5000,-<br>
-                                              <b>Rp 50.000.-</b></p>
+                  <p class="penjualandetail_qty">{{ item.jumlah }}<br>
+                                              Rp {{ item.produk.harga }},-<br>
+                                              <b>Rp {{ item.jumlah * item.produk.harga }},-</b></p>
                 </ion-col>
               </ion-row>
             </ion-grid>
@@ -134,13 +90,14 @@
 <ion-footer>
     <ion-grid>
         <ion-row>
-            <ion-col>
+            <ion-col *ngFor="let item2 of items.koleksi2">
                 <p>Total Pembayaran : <br>
-                Rp 150.000,-</p>
+                Rp {{ item2.subtotal }},-</p>
             </ion-col>
-            <ion-col col-4>
+            <ion-col *ngFor="let item2 of items.koleksi2" col-4>
                 <ion-buttons>
-                    <button ion-button block color="secondary"><h6>Proses</h6></button>
+                    <button *ngIf="item2.status == 'order' && item2.bukti != ''" ion-button block color="secondary" (click)="tombolproses(item2)"><h6>Proses</h6></button>
+                    <button *ngIf="item2.status == 'proses'" ion-button block color="secondary" (click)="tombolproses(item2)"><h6>Kirim</h6></button>
                 </ion-buttons>
             </ion-col>
         </ion-row>
