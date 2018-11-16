@@ -1,0 +1,114 @@
+page-produk {
+
+.produk_create {
+
+    ion-icon {
+        zoom: 1.4;
+    }
+}
+
+.produk_namabarang {
+    line-height: 1.1;
+    white-space: normal;
+    font-size: 16px;
+}
+
+.produk_kodebarang {
+    font-size: 14px;
+    color: gray;
+}
+
+.produk_info {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.produk_qty {
+    margin-top: 1px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.produk_thumbnail_delete {
+    max-width: 40px;
+
+    button {
+        margin: 0 auto;
+        width: 15px;
+        height: 25px;
+
+        ion-icon {
+            zoom: 1.3;
+        }
+    }
+    
+}
+
+.produk_thumbnail_edit {
+    text-align: center;
+
+    button {
+        height: 20px;
+        text-transform: none;
+        margin-top: 15px;
+        margin-bottom: 0px;
+    }
+}
+
+/* ------------------------------------Produk Update Page------------------------------------- */
+.produkupdate_apply {
+
+    ion-icon {
+        zoom: 1.4;
+    }
+}
+
+.produkupdate_img {
+    margin:  10px;
+    text-align: center;
+
+    img {
+        height: auto;
+        width: 150px;
+    }
+}
+
+.produkupdate_input {
+    margin-right: 8px;
+
+    ion-input {
+        background-color: rgb(230, 230, 230);
+        border-radius: 5px;
+        padding-left: 8px;
+    }
+}
+
+/* ------------------------------------Produk Create Page------------------------------------- */
+
+.produkcreate_apply {
+
+    ion-icon {
+        zoom: 1.4;
+    }
+}
+
+.produkcreate_img {
+    margin: 10px;
+    text-align: center;
+
+    img {
+        height: auto;
+        width: 150px;
+    }
+}
+
+.produkcreate_input {
+    margin-right: 8px;
+
+    ion-input {
+        background-color: rgb(230, 230, 230);
+        border-radius: 5px;
+        padding-left: 8px;
+    }
+}
+}

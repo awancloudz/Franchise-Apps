@@ -19,6 +19,7 @@ import { HomePage, HomeDetailPage, HomethumbnailPage, HomeprodukdetailPage, Home
 import { KategoriPage,KategoriDetailPage, KategoriDetailPage2 } from '../pages/kategori/kategori';
 import { PenjualanPage, PenjualandetailPage } from '../pages/penjualan/penjualan';
 import { PembelianPage,PembelianDetailPage,PembelianCreatePage,PembelianKonfirmasiPage } from '../pages/pembelian/pembelian';
+import { ProdukPage, ProdukeditPage, ProdukcreatePage } from '../pages/produk/produk';
 import { MitraPage, MitradetailPage } from '../pages/mitra/mitra';
 import { DompetPage } from '../pages/dompet/dompet';
 import { PesanPage,PesanDetailPage } from '../pages/pesan/pesan';
@@ -79,6 +80,7 @@ import { TokoprodukPageModule } from '../pages/tokoproduk/tokoproduk.module';
 import { TokoPageModule } from '../pages/toko/toko.module';
 import { FilterPageModule } from '../pages/filter/filter.module';
 import { MitraPageModule } from '../pages/mitra/mitra.module';
+import { ProdukPageModule } from '../pages/produk/produk.module';
 import { MitraserviceProvider } from '../providers/mitraservice/mitraservice';
 
 @NgModule({
@@ -91,6 +93,7 @@ import { MitraserviceProvider } from '../providers/mitraservice/mitraservice';
     //InformasitokoPage,
     //PenjualanPage, PenjualandetailPage,
     //PembelianPage, PembelianDetailPage,PembelianCreatePage,
+    //ProdukPage, ProdukeditPage, ProdukcreatePage,
     //MitraPage, MitradetailPage,
     //DompetPage,
     //PesanPage, PesanDetailPage,
@@ -130,7 +133,8 @@ import { MitraserviceProvider } from '../providers/mitraservice/mitraservice';
     TokosearchPageModule,
     TokoPageModule,
     FilterPageModule,
-    MitraPageModule
+    MitraPageModule,
+    ProdukPageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -139,6 +143,7 @@ import { MitraserviceProvider } from '../providers/mitraservice/mitraservice';
     KategoriPage, KategoriDetailPage,KategoriDetailPage2,
     PenjualanPage, PenjualandetailPage,
     PembelianPage, PembelianDetailPage,PembelianCreatePage,PembelianKonfirmasiPage,
+    ProdukPage, ProdukeditPage, ProdukcreatePage,
     MitraPage, MitradetailPage,
     DompetPage,
     PesanPage, PesanDetailPage,

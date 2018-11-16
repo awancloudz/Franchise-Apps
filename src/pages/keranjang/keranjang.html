@@ -57,8 +57,8 @@
       </ion-col>
 
       <ion-col class="delete_col">
-        <button ion-button icon-only clear (click)="tombolhapus(item)">
-          <ion-icon name="md-trash" class="delete_icon"></ion-icon>
+        <button ion-button icon-only clear color="secondary" (click)="tombolhapus(item)">
+          <ion-icon name="md-trash"></ion-icon>
         </button>
       </ion-col>
     </ion-row>
@@ -76,11 +76,11 @@
 
       <ion-col>
         <ion-buttons style="margin-top: 7px">
-          <button ion-button icon-only outline (click)="decrement()" class="keranjangpage_decrement">
+          <button ion-button icon-only outline color="secondary" (click)="decrement()" class="keranjangpage_decrement">
             <ion-icon name="ios-remove"></ion-icon>
           </button>
           {{currentNumber}}
-          <button ion-button icon-only outline (click)="increment()" class="keranjangpage_increment">
+          <button ion-button icon-only outline color="secondary" (click)="increment()" class="keranjangpage_increment">
             <ion-icon name="ios-add"></ion-icon>
           </button>
         </ion-buttons>

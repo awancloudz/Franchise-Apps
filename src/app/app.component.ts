@@ -9,6 +9,7 @@ import { HomePage, HomeDetailPage, HomethumbnailPage, HomeprodukdetailPage, Home
 import { KategoriPage,KategoriDetailPage } from '../pages/kategori/kategori';
 import { PenjualanPage, PenjualandetailPage} from '../pages/penjualan/penjualan';
 import { PembelianPage,PembelianDetailPage,PembelianKonfirmasiPage } from '../pages/pembelian/pembelian';
+import { ProdukPage, ProdukeditPage, ProdukcreatePage } from '../pages/produk/produk';
 import { MitraPage, MitradetailPage } from '../pages/mitra/mitra';
 import { DompetPage } from '../pages/dompet/dompet';
 import { PesanPage,PesanDetailPage } from '../pages/pesan/pesan';
@@ -51,6 +52,7 @@ export class MyApp {
     this.pages_admin = [
       { title: 'Home', icon: "sidemenu_icon/home.png", component: HomePage },
       { title: 'Penjualan', icon: "sidemenu_icon/penjualan.png", component: PenjualanPage },
+      { title: 'Produk', icon: "sidemenu_icon/produk.png", component: ProdukPage },
       { title: 'Mitra', icon: "sidemenu_icon/mitra.png", component: MitraPage },
       { title: 'Logout',  icon: "sidemenu_icon/log_out.png", component: SettingPage },
     ];
