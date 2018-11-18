@@ -5,7 +5,7 @@
     </button>
     <ion-title style="margin-left: -12px">Produk Update</ion-title>
     <ion-buttons end class="produkupdate_apply">
-        <button ion-button icon-only>
+        <button ion-button icon-only (click)="updateproduk()">
             <ion-icon name="ios-checkmark-circle-outline"></ion-icon>
         </button>
     </ion-buttons>
@@ -13,34 +13,35 @@
 </ion-header>
 
 <ion-content>
-    <div class="produkupdate_img">
-        <img src="home_menu/sample1.jpg">
+    <div class="produkupdate_img" *ngFor="let photo of photos; let id = index">
+        <img [src]="photo" (click)="takeFoto(1)">
     </div>
 
     <div class="produkupdate_input">
+        <ion-input type="hidden" [(ngModel)]="foto"></ion-input>
         <ion-item no-lines>
-            <ion-label stacked>Nama Produk</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-label stacked>Kode Produk</ion-label>
+            <ion-input type="text" [(ngModel)]="kodeproduk"></ion-input>
         </ion-item>
 
         <ion-item no-lines>
-            <ion-label stacked>Kode Produk</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-label stacked>Nama Produk</ion-label>
+            <ion-input type="text" [(ngModel)]="namaproduk"></ion-input>
         </ion-item>
 
         <ion-item no-lines>
             <ion-label stacked>Stok</ion-label>
-            <ion-input type="number"></ion-input>
+            <ion-input type="number" [(ngModel)]="stok"></ion-input>
         </ion-item>
 
         <ion-item no-lines>
             <ion-label stacked>Harga</ion-label>
-            <ion-input type="number"></ion-input>
+            <ion-input type="number" [(ngModel)]="harga"></ion-input>
         </ion-item>
 
         <ion-item no-lines>
             <ion-label stacked>Diskon</ion-label>
-            <ion-input type="number"></ion-input>
+            <ion-input type="number" [(ngModel)]="diskon"></ion-input>
         </ion-item>
     </div>
 </ion-content>

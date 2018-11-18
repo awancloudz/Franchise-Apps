@@ -17,13 +17,8 @@ export class ProfilePage {
   item;
   items:ProfileArray[]=[];
   id:Number;
-  noktp:Number;
   nama:String;
   alamat:Text;
-  tanggal_lahir:Date;
-  jenis_kelamin:String;
-  password:String;
-  id_dusun:Number;
   email:String;
   nohp:String;
 
@@ -60,7 +55,7 @@ export class ProfilePage {
   //Tampil data awal
   ionViewDidLoad() {
     //Ambil data ID dari storage
-    this.storage.get('no_ktp').then((val) => {
+    this.storage.get('id_user').then((val) => {
       //Loading bar
       let loadingdata=this.loadincontroller.create({
         content:"Loading..."
@@ -78,13 +73,10 @@ export class ProfilePage {
           for(var key in data)
           {
             this.id = data[key].id;
-            this.noktp = data[key].noktp;
             this.nama = data[key].nama;
             this.alamat = data[key].alamat;
-            this.tanggal_lahir = data[key].tanggal_lahir;
             this.email = data[key].email;
             this.nohp = data[key].nohp;
-            this.jenis_kelamin = data[key].jenis_kelamin;
           }
         },
         //Jika Error
@@ -116,7 +108,7 @@ export class ProfilePage {
     });
     loadingdata.present();
     //Mengambil value dari edit field untuk dimasukkan ke UsulanArray
-    this.profileservice.editdataprofile(new ProfileArray(this.id,this.noktp,this.nama,this.alamat,this.tanggal_lahir,this.jenis_kelamin,this.password,this.id_dusun,this.email,this.nohp))
+    this.profileservice.editdataprofile(new ProfileArray(this.id,this.nama,this.alamat,this.email,this.nohp))
     .subscribe(
       (data:any)=>{
         //Kirim Variable UsulanArray ke Usulanservice.ts

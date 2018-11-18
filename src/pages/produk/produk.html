@@ -15,18 +15,18 @@
 
 <ion-content>
   <div>
-        <ion-card>
+        <ion-card *ngFor="let item of items">
             <ion-grid>
               <ion-row>
                 <ion-col>
                   <div>
-                    <p class="produk_namabarang"><b>Sample Produk 1</b><p>
-                    <p class="produk_kodebarang">#1234567890</p>
+                    <p class="produk_namabarang"><b>{{item.namaproduk}}</b><p>
+                    <p class="produk_kodebarang">#{{item.kodeproduk}}</p>
                   </div>
                 </ion-col>
                 <ion-col class="produk_thumbnail_delete">
                     <ion-buttons>
-                        <button ion-button clear color="secondary">
+                        <button ion-button clear color="secondary" (click)="tombolhapus(item)">
                             <ion-icon name="md-trash"></ion-icon>
                         </button>
                     </ion-buttons>
@@ -35,7 +35,7 @@
 
               <ion-row>
                 <ion-col style="max-width: 120px">
-                  <img src="home_menu/sample1.jpg">
+                  <img src="http://localhost:8000/fotoupload/{{item.foto}}">
                 </ion-col>
           
                 <ion-col style="max-width: 75px">
@@ -46,106 +46,14 @@
                 </ion-col>
           
                 <ion-col>
-                    <p class="produk_qty">  999<br>
-                                            Rp 50.000.000,-<br>
-                                            100%
+                    <p class="produk_qty">  {{item.stok}}<br>
+                                            Rp {{item.harga}},-<br>
+                                            {{item.diskon}}%
                     </p>
 
                     
                     <div class="produk_thumbnail_edit">
-                        <button ion-button outline color="secondary" (click)="produkedit()">Update</button>
-                    </div>
-                </ion-col>
-
-              </ion-row>
-            </ion-grid>
-          </ion-card>
-
-          <ion-card>
-            <ion-grid>
-              <ion-row>
-                <ion-col>
-                  <div>
-                    <p class="produk_namabarang"><b>Sample Produk 2</b><p>
-                    <p class="produk_kodebarang">#1234567890</p>
-                  </div>
-                </ion-col>
-                <ion-col class="produk_thumbnail_delete">
-                    <ion-buttons>
-                        <button ion-button clear color="secondary">
-                            <ion-icon name="md-trash"></ion-icon>
-                        </button>
-                    </ion-buttons>
-                </ion-col>
-              </ion-row>
-
-              <ion-row>
-                <ion-col style="max-width: 120px">
-                  <img src="home_menu/sample2.jpg">
-                </ion-col>
-          
-                <ion-col style="max-width: 75px">
-                    <p class="produk_info"> Stok<br>
-                                            Harga<br>
-                                            Diskon
-                    </p>
-                </ion-col>
-          
-                <ion-col>
-                    <p class="produk_qty">  999<br>
-                                            Rp 50.000.000,-<br>
-                                            100%
-                    </p>
-
-                    
-                    <div class="produk_thumbnail_edit">
-                        <button ion-button outline color="secondary" (click)="produkedit()">Update</button>
-                    </div>
-                </ion-col>
-
-              </ion-row>
-            </ion-grid>
-          </ion-card>
-
-          <ion-card>
-            <ion-grid>
-              <ion-row>
-                <ion-col>
-                  <div>
-                    <p class="produk_namabarang"><b>Sample Produk 3</b><p>
-                    <p class="produk_kodebarang">#1234567890</p>
-                  </div>
-                </ion-col>
-                <ion-col class="produk_thumbnail_delete">
-                    <ion-buttons>
-                        <button ion-button clear color="secondary">
-                            <ion-icon name="md-trash"></ion-icon>
-                        </button>
-                    </ion-buttons>
-                </ion-col>
-              </ion-row>
-
-              <ion-row>
-                <ion-col style="max-width: 120px">
-                  <img src="home_menu/sample3.jpg">
-                </ion-col>
-          
-                <ion-col style="max-width: 75px">
-                    <p class="produk_info"> Stok<br>
-                                            Harga<br>
-                                            Diskon
-                    </p>
-                </ion-col>
-          
-                <ion-col>
-                    <p class="produk_qty">  999<br>
-                                            Rp 50.000.000,-<br>
-                                            100%
-                    </p>
-
-                    
-                    <div class="produk_thumbnail_edit">
-                        <button ion-button outline color="secondary" (click)="produkedit()">Update</button>
+                        <button ion-button outline color="secondary" (click)="produkedit(item)">Update</button>
                     </div>
                 </ion-col>
 

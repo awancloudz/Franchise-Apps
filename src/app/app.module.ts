@@ -82,6 +82,7 @@ import { FilterPageModule } from '../pages/filter/filter.module';
 import { MitraPageModule } from '../pages/mitra/mitra.module';
 import { ProdukPageModule } from '../pages/produk/produk.module';
 import { MitraserviceProvider } from '../providers/mitraservice/mitraservice';
+import { ProdukserviceProvider } from '../providers/produkservice/produkservice';
 
 @NgModule({
   declarations: [
@@ -191,6 +192,7 @@ import { MitraserviceProvider } from '../providers/mitraservice/mitraservice';
     ProfileserviceProvider,
     TokoprofileserviceProvider,
     MitraserviceProvider,
+    ProdukserviceProvider,
     //WebView
   ]
 })
