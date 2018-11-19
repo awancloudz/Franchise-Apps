@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, PopoverController, ActionSheetController } from 'ionic-angular';
 
 @Component({
-  selector: 'page-sort',
-  templateUrl: 'sort.html',
+  selector: 'page-imageupload',
+  templateUrl: 'imageupload.html',
 })
-export class SortPage {
+export class ImageuploadPage {
 
   constructor (public navCtrl: NavController,
               public navParams: NavParams,
@@ -18,7 +18,7 @@ export class SortPage {
     console.log('ionViewDidLoad SortPage');
   }
 
-  closeSort() {
+  closeButton() {
     this.navCtrl.pop();
   }
 }

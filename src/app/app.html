@@ -1,19 +1,24 @@
 <ion-menu [content]="content">
-  <ion-header>
-    <ion-item color="primary" style="text-align: center">
-        <img style= "height: 100px; width: 100px" src="sidemenu_icon/people.png">
-        <p style="font-size: 20px" *ngFor="let profile of user">{{ profile.nama }}</p>
+  <ion-header class="app_header">
+    <ion-item color="primary">
+        <img src="login_image/photo_placeholder.png" (click)="imagezoom()">
+        <ion-buttons>
+            <button ion-button clear (click)="imageupload()">
+                <ion-icon name="ios-camera-outline"></ion-icon>
+            </button>
+        </ion-buttons>
+        <p *ngFor="let profile of user">{{ profile.nama }}</p>
     </ion-item>
   </ion-header>
 
   <ion-content>
-    <ion-list no-lines style="border-bottom: 1px solid gainsboro" *ngIf="level == 'admin'">
+    <ion-list no-lines style="border-bottom: 1px solid gainsboro; margin-top: 0px;" *ngIf="level == 'admin'">
       <button menuClose ion-item icon-left *ngFor="let p of pages_admin" (click)="openPage(p)" style="border-top: 1px solid gainsboro; border-bottom: 1px solid gainsboro">
         <img width="30px" height="30px" src="{{ p.icon }}" item-left>
         {{p.title}}
       </button>
     </ion-list>
-    <ion-list no-lines style="border-bottom: 1px solid gainsboro" *ngIf="level == 'mitra'">
+    <ion-list no-lines style="border-bottom: 1px solid gainsboro; margin-top: 0px;" *ngIf="level == 'mitra'">
       <button menuClose ion-item icon-left *ngFor="let p of pages_mitra" (click)="openPage(p)" style="border-top: 1px solid gainsboro; border-bottom: 1px solid gainsboro">
         <img width="30px" height="30px" src="{{ p.icon }}" item-left>
         {{p.title}}

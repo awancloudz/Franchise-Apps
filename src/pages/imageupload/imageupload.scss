@@ -1,0 +1,49 @@
+page-imageupload {
+
+.imageupload_content {
+    height: 210px;
+    top: 55%;
+    right: 5%;
+    left: 5%;
+    width: auto;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid gainsboro;
+
+    
+}
+
+.imageupload_menu {
+    text-align: center;
+
+    h6 {
+        
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    img {
+        height: 50px;
+        width: 50px;
+    }
+
+    p {
+        margin-top: 0px;
+     
+    }
+
+    ion-buttons {
+        text-align: center;
+
+        button {
+            text-transform: none;
+            height: 30px;
+            width: 100px;
+            margin-top: 15px;
+            margin-bottom: 0px;
+        }
+        
+    }
+}
+
+}

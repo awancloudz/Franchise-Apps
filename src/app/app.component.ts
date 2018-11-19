@@ -1,6 +1,6 @@
 import { Storage } from '@ionic/storage';
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform,Events } from 'ionic-angular';
+import { Nav, Platform, Events, ModalController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { OneSignal } from '@ionic-native/onesignal';
@@ -27,7 +27,8 @@ import { TokoprodukPage, TokoprodukCreatePage } from '../pages/tokoproduk/tokopr
 import { TokoCreatePage,TokoprofilePage } from '../pages/tokoprofile/tokoprofile';
 import { TokosearchPage } from '../pages/tokosearch/tokosearch';
 import { FilterPage } from '../pages/filter/filter';
-import { SortPage } from '../pages/sort/sort';
+import { ImageuploadPage } from '../pages/imageupload/imageupload';
+import { ImagezoomPage } from '../pages/imagezoom/imagezoom';
 import { DaftarkurirPage } from '../pages/daftarkurir/daftarkurir';
 import { InformasitokoPage } from '../pages/informasitoko/informasitoko';
 
@@ -43,10 +44,15 @@ export class MyApp {
   pages_mitra: Array<{title: string, icon: string,component: any}>;
   user: Array<{nama: string}>;
 
-  constructor(private storage: Storage,public platform: Platform, public statusBar: StatusBar, 
-    public splashScreen: SplashScreen,private oneSignal: OneSignal,private events: Events) {
-    this.initializeApp();
-    this.listenToLoginEvents();
+  constructor ( private storage: Storage,
+                public platform: Platform,
+                public statusBar: StatusBar, 
+                public splashScreen: SplashScreen,
+                private oneSignal: OneSignal,
+                private events: Events,
+                private modalController: ModalController,) {
+                this.initializeApp();
+                this.listenToLoginEvents();
 
     // used for an example of ngFor and navigation
     this.pages_admin = [
@@ -110,4 +116,14 @@ export class MyApp {
       ];
     });
   }
+
+  imageupload () {
+    let imageupload = this.modalController.create (ImageuploadPage);
+    imageupload.present();
+    }
+
+  imagezoom () {
+	let imagezoom = this.modalController.create (ImagezoomPage);
+	imagezoom.present();
+	}
 }

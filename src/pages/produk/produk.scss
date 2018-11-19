@@ -98,7 +98,19 @@ page-produk {
 
     img {
         height: auto;
-        width: 150px;
+        width: 170px;
+    }
+
+    button {
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        margin-top: -40px;
+        margin-left: 36px;
+        
+        ion-icon {
+            zoom: 1.4;
+            color: white;
+        }
     }
 }
 

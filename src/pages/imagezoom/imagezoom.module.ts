@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { SortPage } from './sort';
+import { ImagezoomPage } from './imagezoom';
 
 @NgModule({
   declarations: [
-    SortPage,
+    ImagezoomPage,
   ],
   imports: [
-    IonicPageModule.forChild(SortPage),
+    IonicPageModule.forChild(ImagezoomPage),
   ],
 })
-export class SortPageModule {}
+export class ImagezoomPageModule {}

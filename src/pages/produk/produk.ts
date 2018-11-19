@@ -9,6 +9,7 @@ import { ProdukArray } from '../../pages/produk/produkarray';
 import {Camera, CameraOptions} from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { ImageuploadPage } from '../imageupload/imageupload';
 /**
  * Generated class for the ProdukPage page.
  *
@@ -32,9 +33,16 @@ export class ProdukPage {
   foto:String;
   items:ProdukArray[]=[];
 
-  constructor ( public navCtrl: NavController,public navParams: NavParams,private modalController: ModalController,
-    public nav: NavController,public platform: Platform,public actionSheetCtrl: ActionSheetController,public alertCtrl: AlertController,
-    public loadincontroller:LoadingController,public _toast:ToastController,public produkservice:ProdukserviceProvider) {
+  constructor ( public navCtrl: NavController,
+                public navParams: NavParams,
+                private modalController: ModalController,
+                public nav: NavController,
+                public platform: Platform,
+                public actionSheetCtrl: ActionSheetController,
+                public alertCtrl: AlertController,
+                public loadincontroller:LoadingController,
+                public _toast:ToastController,
+                public produkservice:ProdukserviceProvider) {
     //TOMBOL EXIT
     this.platform.ready().then(() => {
       this.platform.registerBackButtonAction(() => {
@@ -439,4 +447,9 @@ export class ProdukcreatePage {
   
     toast.present();
   }
+
+  imageupload () {
+    let imageupload = this.modalController.create (ImageuploadPage);
+    imageupload.present();
+    }
 }

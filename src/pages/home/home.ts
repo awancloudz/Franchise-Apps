@@ -3,7 +3,6 @@ import { NavController, NavParams, Platform, ActionSheetController, LoadingContr
 import { KeranjangPage,KeranjangcreatePage } from '../../pages/keranjang/keranjang';
 import { SearchPage } from '../../pages/search/search';
 import { FilterPage } from '../filter/filter';
-import { SortPage } from '../sort/sort';
 import { DaftarkurirPage } from '../daftarkurir/daftarkurir';
 import { InformasitokoPage } from '../informasitoko/informasitoko';
 
@@ -165,11 +164,6 @@ export class HomethumbnailPage {
     let openFilter = this.modalController.create (FilterPage);
     openFilter.present();
     }
-  
-  openSort () {
-    let openSort = this.modalController.create (SortPage);
-    openSort.present();
-  }
   
   tombol () {
   this.nav.push (HomeprodukdetailPage);

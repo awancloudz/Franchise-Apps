@@ -37,7 +37,8 @@ import { TokosearchPage } from '../pages/tokosearch/tokosearch';
 import { LoginPage, DaftarPage, ForgotPage, InformasipendaftaranPage } from '../pages/login/login';
 import { ProfilePage } from '../pages/profile/profile';
 import { FilterPage } from '../pages/filter/filter';
-import { SortPage } from '../pages/sort/sort';
+import { ImageuploadPage } from '../pages/imageupload/imageupload';
+import { ImagezoomPage } from '../pages/imagezoom/imagezoom';
 import { DaftarkurirPage } from '../pages/daftarkurir/daftarkurir';
 import { InformasitokoPage } from '../pages/informasitoko/informasitoko';
 
@@ -83,13 +84,16 @@ import { MitraPageModule } from '../pages/mitra/mitra.module';
 import { ProdukPageModule } from '../pages/produk/produk.module';
 import { MitraserviceProvider } from '../providers/mitraservice/mitraservice';
 import { ProdukserviceProvider } from '../providers/produkservice/produkservice';
+import { ImageuploadPageModule } from '../pages/imageupload/imageupload.module';
+import { ImagezoomPageModule } from '../pages/imagezoom/imagezoom.module';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage, HomeDetailPage, HomethumbnailPage, HomeprodukdetailPage, HometokoPage, HomechatPage, HomekomentarPage, HomekomentardetailPage, HomeuserPage, HomeratingPage,
     //FilterPage,
-    //SortPage,
+    //ImageuploadPage,
+    //ImagezoomPage,
     //DaftarkurirPage,
     //InformasitokoPage,
     //PenjualanPage, PenjualandetailPage,
@@ -136,6 +140,8 @@ import { ProdukserviceProvider } from '../providers/produkservice/produkservice'
     FilterPageModule,
     MitraPageModule,
     ProdukPageModule,
+    ImageuploadPageModule,
+    ImagezoomPageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -162,7 +168,8 @@ import { ProdukserviceProvider } from '../providers/produkservice/produkservice'
     TokosearchPage,
     ProfilePage,
     FilterPage,
-    //SortPage,
+    ImageuploadPage,
+    ImagezoomPage,
     //DaftarkurirPage,
     //InformasitokoPage,
   ],
