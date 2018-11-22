@@ -2,18 +2,18 @@
 <ion-content>
 
   <ion-buttons end>
-    <button ion-button clear color="secondary" (click)="closeFilter()">
+    <button ion-button clear color="secondary" (click)="pilihfilter(0)">
       <ion-icon name="md-close" style="zoom: 1.5"></ion-icon>
     </button>
   </ion-buttons>
 
 <ion-buttons>
   <h6>Sorting berdasarkan :</h6>
-  <button ion-button block color="secondary"><p>Hari ini</p></button>
-  <button ion-button block color="secondary"><p>7 Hari terakhir</p></button>
-  <button ion-button block color="secondary"><p>Bulan ini</p></button>
-  <button ion-button block color="secondary"><p>Bulan lalu</p></button>
-  <button ion-button block color="secondary"><p>Tahun ini</p></button>
+  <button ion-button block color="secondary" (click)="pilihfilter(1)"><p>Hari ini</p></button>
+  <button ion-button block color="secondary" (click)="pilihfilter(2)"><p>7 Hari terakhir</p></button>
+  <button ion-button block color="secondary" (click)="pilihfilter(3)"><p>Bulan ini</p></button>
+  <button ion-button block color="secondary" (click)="pilihfilter(4)"><p>Bulan lalu</p></button>
+  <button ion-button block color="secondary" (click)="pilihfilter(5)"><p>Tahun ini</p></button>
 </ion-buttons>
 
 <ion-grid>
@@ -23,20 +23,20 @@
       <ion-item no-lines>
         <ion-label stacked>Tanggal Awal</ion-label>
         <ion-datetime text-center displayFormat="DD MMM YYYY"
-          monthShortNames="Jan, Feb, Mar, Apr, Mei, Jun, Jul, Agt, Sept, Okt, Nov, Des"></ion-datetime>
+          monthShortNames="Jan, Feb, Mar, Apr, Mei, Jun, Jul, Agt, Sept, Okt, Nov, Des" [(ngModel)]="tanggal_awal"></ion-datetime>
       </ion-item>
     </ion-col>
     <ion-col>
       <ion-item no-lines>
         <ion-label stacked>Tanggal Akhir</ion-label>
           <ion-datetime text-center displayFormat="DD MMM YYYY"
-            monthShortNames="Jan, Feb, Mar, Apr, Mei, Jun, Jul, Agt, Sept, Okt, Nov, Des"></ion-datetime>
+            monthShortNames="Jan, Feb, Mar, Apr, Mei, Jun, Jul, Agt, Sept, Okt, Nov, Des" [(ngModel)]="tanggal_akhir"></ion-datetime>
       </ion-item>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col>
-      <button ion-button block color="secondary"><p>Apply</p></button>
+      <button ion-button block color="secondary"  (click)="pilihtanggal(6)"><p>Apply</p></button>
     </ion-col>
   </ion-row>
 </ion-grid>

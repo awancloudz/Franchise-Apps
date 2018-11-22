@@ -90,6 +90,13 @@ ceklogin(){
             this.storage.set('level', data[key].level);
             if(data[key].level == 'admin'){
               this.events.publish('user:admin',data);
+              //set bulan ini
+              var sekarang = new Date();
+              var tanggal = sekarang, tahun = tanggal.getFullYear(), bulan = tanggal.getMonth();
+              var awalbulan = new Date(tahun, bulan, 1);
+              
+              this.storage.set('tanggal_awal', this.formatDate(awalbulan));
+              this.storage.set('tanggal_akhir', this.formatDate(sekarang));
               //Redirect Home
               this.nav.setRoot(PenjualanPage);
             }
@@ -135,7 +142,17 @@ ceklogin(){
     }
   );
 }
+formatDate(date) {
+  var d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
 
+  if (month.length < 2) month = '0' + month;
+  if (day.length < 2) day = '0' + day;
+
+  return [year, month, day].join('-');
+}
 daftar(){
   this.nav.push(DaftarPage);
 }

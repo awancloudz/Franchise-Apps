@@ -21,9 +21,9 @@ export class PenjualanserviceProvider {
   constructor(public _http: Http) {
   }
   //Tampilkan
-  tampilkanpembelian()
+  tampilkanpembelian(awal,akhir)
   {
-   return this._http.get(this.url)
+   return this._http.get(this.url+"/awal/"+awal+"/akhir/"+akhir)
    .map((response:Response)=>response.json());
   }
   tampilkanverifikasi(item:PenjualanArray)

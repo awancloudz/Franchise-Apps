@@ -41,7 +41,7 @@
 <ion-content class="segment_content">
 
   <div [ngSwitch]="category" swipeSegment [tabsList]="categories" [(currentTab)]="category" (tabChanged)="onTabChanged($event)" class="swipe-area">
-    <div *ngFor="let item of items" >
+    <div *ngFor="let item of items.koleksi">
       <ion-list *ngSwitchCase="'order'">
         <ion-card *ngIf="item.status =='order'">
           <ion-item-group> 
@@ -121,9 +121,9 @@
 <ion-footer>
   <ion-grid>
     <ion-row>
-      <ion-col id="penjualan_pendapatan">
+      <ion-col id="penjualan_pendapatan" *ngFor="let item2 of items.koleksi2">
         <p>Total Pendapatan :<br>
-          Rp 1.000.000.000,-</p>
+          Rp {{ item2.subtotal }},-</p>
       </ion-col>
       <ion-col col-4 id="penjualan_filter">
           <button ion-button block color="secondary" (click)="openFilter()">Filter</button>
