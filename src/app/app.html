@@ -1,17 +1,21 @@
 <ion-menu [content]="content">
   <ion-header class="app_header">
     <ion-item color="primary">
-        <img src="login_image/photo_placeholder.png" (click)="imagezoom()">
+      <div *ngFor="let photo of photos; let id = index">
+        <img [src]="photo" (click)="imagezoom(photo)">
         <ion-buttons>
             <button ion-button clear (click)="imageupload()">
                 <ion-icon name="ios-camera-outline"></ion-icon>
             </button>
         </ion-buttons>
+      </div>
         <p *ngFor="let profile of user">{{ profile.nama }}</p>
     </ion-item>
   </ion-header>
 
   <ion-content>
+    <ion-input type="hidden" [(ngModel)]="id"></ion-input>
+    <ion-input type="hidden" [(ngModel)]="fotoprofile"></ion-input>
     <ion-list no-lines style="border-bottom: 1px solid gainsboro; margin-top: 0px;" *ngIf="level == 'admin'">
       <button menuClose ion-item icon-left *ngFor="let p of pages_admin" (click)="openPage(p)" style="border-top: 1px solid gainsboro; border-bottom: 1px solid gainsboro">
         <img width="30px" height="30px" src="{{ p.icon }}" item-left>

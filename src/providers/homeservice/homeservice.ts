@@ -25,7 +25,7 @@ export class HomeserviceProvider {
   //Memanggil URL Api
   private url:string="http://localhost:8000/api/perangkat";
   private url2:string="http://localhost:8000/api/perangkattoko";
-  private url3:string="http://localhost:8000/api/produktoko";
+  private url3:string="http://localhost:8000/api/produktokohome";
   constructor(public _http: Http) {
   }
   //Cek + Tambah perangkat
@@ -47,9 +47,9 @@ export class HomeserviceProvider {
                   body, options)
                  .map((response:Response)=>response.json());
   }
-  tampilkanproduk()
+  tampilkanproduk(user)
   {
-   return this._http.get(this.url3)
+   return this._http.get(this.url3+"/"+user)
    .map((response:Response)=>response.json());
   }
 }

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, Events,NavController, NavParams, Platform, ActionSheetController, LoadingController ,ToastController,AlertController,normalizeURL } from 'ionic-angular';
+import { IonicPage, Events,NavController, NavParams, Platform, ModalController,ActionSheetController, LoadingController ,ToastController,AlertController,normalizeURL } from 'ionic-angular';
 //Tambahkan Provider
 import { MitraserviceProvider } from '../../providers/mitraservice/mitraservice';
 import { MitraArray } from './mitraarray';
 import { Storage } from '@ionic/storage';
+import { ImagezoomPage } from '../imagezoom/imagezoom';
 /**
  * Generated class for the MitraPage page.
  *
@@ -91,10 +92,12 @@ export class MitraPage {
   entryComponents:[ MitraPage ],
 })
 export class MitradetailPage {
+  zoom;
   item;
   items:MitraArray[]=[];
   id:Number;
   alamat:String;
+  kota:String;
   nama:String;
   email:String;
   password:String;
@@ -107,7 +110,7 @@ export class MitradetailPage {
   constructor(public navCtrl: NavController,public params: NavParams,
     public nav: NavController,public platform: Platform,public actionSheetCtrl: ActionSheetController,
     public loadincontroller:LoadingController,public mitraservice:MitraserviceProvider,public _toast:ToastController,
-    public alertCtrl: AlertController,private storage: Storage,private events: Events) {
+    private modalController: ModalController,public alertCtrl: AlertController,private storage: Storage,private events: Events) {
     this.item = params.data.item;
     //Hapus Back
     let backAction =  platform.registerBackButtonAction(() => {
@@ -123,7 +126,7 @@ export class MitradetailPage {
     });
     loadingdata.present();
     //Tampilkan data dari server
-    this.mitraservice.tampilkandetail(new MitraArray(this.item.id,this.item.nama,this.item.alamat,this.item.email,this.item.level,this.item.status,this.item.fotoktp,this.item.fotowajah,this.item.nohp)).subscribe(
+    this.mitraservice.tampilkandetail(new MitraArray(this.item.id,this.item.nama,this.item.alamat,this.item.kota,this.item.email,this.item.level,this.item.status,this.item.fotoktp,this.item.fotowajah,this.item.nohp)).subscribe(
       //Jika data sudah berhasil di load
       (data:MitraArray[])=>{
         this.items=data;
@@ -163,7 +166,7 @@ export class MitradetailPage {
     });
     loadingdata.present();
     //Tampilkan data dari server
-    this.mitraservice.edituser(new MitraArray(this.item.id,this.item.nama,this.item.alamat,this.item.email,this.item.level,this.item.status,this.item.fotoktp,this.item.fotowajah,this.item.nohp))
+    this.mitraservice.edituser(new MitraArray(this.item.id,this.item.nama,this.item.alamat,this.item.kota,this.item.email,this.item.level,this.item.status,this.item.fotoktp,this.item.fotowajah,this.item.nohp))
     .subscribe(
       //Jika data sudah berhasil di load
       (data:MitraArray[])=>{
@@ -178,5 +181,11 @@ export class MitradetailPage {
         alert.present();
       }
     );
+    }
+    imagezoom (photo) {
+      this.zoom = "http://localhost:8000/verifikasi/" + photo;
+      console.log(this.zoom);
+      let imagezoom = this.modalController.create (ImagezoomPage, {item: this.zoom});
+      imagezoom.present();
     }
 }

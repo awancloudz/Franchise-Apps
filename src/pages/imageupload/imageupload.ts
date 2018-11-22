@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController, PopoverController, ActionSheetController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, PopoverController, ActionSheetController, ViewController } from 'ionic-angular';
 
 @Component({
   selector: 'page-imageupload',
@@ -11,14 +11,15 @@ export class ImageuploadPage {
               public navParams: NavParams,
               public alertController: AlertController,
               public popoverController: PopoverController,
-              public actionsheetController: ActionSheetController,) {
+              public actionsheetController: ActionSheetController,
+              public viewCtrl: ViewController) {
 }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SortPage');
   }
 
-  closeButton() {
-    this.navCtrl.pop();
+  pilihfoto(item){
+    this.viewCtrl.dismiss(item);
   }
 }

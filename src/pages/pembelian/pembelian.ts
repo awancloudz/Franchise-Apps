@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform, ActionSheetController, LoadingController ,ToastController,AlertController,normalizeURL } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, ActionSheetController, LoadingController,ModalController ,ToastController,AlertController,normalizeURL } from 'ionic-angular';
 //Tambahkan Provider
 import { PembelianserviceProvider } from '../../providers/pembelianservice/pembelianservice';
 import { PembelianArray } from './pembelianarray';
@@ -8,6 +8,7 @@ import { Storage } from '@ionic/storage';
 import {Camera, CameraOptions} from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { ImagezoomPage } from '../imagezoom/imagezoom';
 /**
  * Generated class for the PembelianPage page.
  *
@@ -158,6 +159,7 @@ ionViewDidLoad(item) {
   entryComponents:[ PembelianPage ], 
 })
 export class PembelianDetailPage {
+  zoom;
   item;
   id:Number
   kodepenjualan:String;
@@ -171,7 +173,7 @@ export class PembelianDetailPage {
   items:PembelianArray[]=[];
   
   constructor(params: NavParams, public nav: NavController,public platform: Platform,public actionSheetCtrl: ActionSheetController,public alertCtrl: AlertController,
-    public loadincontroller:LoadingController,public _toast:ToastController,public pembelianservice:PembelianserviceProvider) {
+    private modalController: ModalController,public loadincontroller:LoadingController,public _toast:ToastController,public pembelianservice:PembelianserviceProvider) {
     this.item = params.data.item;
     //Hapus Back
     let backAction =  platform.registerBackButtonAction(() => {
@@ -274,7 +276,11 @@ this.pembelianservice.hapuspembelian(new PembelianArray(this.item.id,this.item.k
   }
 );
 }
-
+imagezoom (photo) {
+  this.zoom = "http://localhost:8000/fotoupload/" + photo;
+  let imagezoom = this.modalController.create (ImagezoomPage, {item: this.zoom});
+  imagezoom.present();
+}
 }
 
 @Component({
@@ -301,7 +307,7 @@ export class PembelianKonfirmasiPage {
   bukti:String;
   constructor(params: NavParams, public nav: NavController,public platform: Platform,public actionSheetCtrl: ActionSheetController,public alertCtrl: AlertController,
     public loadincontroller:LoadingController,public _toast:ToastController,public pembelianservice:PembelianserviceProvider,private storage: Storage,private camera: Camera,private transfer: FileTransfer,
-    private file: File) {
+    private modalController: ModalController,private file: File) {
     this.item = params.data.item;
     //Hapus Back
     let backAction =  platform.registerBackButtonAction(() => {
@@ -387,6 +393,11 @@ let info = this.alertCtrl.create({
   title: 'Tidak Terhubung ke server',
   message: 'Silahkan Periksa koneksi internet anda...',
 });
+let kosong = this.alertCtrl.create({
+  title: 'Konfirmasi Gagal',
+  message: 'Silahkan upload bukti pembayaran anda...',
+});
+if(this.photos != "login_image/photo_placeholder.png"){
 loadingdata.present();
 //Tampilkan data dari server
 this.pembelianservice.verifikasipembelian(new PembelianArray(this.item.id,this.item.kodepenjualan,this.item.id_users,this.item.tanggal,this.item.totaldiskon,this.item.totalbelanja,this.item.subtotal,this.item.status,this.bukti))
@@ -410,6 +421,10 @@ this.pembelianservice.verifikasipembelian(new PembelianArray(this.item.id,this.i
     alert.present();
   }
 );
+}
+else{
+  kosong.present();
+}
 }
 uploadFile() {
   let loader1 = this.loadincontroller.create({
@@ -452,7 +467,10 @@ presentToast(msg) {
 
   toast.present();
 }
-
+imagezoom (item) {
+  let imagezoom = this.modalController.create (ImagezoomPage, {item: item});
+  imagezoom.present();
+}
 }
 
 

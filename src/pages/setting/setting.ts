@@ -24,6 +24,8 @@ export class SettingPage {
   ionViewDidLoad() {
     this.storage.set('id_user', null);
     this.storage.set('nama_user', null);
+    this.storage.set('email_user', null);
+    this.storage.set('password', null);
     this.storage.set('level', null);
     this.events.publish('user:mitra');
     this.navCtrl.setRoot(LoginPage);

@@ -9,7 +9,7 @@ import {Camera, CameraOptions} from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { FilterPage } from '../filter/filter';
-
+import { ImagezoomPage } from '../imagezoom/imagezoom';
 /**
  * Generated class for the PenjualanPage page.
  *
@@ -101,6 +101,7 @@ export class PenjualanPage {
   entryComponents:[ PenjualanPage ], 
 })
 export class PenjualandetailPage {
+  zoom;
   item;
   id:Number
   kodepenjualan:String;
@@ -186,5 +187,11 @@ tombolproses(item){
       alert.present();
     }
   );
+  }
+  imagezoom (item2) {
+    this.zoom = "http://localhost:8000/verifikasi/" + item2.bukti;
+    console.log(this.zoom);
+    let imagezoom = this.modalController.create (ImagezoomPage, {item: this.zoom});
+    imagezoom.present();
   }
 }

@@ -13,7 +13,7 @@
 </ion-header>
 
 <ion-content style="background-color: whitesmoke">
-  <ion-input type="hidden" [(ngModel)]="bukti"></ion-input>
+  <ion-input type="text" [(ngModel)]="bukti"></ion-input>
   <ion-card class="pembeliankonfirmasi_card1">
     <ion-list>
       <ion-item>
@@ -70,10 +70,10 @@
       <p>Upload Bukti Pembayaran</p>
 
       <div *ngFor="let photo of photos; let id = index">
-        <img [src]="photo">
+        <img [src]="photo" (click)="takeBukti(1)">
       </div>
 
-      <ion-grid>
+      <!-- <ion-grid>
         <ion-row>
           <ion-col>
             <button ion-button full style="text-transform: none ; text-align: center" color="secondary">
@@ -86,15 +86,17 @@
             </button>
           </ion-col>
         </ion-row>
-      </ion-grid>
+      </ion-grid> -->
+      <br>
     </div>
     
     <div class="pembeliankonfirmasi_upload" *ngIf="item.bukti != ''">
       <p>Data Bukti Pembayaran</p>
 
       <div *ngFor="let photo of photos; let id = index">
-        <img [src]="photo">
+        <img [src]="photo" (click)="imagezoom(photo)">
       </div>
+      <br>
       </div>
 
   </ion-card>

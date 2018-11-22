@@ -19,6 +19,7 @@ export class ProfilePage {
   id:Number;
   nama:String;
   alamat:Text;
+  kota:String;
   email:String;
   nohp:String;
 
@@ -75,6 +76,7 @@ export class ProfilePage {
             this.id = data[key].id;
             this.nama = data[key].nama;
             this.alamat = data[key].alamat;
+            this.kota = data[key].kota;
             this.email = data[key].email;
             this.nohp = data[key].nohp;
           }
@@ -108,7 +110,7 @@ export class ProfilePage {
     });
     loadingdata.present();
     //Mengambil value dari edit field untuk dimasukkan ke UsulanArray
-    this.profileservice.editdataprofile(new ProfileArray(this.id,this.nama,this.alamat,this.email,this.nohp))
+    this.profileservice.editdataprofile(new ProfileArray(this.id,this.nama,this.alamat,this.kota,this.email,this.nohp))
     .subscribe(
       (data:any)=>{
         //Kirim Variable UsulanArray ke Usulanservice.ts

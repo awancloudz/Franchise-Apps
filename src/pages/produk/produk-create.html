@@ -14,7 +14,7 @@
 
 <ion-content>
     <div class="produkcreate_img" *ngFor="let photo of photos; let id = index">
-        <img [src]="photo" (click)="takeFoto(1)">
+        <img [src]="photo" (click)="imagezoom(photo)">
         <ion-buttons>
             <button ion-button clear (click)="imageupload()">
                 <ion-icon name="ios-camera-outline"></ion-icon>

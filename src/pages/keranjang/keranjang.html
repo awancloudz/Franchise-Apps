@@ -8,48 +8,8 @@
 </ion-header>
 
 <ion-content class="keranjangpage_content">
-<!--
-  <ion-card class="card-container" *ngFor="let item of items.koleksi">
-      <ion-row no-padding>
 
-            <ion-col class="xxxx">             
-                    <img src="http://localhost:8000/fotoupload/{{item.produktoko.foto}}" class="picture-item">
-
-                    <select class="dropdown-quantity" [(ngModel)]="jumlah" (change)="tomboledit(item)">
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                      <option value="6">6</option>
-                      <option value="7">7</option>
-                      <option value="8">8</option>
-                      <option value="9">9</option>
-                      <option value="10">10</option>
-                    </select>
-            </ion-col>
-
-            <ion-col class="yyyy">
-                  <h2>{{ item.produktoko.namaproduk }}</h2>
-                  <h2 class="harga-barang"><b>Rp. {{item.produktoko.harga}},-</b>
-                  <br>Qty : {{item.jumlah}}
-                  <br>Total : Rp. {{ item.jumlah * item.produktoko.harga }},-
-                  </h2>
-            </ion-col>
-
-            <ion-col class="zzzz">
-                <ion-buttons class="delete-button">
-                  <button ion-button clear icon-only (click)="tombolhapus(item)">
-                    <i class="fa fa-trash-o" aria-hidden="true" style="zoom:1.5"></i>
-                  </button>
-                </ion-buttons>
-            </ion-col>
-
-      </ion-row>
-  </ion-card>
--->
-
-  <ion-card *ngFor="let item of items.koleksi">
+  <ion-card *ngFor="let item of items.koleksi; let i = index;">
     <ion-grid>
     <ion-row>
       <ion-col>
@@ -76,11 +36,12 @@
 
       <ion-col>
         <ion-buttons style="margin-top: 7px">
-          <button ion-button icon-only outline color="secondary" (click)="decrement()" class="keranjangpage_decrement">
+          <button ion-button icon-only outline color="secondary" (click)="decrement(i)" class="keranjangpage_decrement">
             <ion-icon name="ios-remove"></ion-icon>
           </button>
-          {{currentNumber}}
-          <button ion-button icon-only outline color="secondary" (click)="increment()" class="keranjangpage_increment">
+          <!-- {{ currentNumber }} -->
+          {{ item.jumlah }}
+          <button ion-button icon-only outline color="secondary" (click)="increment(i)" class="keranjangpage_increment">
             <ion-icon name="ios-add"></ion-icon>
           </button>
         </ion-buttons>
@@ -93,22 +54,6 @@
   </ion-card>
 
 </ion-content>
-<!--
-<ion-footer style="text-align:center" *ngFor="let item2 of items.koleksi2">
-  <ion-navbar>
-  <h6 *ngIf="item2.subtotal == 0">
-      [ Keranjang Kosong ]
-  </h6>
-  <h6 *ngIf="item2.subtotal != 0">
-      Total Pembayaran : <b>Rp. {{item2.subtotal}},-</b>  
-  </h6>
-  </ion-navbar>
-  <ion-buttons>
-    <button *ngIf="item2.subtotal == 0" ion-button block (click)="tombolbeli()">Beli</button>
-    <button *ngIf="item2.subtotal != 0" ion-button block (click)="tombolkirim(item2)">Kirim</button>
-  </ion-buttons>
-</ion-footer>
--->
 
 <ion-footer *ngFor="let item2 of items.koleksi2">
   <ion-row class="keranjang_row_harga">

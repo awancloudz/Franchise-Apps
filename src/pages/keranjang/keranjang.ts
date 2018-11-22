@@ -21,11 +21,14 @@ import { Storage } from '@ionic/storage';
   entryComponents: [ SearchPage ],
 })
 export class KeranjangPage {
-  
+  item;
   items:KeranjangArray[]=[];
-  jumlah:any;
+  id:Number;
+  id_users:Number;
+  id_produk:Number;
+  jumlah:Number;
   stok:any;
- 
+
   constructor(public nav: NavController,public platform: Platform,public actionSheetCtrl: ActionSheetController,public alertCtrl: AlertController,
     public loadincontroller:LoadingController,public _toast:ToastController,public keranjangservice:KeranjangserviceProvider,private storage: Storage) {
 
@@ -92,52 +95,21 @@ let confirm = this.alertCtrl.create({
 confirm.present();
 }
 
-tomboledit(item,lama:KeranjangArray,baru:KeranjangArray){
-  //Pemberitahuan
-  let alert = this.alertCtrl.create({
-    title: 'Informasi',
-    subTitle: 'Edit Item Sukses',
-    buttons: ['OK']
-  });
-  let alert2 = this.alertCtrl.create({
-    title: 'Informasi',
-    subTitle: 'Stok Tidak Mencukupi',
-    buttons: ['OK']
-  });
-  //Loading Data
-  let loadingdata=this.loadincontroller.create({
-      content:"Mengubah Item..."
-  });
-
-  //Cek Stok
-  this.stok = item.produktoko.stok;
-  if(this.jumlah > this.stok){
-    alert2.present();
-  }
-  else{
-    loadingdata.present();
-    //Mengambil value dari edit field untuk dimasukkan ke UsulanArray
-    this.keranjangservice.editkeranjang(new KeranjangArray(item.id,item.id_warga,item.id_produktoko,this.jumlah))
+editjumlah(item){
+    this.keranjangservice.editkeranjang(new KeranjangArray(item.id,item.id_users,item.id_produktoko,item.jumlah))
     .subscribe(
       (data:any)=>{
-        //Kirim Variable UsulanArray ke Usulanservice.ts
-        if(data.affectedRows==1)
-        {
-          this.items[this.items.indexOf(lama)]=baru;
-        }
-        loadingdata.dismiss();
-        this.nav.setRoot(KeranjangPage);
+
       },
       function(error){
 
       },
       function(){
-        alert.present();
+
       }
     );   
-  }
-   
 }
+
 tombolsearch() {
   this.nav.push(SearchPage);
 }
@@ -148,16 +120,49 @@ tombolkirim(item2) {
   this.nav.setRoot(PembelianCreatePage, { item: item2 });
 }
 
-private currentNumber = 1;
-  private increment () {
-    if(this.currentNumber < 10)
-    this.currentNumber++;
+increment(i){
+  var subtotal = 0;
+  var jumlahkeranjang = this.items["koleksi2"][0].jumlahkeranjang;
+  for(var key in this.items)
+  {
+    if(key == "koleksi"){
+      if(this.items[key][i].jumlah < 100)
+      //Edit Jumlah
+      this.items[key][i].jumlah = this.items[key][i].jumlah + 1;
+      //Edit Total Belanja
+      for(var a=0; a < jumlahkeranjang; a++){
+        subtotal = subtotal + (this.items[key][a].produk.harga * this.items[key][a].jumlah);
+      }
+    }
+    //Subtotal Baru
+    if(key == "koleksi2"){
+      this.items[key][0].subtotal = subtotal;
+    }
   }
-  
-  private decrement () {
-    if(this.currentNumber > 1)
-    this.currentNumber--;
+  this.editjumlah(this.items["koleksi"][i]);
+} 
+decrement(i){
+  var subtotal = 0;
+  var jumlahkeranjang = this.items["koleksi2"][0].jumlahkeranjang;
+  for(var key in this.items)
+  {
+    if(key == "koleksi"){
+      if(this.items[key][i].jumlah > 1)
+      //Edit Jumlah
+      this.items[key][i].jumlah = this.items[key][i].jumlah - 1;
+      //Edit Total Belanja
+      for(var a=0; a < jumlahkeranjang; a++){
+        subtotal = subtotal + (this.items[key][a].produk.harga * this.items[key][a].jumlah);
+      }
+    }
+    //Subtotal Baru
+    if(key == "koleksi2"){
+      this.items[key][0].subtotal = subtotal;
+    }
   }
+  this.editjumlah(this.items["koleksi"][i]);
+} 
+
 }
 
 @Component({
@@ -183,7 +188,14 @@ ionViewDidLoad(item2) {
     let alert = this.alertCtrl.create({
       title: 'Informasi',
       subTitle: 'Barang dimasukkan keranjang',
-      buttons: ['OK']
+      buttons: [
+        {
+          text: 'OK',
+          handler: () => {
+            this.nav.setRoot(HomePage);
+          }
+        }
+      ]
     });
     //Loading Data
     let loadingdata=this.loadincontroller.create({
@@ -198,13 +210,12 @@ ionViewDidLoad(item2) {
       (data:KeranjangArray)=>{
         //Push
         loadingdata.dismiss();
-        this.nav.setRoot(KeranjangPage);
       },
       function(error){
   
       },
       function(){
-        //alert.present();
+        alert.present();
       }
     );
   });

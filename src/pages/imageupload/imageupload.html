@@ -4,22 +4,24 @@
   <h6>Upload Menu</h6>
   <ion-grid>
     <ion-row>
-      <ion-col>
+      <ion-col (click)="pilihfoto(1)">
         <ion-buttons>
           <img src="imageupload_icon/camera.png">
           <p>Camera</p>
         </ion-buttons>
       </ion-col>
-      <ion-col>
+      <ion-col (click)="pilihfoto(2)">
+        <ion-buttons>
           <img src="imageupload_icon/gallery.png">
           <p>Gallery</p>
+        </ion-buttons>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col>
         <ion-buttons>
-          <button ion-button outline color="secondary" (click)="closeButton()">Close</button>
+          <button ion-button outline color="secondary" (click)="pilihfoto(0)">Close</button>
         </ion-buttons>
       </ion-col>
     </ion-row>

@@ -29,6 +29,14 @@
       </ion-row>
       <ion-row>
         <ion-col col-3>
+          <p>Kota</p>
+        </ion-col>
+        <ion-col>
+          <p>: {{ item.kota }}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-3>
           <p>Email</p>
         </ion-col>
         <ion-col>
@@ -49,11 +57,11 @@
   <div class="mitradetail_title_img">
     <div>
       <p>Foto KTP</p>
-      <img src="http://localhost:8000/verifikasi/{{ item.fotoktp }}">
+      <img src="http://localhost:8000/verifikasi/{{ item.fotoktp }}" (click)="imagezoom(item.fotoktp)">
     </div>
     <div>
     <p>Foto Selfie + KTP</p>
-    <img src="http://localhost:8000/verifikasi/{{ item.fotowajah }}">
+    <img src="http://localhost:8000/verifikasi/{{ item.fotowajah }}" (click)="imagezoom(item.fotowajah)">
     </div>
   </div>
 </div>

@@ -10,6 +10,7 @@ import {Camera, CameraOptions} from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { ImageuploadPage } from '../imageupload/imageupload';
+import { ImagezoomPage } from '../imagezoom/imagezoom';
 /**
  * Generated class for the ProdukPage page.
  *
@@ -290,6 +291,23 @@ export class ProdukeditPage {
   
     toast.present();
   }
+  imageupload(){
+    let imageupload = this.modalController.create (ImageuploadPage);
+    imageupload.present();
+
+    imageupload.onDidDismiss(data => {
+      if(data != 0){
+        this.takeFoto(data);
+      }
+      else{
+        console.log("Close Button");
+      }
+    });
+  }
+  imagezoom (item) {
+    let imagezoom = this.modalController.create (ImagezoomPage, {item: item});
+    imagezoom.present();
+  }
 }
 
 @Component({
@@ -449,7 +467,48 @@ export class ProdukcreatePage {
   }
 
   imageupload () {
+    /*let actionSheet = this.actionSheetCtrl.create({
+      title: 'Pilih Source Foto',
+      buttons: [
+        {
+          text: 'Kamera',
+          cssClass: "css_icon_kamera",
+          handler: () => {
+            
+          }
+        },
+        {
+          text: 'Galeri',
+          cssClass: "css_icon_gallery",
+          handler: () => {
+            
+          }
+        },
+        {
+          text: 'Batal',
+          role: 'cancel',
+          handler: () => {
+            
+          }
+        }
+      ]
+    });
+    actionSheet.present();*/
+    
     let imageupload = this.modalController.create (ImageuploadPage);
     imageupload.present();
+
+    imageupload.onDidDismiss(data => {
+      if(data != 0){
+        this.takeFoto(data);
+      }
+      else{
+        console.log("Close Button");
+      }
+    });
+    }
+    imagezoom (item) {
+      let imagezoom = this.modalController.create (ImagezoomPage, {item: item});
+      imagezoom.present();
     }
 }

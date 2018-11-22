@@ -8,6 +8,7 @@ import { LoginArray } from '../../pages/login/loginarray';
 import { DaftarArray } from '../../pages/login/daftararray';
 //Set direktori redirect * Wajib *
 import { HomePage } from '../../pages/home/home';
+import { PenjualanPage } from '../../pages/penjualan/penjualan';
 import { Storage } from '@ionic/storage';
 //Tambahkan Provider
 import { HomeserviceProvider } from '../../providers/homeservice/homeservice';
@@ -45,16 +46,14 @@ export class LoginPage {
 
 ionViewDidLoad(){
   this.storage.get('level').then((val) => {
-    this.storage.get('nama_user').then((nama) => {
-      if(nama != null){
-        if(val == 'admin'){
-          this.events.publish('user:admin',nama);
+    this.storage.get('email_user').then((email) => {
+      this.storage.get('password').then((password) => {
+        if((email != null) && (password != null)){
+          this.email = email;
+          this.password = password;
+          this.ceklogin();
         }
-        else if(val == 'mitra'){
-          this.events.publish('user:mitra',nama);
-        }
-        this.nav.setRoot(HomePage);
-      }
+      });
     });
   });
 }
@@ -86,12 +85,18 @@ ceklogin(){
             //Redirect menuju ke root HomePage * Wajib *
             this.storage.set('id_user', data[key].id);
             this.storage.set('nama_user', data[key].nama);
+            this.storage.set('email_user', data[key].email);
+            this.storage.set('password', this.password);
             this.storage.set('level', data[key].level);
             if(data[key].level == 'admin'){
-              this.events.publish('user:admin',data[key].nama);
+              this.events.publish('user:admin',data);
+              //Redirect Home
+              this.nav.setRoot(PenjualanPage);
             }
             else if(data[key].level == 'mitra'){
-              this.events.publish('user:mitra',data[key].nama);
+              this.events.publish('user:mitra',data);
+              //Redirect
+              this.nav.setRoot(HomePage);
             }
             
             //Check App ID Notifikasi
@@ -111,9 +116,6 @@ ceklogin(){
                 //End Cek simpan perangkat
             });
             //End Cek App ID
-
-            //Redirect Home
-            this.nav.setRoot(HomePage);
          }
          else{
            gagal.present();
@@ -166,6 +168,7 @@ export class DaftarPage {
   items:LoginArray[]=[];
   id:Number;
   alamat:String;
+  kota:String;
   nama:String;
   email:String;
   password:String;
@@ -356,7 +359,7 @@ cekdaftar(){
             this.status = 1;
             
             loadingdata.present();
-            this.loginservice.daftaruser(new DaftarArray(this.id,this.nama,this.alamat,this.email,this.level,this.status,this.fotoktp,this.fotowajah,this.nohp))
+            this.loginservice.daftaruser(new DaftarArray(this.id,this.nama,this.alamat,this.kota,this.email,this.level,this.status,this.fotoktp,this.fotowajah,this.nohp))
             .subscribe(
               (data:DaftarArray)=>{
                 this.uploadFile();

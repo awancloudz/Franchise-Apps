@@ -39,7 +39,7 @@ export class KeranjangserviceProvider {
     let body = JSON.stringify(item);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    return this._http.put(this.url+"/"+item.id,
+    return this._http.put(this.url,
                   body, options)
                  .map((response:Response)=>response.json());
   }

@@ -14,6 +14,7 @@ import { KategoriArray } from '../../pages/kategori/kategoriarray';
 import { HomeProdukArray } from '../../pages/home/homeprodukarray';
 import { KategoriDetailPage } from '../../pages/kategori/kategori';
 import { KeranjangArray } from '../keranjang/keranjangarray';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'home-page',
@@ -39,7 +40,8 @@ export class HomePage {
               public loadincontroller:LoadingController,
               public _toast:ToastController,
               public kategoriservice:KategoriserviceProvider,
-              public homeservice:HomeserviceProvider) {
+              public homeservice:HomeserviceProvider,
+              private storage: Storage,) {
     //TOMBOL EXIT
     this.platform.ready().then(() => {
       this.platform.registerBackButtonAction(() => {
@@ -73,20 +75,22 @@ ionViewDidLoad() {
     content:"Loading Produk..."
   });
   loadingdata.present();
-  //Tampilkan data dari server
-  this.homeservice.tampilkanproduk().subscribe(
-    //Jika data sudah berhasil di load
-    (data:HomeProdukArray[])=>{
-      this.items=data;
-    },
-    //Jika Error
-    function (error){   
-    },
-    //Tutup Loading
-    function(){
-      loadingdata.dismiss();
-    }
-  ); 
+  this.storage.get('id_user').then((user) => {
+    //Tampilkan data dari server
+    this.homeservice.tampilkanproduk(user).subscribe(
+      //Jika data sudah berhasil di load
+      (data:HomeProdukArray[])=>{
+        this.items=data;
+      },
+      //Jika Error
+      function (error){   
+      },
+      //Tutup Loading
+      function(){
+        loadingdata.dismiss();
+      }
+    ); 
+  });
 }
 
   tombolkeranjang() {

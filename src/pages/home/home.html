@@ -7,7 +7,7 @@
     <ion-buttons end class="cart_button">
         <button ion-button icon-only (click)="tombolkeranjang()">
             <ion-icon name="cart"></ion-icon>
-            <p>99</p>
+            <p *ngFor="let item2 of items.koleksi2">{{ item2.jumlahkeranjang }}</p>
         </button>
     </ion-buttons>
   </ion-navbar>
@@ -46,7 +46,7 @@
     <h5>Product List</h5>
     <ion-grid no-padding>
         <ion-row>
-            <ion-col col-6 *ngFor="let item of items">
+            <ion-col col-6 *ngFor="let item of items.koleksi">
                 <ion-card>
                     <img src="http://localhost:8000/fotoupload/{{item.foto}}">
                     <h6>{{item.namaproduk}}</h6>

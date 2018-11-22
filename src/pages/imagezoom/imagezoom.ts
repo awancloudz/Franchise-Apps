@@ -14,12 +14,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'imagezoom.html',
 })
 export class ImagezoomPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  item;
+  constructor(public navCtrl: NavController, public params: NavParams) {
+    this.item = params.data.item;
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ImagezoomPage');
+    console.log(this.item);
   }
 
   closezoom() {
