@@ -19,7 +19,8 @@ page-keranjang {
 .keranjangpage_namabarang {
     line-height: 1.1;
     white-space: normal;
-    font-weight: bold;
+    font-weight: 500;
+    font-size: 16px;
 }
 
 .keranjangpage_decrement {
@@ -54,14 +55,14 @@ page-keranjang {
 }
 
 .keranjangpage_info {
-    line-height: 27px;
-    font-size: 13px;
-    margin-top: 2px;
+    line-height: 1.8;
+    font-size: 14px;
+    margin-top: 5px;
 }
 
 .keranjangpage_qty {
-    line-height: 27px;
-    font-size: 13px;
+    line-height: 1.8;
+    font-size: 14px;
 }
 
 ion-footer {

@@ -47,21 +47,24 @@ ion-segment {
 .pembeliandetail_namabarang {
     line-height: 1.1;
     white-space: normal;
+    font-size: 16px;
+    font-weight: 500;
 }
 
 .pembeliandetail_kodebarang {
     font-size: 14px;
+    color: gray;
 }
 
 .pembeliandetail_info {
     line-height: 27px;
-    font-size: 13px;
-    margin-top: 2px;
+    font-size: 14px;
+    margin-top: 0px;
 }
 
 .pembeliandetail_qty {
     line-height: 27px;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 }

@@ -11,6 +11,7 @@ page-produk {
     line-height: 1.1;
     white-space: normal;
     font-size: 16px;
+    font-weight: 500;
 }
 
 .produk_kodebarang {
@@ -20,7 +21,7 @@ page-produk {
 
 .produk_info {
     font-size: 14px;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .produk_qty {
@@ -76,7 +77,7 @@ page-produk {
         background-color: rgba(0, 0, 0, 0.5);
         position: absolute;
         margin-top: -40px;
-        margin-left: 36px;
+        margin-left: 37px;
         
         ion-icon {
             zoom: 1.4;
@@ -117,7 +118,7 @@ page-produk {
         background-color: rgba(0, 0, 0, 0.5);
         position: absolute;
         margin-top: -40px;
-        margin-left: 36px;
+        margin-left: 37px;
         
         ion-icon {
             zoom: 1.4;
