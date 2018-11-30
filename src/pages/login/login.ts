@@ -42,6 +42,31 @@ export class LoginPage {
     public loadincontroller:LoadingController,public loginservice:LoginserviceProvider,public _toast:ToastController,
     public alertCtrl: AlertController,private storage: Storage,private events: Events,
     public homeservice:HomeserviceProvider,public oneSignal: OneSignal) {
+          //TOMBOL EXIT
+    this.platform.ready().then(() => {
+      this.platform.registerBackButtonAction(() => {
+          let confirm = this.alertCtrl.create({
+            title: 'Konfirmasi',
+            message: 'Anda Ingin Keluar dari Aplikasi',
+            buttons: [
+              {
+                text: 'Tidak',
+                role: 'cancel',
+                handler: () => {
+                
+                }
+              },
+              {
+                text: 'Ya',
+                handler: () => {
+                  navigator['app'].exitApp();
+                }
+              }
+            ]
+          });
+          confirm.present();                
+      });
+    });
   }
 
 ionViewDidLoad(){
@@ -199,6 +224,11 @@ export class DaftarPage {
     public loadincontroller:LoadingController,public loginservice:LoginserviceProvider,public _toast:ToastController,
     public alertCtrl: AlertController,private storage: Storage,private camera: Camera,private transfer: FileTransfer,
     private file: File) {
+      //Hapus Back
+    let backAction =  platform.registerBackButtonAction(() => {
+      this.nav.pop();
+      backAction();
+    },2)
   }
 
 ngOnInit() {
@@ -435,6 +465,11 @@ export class ForgotPage {
     public nav: NavController,public platform: Platform,public actionSheetCtrl: ActionSheetController,
     public loadincontroller:LoadingController,public loginservice:LoginserviceProvider,public _toast:ToastController,
     public alertCtrl: AlertController) {
+      //Hapus Back
+    let backAction =  platform.registerBackButtonAction(() => {
+      this.nav.pop();
+      backAction();
+    },2)
   }
 
 ceklupa(){

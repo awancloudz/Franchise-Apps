@@ -8,6 +8,8 @@ import { OneSignal } from '@ionic-native/onesignal';
 import {Camera, CameraOptions} from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { FileChooser } from '@ionic-native/file-chooser';
+import { FilePath } from '@ionic-native/file-path';
 
 import { HomePage, HomeDetailPage, HomethumbnailPage, HomeprodukdetailPage, HometokoPage, HomechatPage, HomekomentarPage, HomekomentardetailPage, HomeuserPage, HomeratingPage } from '../pages/home/home';
 import { KategoriPage,KategoriDetailPage } from '../pages/kategori/kategori';
@@ -45,6 +47,7 @@ export class MyApp {
   public photos : any;
   public imageURI:any;
   public imageFileName:any;
+  
   gbawal:String;
   id:Number;
   fotoprofile:String;
@@ -66,7 +69,9 @@ export class MyApp {
                 public loadincontroller:LoadingController,
                 private camera: Camera,
                 private transfer: FileTransfer,
-                private file: File) {
+                private file: File,
+                private fileChooser: FileChooser,
+                private filePath: FilePath) {
                 this.initializeApp();
                 this.listenToLoginEvents();
 
@@ -161,25 +166,33 @@ export class MyApp {
   }
 
   takeFoto(source: any) {
-    const options : CameraOptions = {
-      quality: 25, // picture quality
-      destinationType: this.camera.DestinationType.FILE_URI,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE,
-      sourceType: source,
+    if (this.platform.is('android')){
+      const options : CameraOptions = {
+        quality: 25, // picture quality
+        destinationType: this.camera.DestinationType.NATIVE_URI,
+        encodingType: this.camera.EncodingType.JPEG,
+        mediaType: this.camera.MediaType.PICTURE,
+        sourceType: source,
+      }
+      this.camera.getPicture(options).then((imageData) => {
+        //Convert Path
+        this.filePath.resolveNativePath(imageData)
+          .then((imagePath) => {
+            //Push Array
+            var nama = imagePath.substr(imagePath.lastIndexOf('/') + 1);
+            this.imageURI = normalizeURL(imagePath);
+            this.photos.splice(0, 1);
+            this.photos.push(this.imageURI);
+            this.photos.reverse();
+            this.fotoprofile = "profile_" + nama;
+            this.uploadFile();
+        });
+         
+        }, (err) => {
+          console.log(err);
+          this.presentToast(err);
+      });
     }
-    this.camera.getPicture(options).then((imageData) => {
-        var nama = imageData.substr(imageData.lastIndexOf('/') + 1);
-        this.imageURI = normalizeURL(imageData);
-        this.photos.splice(0, 1);
-        this.photos.push(this.imageURI);
-        this.photos.reverse();
-        this.fotoprofile = "profile_" + nama;
-        this.uploadFile();
-      }, (err) => {
-        console.log(err);
-        this.presentToast(err);
-    });
   }
 
   uploadFile() {

@@ -35,6 +35,11 @@ export class PembelianserviceProvider {
    return this._http.get(this.url+"/detail/"+item.id)
    .map((response:Response)=>response.json());
   }
+  tampilkandetail2(item)
+  {
+   return this._http.get(this.url+"/detail2/"+item)
+   .map((response:Response)=>response.json());
+  }
   //Tambah pembelian baru
   tambahpembelian(item:PembelianArray){
     let body = JSON.stringify(item);

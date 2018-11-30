@@ -9,6 +9,7 @@ import { ProdukArray } from '../../pages/produk/produkarray';
 import {Camera, CameraOptions} from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { FilePath } from '@ionic-native/file-path';
 import { ImageuploadPage } from '../imageupload/imageupload';
 import { ImagezoomPage } from '../imagezoom/imagezoom';
 /**
@@ -163,7 +164,7 @@ export class ProdukeditPage {
   constructor(public navCtrl: NavController,public params: NavParams,private modalController: ModalController,
     public nav: NavController,public platform: Platform,public actionSheetCtrl: ActionSheetController,public alertCtrl: AlertController,
     public loadincontroller:LoadingController,public _toast:ToastController,public produkservice:ProdukserviceProvider,private camera: Camera,private transfer: FileTransfer,
-    private file: File) {
+    private file: File,private filePath: FilePath) {
     this.item = params.data.item;
     //Hapus Back
     let backAction =  platform.registerBackButtonAction(() => {
@@ -240,12 +241,17 @@ export class ProdukeditPage {
       sourceType: source,
     }
     this.camera.getPicture(options).then((imageData) => {
-        var nama = imageData.substr(imageData.lastIndexOf('/') + 1);
-        this.imageURI = normalizeURL(imageData);
-        this.photos.splice(0, 1);
-        this.photos.push(this.imageURI);
-        this.photos.reverse();
-        this.foto = "produk_" + nama;
+        //Convert Path
+        this.filePath.resolveNativePath(imageData)
+          .then((imagePath) => {
+            //Push Array
+            var nama = imagePath.substr(imagePath.lastIndexOf('/') + 1);
+            this.imageURI = normalizeURL(imagePath);
+            this.photos.splice(0, 1);
+            this.photos.push(this.imageURI);
+            this.photos.reverse();
+            this.foto = "produk_" + nama;
+        });
       }, (err) => {
         console.log(err);
         this.presentToast(err);
@@ -333,7 +339,7 @@ export class ProdukcreatePage {
   constructor(public navCtrl: NavController,public params: NavParams,private modalController: ModalController,
     public nav: NavController,public platform: Platform,public actionSheetCtrl: ActionSheetController,public alertCtrl: AlertController,
     public loadincontroller:LoadingController,public _toast:ToastController,public produkservice:ProdukserviceProvider,private camera: Camera,private transfer: FileTransfer,
-    private file: File) {
+    private file: File,private filePath: FilePath) {
     //Hapus Back
     let backAction =  platform.registerBackButtonAction(() => {
       this.nav.pop();
@@ -413,12 +419,17 @@ export class ProdukcreatePage {
       sourceType: source,
     }
     this.camera.getPicture(options).then((imageData) => {
-        var nama = imageData.substr(imageData.lastIndexOf('/') + 1);
-        this.imageURI = normalizeURL(imageData);
-        this.photos.splice(0, 1);
-        this.photos.push(this.imageURI);
-        this.photos.reverse();
-        this.foto = "produk_" + nama;
+        //Convert Path
+        this.filePath.resolveNativePath(imageData)
+          .then((imagePath) => {
+            //Push Array
+            var nama = imagePath.substr(imagePath.lastIndexOf('/') + 1);
+            this.imageURI = normalizeURL(imagePath);
+            this.photos.splice(0, 1);
+            this.photos.push(this.imageURI);
+            this.photos.reverse();
+            this.foto = "produk_" + nama;
+        });
       }, (err) => {
         console.log(err);
         this.presentToast(err);
@@ -445,7 +456,6 @@ export class ProdukcreatePage {
       this.imageFileName = "image.jpg";
       loader1.dismiss();
       this.presentToast("Upload Foto Produk Sukses");
-      //this.nav.setRoot(PembelianPage);
     }, (err) => {
       console.log(err);
       loader1.dismiss();
@@ -467,34 +477,6 @@ export class ProdukcreatePage {
   }
 
   imageupload () {
-    /*let actionSheet = this.actionSheetCtrl.create({
-      title: 'Pilih Source Foto',
-      buttons: [
-        {
-          text: 'Kamera',
-          cssClass: "css_icon_kamera",
-          handler: () => {
-            
-          }
-        },
-        {
-          text: 'Galeri',
-          cssClass: "css_icon_gallery",
-          handler: () => {
-            
-          }
-        },
-        {
-          text: 'Batal',
-          role: 'cancel',
-          handler: () => {
-            
-          }
-        }
-      ]
-    });
-    actionSheet.present();*/
-    
     let imageupload = this.modalController.create (ImageuploadPage);
     imageupload.present();
 

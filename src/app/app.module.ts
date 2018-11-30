@@ -9,6 +9,8 @@ import { File } from '@ionic-native/file';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { Camera} from '@ionic-native/camera';
+import { FilePath } from '@ionic-native/file-path';
+import { PhotoViewer } from '@ionic-native/photo-viewer';
 //Push Notifications
 import { OneSignal } from '@ionic-native/onesignal';
 //WebView
@@ -181,6 +183,8 @@ import { ImagezoomPageModule } from '../pages/imagezoom/imagezoom.module';
     FileTransferObject,
     FileChooser,
     Camera,
+    FilePath,
+    PhotoViewer,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     KategoriserviceProvider,
     KeranjangserviceProvider,

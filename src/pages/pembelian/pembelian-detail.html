@@ -54,32 +54,27 @@
 </ion-content>
 
 <ion-footer>
-  <ion-grid style="text-align: center">
+  <ion-grid style="background-color: white; text-align: center">
     <ion-row style="height: 30px">
       <ion-col>
         <p style="margin-top: 3px" *ngFor="let item2 of items.koleksi2"><b>Total Pembayaran : Rp {{ item2.subtotal }},-</b></p>
       </ion-col>
     </ion-row>
 
-    <!-- <ion-row>
-      <ion-col *ngFor="let item2 of items.koleksi2">
-        <ion-buttons>
-            <button *ngIf="item2.status == 'order' && item2.bukti != ''" color="secondary" ion-button block style="text-transform: none; font-size: 14px" (click)="tombolkonfirmasi(item2)">Data Pembayaran</button>
-          <button *ngIf="item2.status == 'order' && item2.bukti == ''" color="secondary" ion-button block style="text-transform: none; font-size: 14px" (click)="tombolkonfirmasi(item2)">Konfirmasi Pembayaran</button>
-          <button *ngIf="item2.status == 'order' && item2.bukti == ''" color="danger" ion-button block style="text-transform: none; font-size: 14px" (click)="tombolbatal(item2)">Batalkan Pesanan</button>
-          <button *ngIf="item2.status == 'kirim'" color="secondary" ion-button block style="text-transform: none; font-size: 14px" (click)="tombolselesai(item2)">Konfirmasi Terima Barang</button>
-        </ion-buttons>
-      </ion-col>
-    </ion-row> -->
-
-    <ion-row style="margin-bottom: -5px">
-      <ion-col col-2>
-        <button ion-button block color="danger">
+    <ion-row style="margin-bottom: -5px" *ngFor="let item2 of items.koleksi2">
+      <ion-col col-2 *ngIf="item2.status == 'order' && item2.bukti == ''">
+        <button ion-button block color="danger" (click)="tombolbatal(item2)">
           <ion-icon name="md-trash"></ion-icon>
         </button>
       </ion-col>
-      <ion-col>
-        <button ion-button block color="secondary" style="text-transform: none; font-size: 14px">Konfirmasi Pembayaran</button>
+      <ion-col *ngIf="item2.status == 'order' && item2.bukti == ''">
+        <button ion-button block color="secondary" style="text-transform: none; font-size: 14px" (click)="tombolkonfirmasi(item2)">Konfirmasi Pembayaran</button>
+      </ion-col>
+      <ion-col *ngIf="item2.status == 'order' && item2.bukti != ''">
+        <button color="secondary" ion-button block style="text-transform: none; font-size: 14px" (click)="tombolkonfirmasi(item2)">Data Pembayaran</button>
+      </ion-col>
+      <ion-col *ngIf="item2.status == 'kirim'">
+        <button color="secondary" ion-button block style="text-transform: none; font-size: 14px" (click)="tombolselesai(item2)">Konfirmasi Terima Barang</button>
       </ion-col>
     </ion-row>
   </ion-grid>

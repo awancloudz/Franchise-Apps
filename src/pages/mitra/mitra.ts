@@ -5,6 +5,7 @@ import { MitraserviceProvider } from '../../providers/mitraservice/mitraservice'
 import { MitraArray } from './mitraarray';
 import { Storage } from '@ionic/storage';
 import { ImagezoomPage } from '../imagezoom/imagezoom';
+import { PhotoViewer } from '@ionic-native/photo-viewer';
 /**
  * Generated class for the MitraPage page.
  *
@@ -110,7 +111,8 @@ export class MitradetailPage {
   constructor(public navCtrl: NavController,public params: NavParams,
     public nav: NavController,public platform: Platform,public actionSheetCtrl: ActionSheetController,
     public loadincontroller:LoadingController,public mitraservice:MitraserviceProvider,public _toast:ToastController,
-    private modalController: ModalController,public alertCtrl: AlertController,private storage: Storage,private events: Events) {
+    private modalController: ModalController,public alertCtrl: AlertController,private storage: Storage,private events: Events,
+    private photoViewer: PhotoViewer) {
     this.item = params.data.item;
     //Hapus Back
     let backAction =  platform.registerBackButtonAction(() => {
@@ -185,7 +187,8 @@ export class MitradetailPage {
     imagezoom (photo) {
       this.zoom = "http://localhost:8000/verifikasi/" + photo;
       console.log(this.zoom);
-      let imagezoom = this.modalController.create (ImagezoomPage, {item: this.zoom});
-      imagezoom.present();
+      this.photoViewer.show(this.zoom,'Verifikasi Mitra', {share: true});
+      // let imagezoom = this.modalController.create (ImagezoomPage, {item: this.zoom});
+      // imagezoom.present();
     }
 }

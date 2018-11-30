@@ -10,6 +10,7 @@ import { File } from '@ionic-native/file';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { FilterPage } from '../filter/filter';
 import { ImagezoomPage } from '../imagezoom/imagezoom';
+import { PhotoViewer } from '@ionic-native/photo-viewer';
 /**
  * Generated class for the PenjualanPage page.
  *
@@ -183,7 +184,8 @@ export class PenjualandetailPage {
   items:PenjualanArray[]=[];
   constructor(  public navCtrl: NavController,public params: NavParams,private modalController: ModalController,
     public nav: NavController,public platform: Platform,public actionSheetCtrl: ActionSheetController,public alertCtrl: AlertController,
-    public loadincontroller:LoadingController,public _toast:ToastController,public penjualanservice:PenjualanserviceProvider) {
+    public loadincontroller:LoadingController,public _toast:ToastController,public penjualanservice:PenjualanserviceProvider,
+    private photoViewer: PhotoViewer) {
     this.item = params.data.item;
     //Hapus Back
     let backAction =  platform.registerBackButtonAction(() => {
@@ -259,7 +261,8 @@ tombolproses(item){
   imagezoom (item2) {
     this.zoom = "http://localhost:8000/verifikasi/" + item2.bukti;
     console.log(this.zoom);
-    let imagezoom = this.modalController.create (ImagezoomPage, {item: this.zoom});
-    imagezoom.present();
+    this.photoViewer.show(this.zoom,'Bukti Pembayaran', {share: true});
+    // let imagezoom = this.modalController.create (ImagezoomPage, {item: this.zoom});
+    // imagezoom.present();
   }
 }

@@ -128,7 +128,24 @@ ionViewDidLoad(item) {
     let alert = this.alertCtrl.create({
       title: 'Informasi',
       subTitle: 'Order sukses, silahkan melakukan pembayaran.',
-      buttons: ['OK']
+      buttons: [
+        {
+          text: 'OK',
+          handler: () => {
+            //Tampilkan data dari server
+            this.pembelianservice.tampilkandetail2(this.item.kodepenjualan).subscribe(
+              //Jika data sudah berhasil di load
+              (data)=>{
+                this.nav.setRoot(PembelianKonfirmasiPage, {item: data[0]});
+              },
+              //Jika Error
+              function (error){},
+              //Tutup Loading
+              function(){}
+            );
+          }
+        }
+      ]
     });
     //Loading Data
     let loadingdata=this.loadincontroller.create({
@@ -139,14 +156,13 @@ ionViewDidLoad(item) {
     this.pembelianservice.tambahpembelian(new PembelianArray(this.id,this.kodepenjualan,this.id_users,this.tanggal,this.totaldiskon,this.totalbelanja,this.subtotal,this.status,this.bukti))
     .subscribe(
       (data:PembelianArray)=>{
-        //Push
-        loadingdata.dismiss();
-        this.nav.setRoot(PembelianKonfirmasiPage, {item: this.item});
+
       },
       function(error){
         loadingdata.dismiss();
       },
       function(){
+        loadingdata.dismiss();
         alert.present();
       }
     );
@@ -257,24 +273,44 @@ let alert = this.alertCtrl.create({
 let loadingdata=this.loadincontroller.create({
   content:"Loading..."
 });
-loadingdata.present();
-//Tampilkan data dari server
-this.pembelianservice.hapuspembelian(new PembelianArray(this.item.id,this.item.kodepenjualan,this.item.id_users,this.item.tanggal,this.item.totaldiskon,this.item.totalbelanja,this.item.subtotal,this.item.status,this.item.bukti))
-.subscribe(
-  //Jika data sudah berhasil di load
-  (data:PembelianArray[])=>{
-    this.items=data;
-    this.nav.setRoot(PembelianPage);
-  },
-  //Jika Error
-  function (error){   
-  },
-  //Tutup Loading
-  function(){
-    loadingdata.dismiss();
-    alert.present();
-  }
-);
+//Alert Konfirmasi
+let confirm = this.alertCtrl.create({
+  title: 'Konfirmasi',
+  message: 'Yakin Membatalkan Pesanan ?',
+  buttons: [
+    {
+      text: 'Tidak',
+      role: 'cancel',
+      handler: () => {
+        
+      }
+    },
+    {
+      text: 'Ya',
+      handler: () => {
+        loadingdata.present();
+        //Tampilkan data dari server
+        this.pembelianservice.hapuspembelian(new PembelianArray(this.item.id,this.item.kodepenjualan,this.item.id_users,this.item.tanggal,this.item.totaldiskon,this.item.totalbelanja,this.item.subtotal,this.item.status,this.item.bukti))
+        .subscribe(
+          //Jika data sudah berhasil di load
+          (data:PembelianArray[])=>{
+            this.items=data;
+            this.nav.setRoot(PembelianPage);
+          },
+          //Jika Error
+          function (error){   
+          },
+          //Tutup Loading
+          function(){
+            loadingdata.dismiss();
+            alert.present();
+          }
+        );
+      }
+    }
+  ]
+});
+confirm.present();
 }
 imagezoom (photo) {
   this.zoom = "http://localhost:8000/fotoupload/" + photo;
@@ -309,6 +345,7 @@ export class PembelianKonfirmasiPage {
     public loadincontroller:LoadingController,public _toast:ToastController,public pembelianservice:PembelianserviceProvider,private storage: Storage,private camera: Camera,private transfer: FileTransfer,
     private modalController: ModalController,private file: File) {
     this.item = params.data.item;
+    console.log(this.item);
     //Hapus Back
     let backAction =  platform.registerBackButtonAction(() => {
       this.nav.pop();
