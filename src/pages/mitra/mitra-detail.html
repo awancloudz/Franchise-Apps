@@ -8,9 +8,17 @@
 </ion-header>
 
 <ion-content>
-<div *ngFor="let item of items">
+<!-- <div *ngFor="let item of items"> -->
   <div class="mitradetail_nama">
     <ion-grid>
+      <ion-row>
+        <ion-col col-3>
+          <p>No.KTP</p>
+        </ion-col>
+        <ion-col>
+          <p>: {{ item.noktp }}</p>
+        </ion-col>
+      </ion-row>
       <ion-row>
         <ion-col col-3>
           <p>Nama</p>
@@ -64,13 +72,13 @@
     <img src="http://localhost:8000/verifikasi/{{ item.fotowajah }}" (click)="imagezoom(item.fotowajah)">
     </div>
   </div>
-</div>
+<!-- </div> -->
 
     
 </ion-content>
 
 <ion-footer style="background-color: white; text-align: center">
-  <ion-buttons *ngFor="let item of items">
+  <ion-buttons>
     <button ion-button block color="secondary" *ngIf="item.status == 1" (click)="tombolproses(item)"><p>Aktifkan Akun</p></button>
     <button ion-button block color="danger" *ngIf="item.status == 2" (click)="tombolproses(item)"><p>Suspend Akun</p></button>
   </ion-buttons>

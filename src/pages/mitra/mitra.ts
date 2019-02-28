@@ -99,6 +99,7 @@ export class MitradetailPage {
   id:Number;
   alamat:String;
   kota:String;
+  noktp:String;
   nama:String;
   email:String;
   password:String;
@@ -122,13 +123,13 @@ export class MitradetailPage {
   }
 
   ionViewDidLoad() {
-    //Loading bar
+  /*  //Loading bar
     let loadingdata=this.loadincontroller.create({
       content:"Loading..."
     });
     loadingdata.present();
     //Tampilkan data dari server
-    this.mitraservice.tampilkandetail(new MitraArray(this.item.id,this.item.nama,this.item.alamat,this.item.kota,this.item.email,this.item.level,this.item.status,this.item.fotoktp,this.item.fotowajah,this.item.nohp)).subscribe(
+    this.mitraservice.tampilkandetail(new MitraArray(this.item.id,this.item.noktp,this.item.nama,this.item.alamat,this.item.kota,this.item.email,this.item.level,this.item.status,this.item.fotoktp,this.item.fotowajah,this.item.nohp)).subscribe(
       //Jika data sudah berhasil di load
       (data:MitraArray[])=>{
         this.items=data;
@@ -140,7 +141,7 @@ export class MitradetailPage {
       function(){
         loadingdata.dismiss();
       }
-    );
+    );*/
   }
   tombolproses(item){
     if(this.item.status == 1){
@@ -168,7 +169,7 @@ export class MitradetailPage {
     });
     loadingdata.present();
     //Tampilkan data dari server
-    this.mitraservice.edituser(new MitraArray(this.item.id,this.item.nama,this.item.alamat,this.item.kota,this.item.email,this.item.level,this.item.status,this.item.fotoktp,this.item.fotowajah,this.item.nohp))
+    this.mitraservice.edituser(new MitraArray(this.item.id,this.noktp,this.item.nama,this.item.alamat,this.item.kota,this.item.email,this.item.level,this.item.status,this.item.fotoktp,this.item.fotowajah,this.item.nohp))
     .subscribe(
       //Jika data sudah berhasil di load
       (data:MitraArray[])=>{

@@ -16,34 +16,51 @@
 <div class="daftarpage_form">
   <ion-item no-lines >
     <ion-label stacked>Nomor KTP</ion-label>
-    <ion-input text-center type="number"  [(ngModel)]="noktp"></ion-input>
+    <ion-input text-center type="number"  [(ngModel)]="noktp" (keyup)="cekinput(1)"></ion-input>
+  </ion-item>
+  <ion-item *ngIf="noktp == '' && validktp == 0">
+    <ion-label stacked><i>*Nomor KTP Wajib Diisi</i></ion-label>
   </ion-item>
 
   <ion-item no-lines>
     <ion-label stacked>Nama</ion-label>
-    <ion-input text-center type="text" [(ngModel)]="nama"></ion-input>
+    <ion-input text-center type="text" [(ngModel)]="nama" (keyup)="cekinput(2)"></ion-input>
+  </ion-item>
+  <ion-item *ngIf="nama == '' && validnama == 0">
+    <ion-label stacked><i>*Nama Wajib Diisi</i></ion-label>
   </ion-item>
 
   <ion-item no-lines>
     <ion-label stacked>Alamat</ion-label>
-    <ion-textarea text-center rows="3" [(ngModel)]="alamat"></ion-textarea>
+    <ion-textarea text-center rows="3" [(ngModel)]="alamat" (keyup)="cekinput(3)"></ion-textarea>
+  </ion-item>
+  <ion-item *ngIf="alamat == '' && validalamat == 0">
+    <ion-label stacked><i>*Alamat Wajib Diisi</i></ion-label>
   </ion-item>
 
   <ion-item no-lines>
     <ion-label stacked>Kota</ion-label>
-    <ion-input text-center type="text" [(ngModel)]="kota"></ion-input>
+    <ion-input text-center type="text" [(ngModel)]="kota" (keyup)="cekinput(4)"></ion-input>
+  </ion-item>
+  <ion-item *ngIf="kota == '' && validkota == 0">
+    <ion-label stacked><i>*Kota Wajib Diisi</i></ion-label>
   </ion-item>
 
   <ion-item no-lines>
     <ion-label stacked>Nomor Handphone</ion-label>
-    <ion-input text-center type="number" [(ngModel)]="nohp"></ion-input>
+    <ion-input text-center type="number" [(ngModel)]="nohp" (keyup)="cekinput(5)"></ion-input>
+  </ion-item>
+  <ion-item *ngIf="nohp == '' && validnohp == 0">
+    <ion-label stacked><i>*No.Handphone Wajib Diisi</i></ion-label>
   </ion-item>
 
   <ion-item no-lines>
     <ion-label stacked>Email</ion-label>
-    <ion-input text-center type="email" [(ngModel)]="email"></ion-input>
+    <ion-input text-center type="email" [(ngModel)]="email" (keyup)="cekinput(6)"></ion-input>
   </ion-item>
-
+  <ion-item *ngIf="email == '' && validemail == 0">
+    <ion-label stacked><i>*Email Wajib Diisi</i></ion-label>
+  </ion-item>
 </div>
 
 <ion-input type="hidden" [(ngModel)]="fotoktp"></ion-input>
@@ -90,5 +107,4 @@
     </ion-row>
   </ion-grid>
 </div>
-
 </ion-content>

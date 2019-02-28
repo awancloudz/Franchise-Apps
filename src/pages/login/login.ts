@@ -109,6 +109,7 @@ ceklogin(){
          if((data[key].email != null) && (data[key].password != null)){
             //Redirect menuju ke root HomePage * Wajib *
             this.storage.set('id_user', data[key].id);
+            this.storage.set('no_ktp', data[key].noktp);
             this.storage.set('nama_user', data[key].nama);
             this.storage.set('email_user', data[key].email);
             this.storage.set('password', this.password);
@@ -205,12 +206,22 @@ export class DaftarPage {
   public imageURI2:any;
   public imageFileName2:any;
 
+  //Validasi
+  inp:any;
+  jumlahkosong:any;
+  validktp:any;
+  validnama:any;
+  validalamat:any;
+  validkota:any;
+  validnohp:any;
+  validemail:any;
   gbawal:String;
   gbawal2:String;
   items:LoginArray[]=[];
   id:Number;
   alamat:String;
   kota:String;
+  noktp:String;
   nama:String;
   email:String;
   password:String;
@@ -225,10 +236,18 @@ export class DaftarPage {
     public alertCtrl: AlertController,private storage: Storage,private camera: Camera,private transfer: FileTransfer,
     private file: File) {
       //Hapus Back
-    let backAction =  platform.registerBackButtonAction(() => {
-      this.nav.pop();
-      backAction();
-    },2)
+      let backAction =  platform.registerBackButtonAction(() => {
+        this.nav.pop();
+        backAction();
+      },2)
+
+      this.jumlahkosong = 6;
+      this.validktp = 0;
+      this.validnama= 0;
+      this.validalamat = 0;
+      this.validkota = 0;
+      this.validnohp = 0;
+      this.validemail = 0;
   }
 
 ngOnInit() {
@@ -240,7 +259,67 @@ ngOnInit() {
   this.gbawal2 = "login_image/photo_placeholder.png";
   this.photos2.push(this.gbawal2);
 }
-
+cekinput(inp){
+  this.inp = inp;
+  //KTP
+  if((inp == 1) && (this.noktp != '') && (this.validktp == 0)){
+    this.validktp = 1;
+    this.jumlahkosong = this.jumlahkosong - 1;
+  }
+  else if((inp == 1) && (this.noktp == '') && (this.validktp == 1)){
+    this.validktp = 0;
+    this.jumlahkosong = this.jumlahkosong + 1;
+  }
+  //NAMA
+  if((inp == 2) && (this.nama != '') && (this.validnama == 0)){
+    this.validnama = 1;
+    this.jumlahkosong = this.jumlahkosong - 1;
+  }
+  else if((inp == 2) && (this.nama == '') && (this.validnama == 1)){
+    this.validnama = 0;
+    this.jumlahkosong = this.jumlahkosong + 1;
+  }
+  //ALAMAT
+  if((inp == 3) && (this.alamat != '') && (this.validalamat == 0)){
+    this.validalamat = 1;
+    this.jumlahkosong = this.jumlahkosong - 1;
+  }
+  else if((inp == 3) && (this.alamat == '') && (this.validalamat == 1)){
+    this.validalamat = 0;
+    this.jumlahkosong = this.jumlahkosong + 1;
+  }
+  //KOTA
+  if((inp == 4) && (this.kota != '') && (this.validkota == 0)){
+    this.validkota = 1;
+    this.jumlahkosong = this.jumlahkosong - 1;
+  }
+  else if((inp == 4) && (this.kota == '') && (this.validkota == 1)){
+    this.validkota = 0;
+    this.jumlahkosong = this.jumlahkosong + 1;
+  }
+  //NO.Handphone
+  if((inp == 5) && (this.nohp != '') && (this.validnohp == 0)){
+    this.validnohp = 1;
+    this.jumlahkosong = this.jumlahkosong - 1;
+  }
+  else if((inp == 5) && (this.nohp == '') && (this.validnohp == 1)){
+    this.validnohp = 0;
+    this.jumlahkosong = this.jumlahkosong + 1;
+  }
+  //EMAIL
+  if((inp == 6) && (this.email != '') && (this.validemail == 0)){
+    this.validemail = 1;
+    this.jumlahkosong = this.jumlahkosong - 1;
+  }
+  else if((inp == 6) && (this.email == '') && (this.validemail == 1)){
+    this.validemail = 0;
+    this.jumlahkosong = this.jumlahkosong + 1;
+  }
+}
+valEmail(email){
+  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
 takeKTP() {
   const options : CameraOptions = {
     quality: 25, // picture quality
@@ -364,6 +443,11 @@ cekdaftar(){
     subTitle: 'Harap Upload Foto KTP / Selfie terlebih dahulu.',
     buttons: ['OK']
   });
+  let kosong2 = this.alertCtrl.create({
+    title: 'Informasi',
+    subTitle: 'Silahkan lengkapi isian form terlebih dahulu.',
+    buttons: ['OK']
+  });
   let sukses = this.alertCtrl.create({
     title: 'Informasi',
     subTitle: 'Pendaftaran Sukses,konfirmasi pendaftaran akan dikirim lewat SMS/Email.',
@@ -389,6 +473,11 @@ cekdaftar(){
   let loadingdata=this.loadincontroller.create({
       content:"Proses Verifikasi..."
   });
+  //Cek inputan
+  if(this.jumlahkosong > 0){
+    kosong2.present();
+  }
+  else if(this.jumlahkosong == 0){
   loadingdata.present();
   //Mengambil value dari input field untuk dimasukkan ke Array
   this.loginservice.cekdaftar(new LoginArray(this.email,this.password))
@@ -406,7 +495,7 @@ cekdaftar(){
             this.status = 1;
             
             loadingdata.present();
-            this.loginservice.daftaruser(new DaftarArray(this.id,this.nama,this.alamat,this.kota,this.email,this.level,this.status,this.fotoktp,this.fotowajah,this.nohp))
+            this.loginservice.daftaruser(new DaftarArray(this.id,this.noktp,this.nama,this.alamat,this.kota,this.email,this.level,this.status,this.fotoktp,this.fotowajah,this.nohp))
             .subscribe(
               (data:DaftarArray)=>{
                 this.uploadFile();
@@ -448,6 +537,7 @@ cekdaftar(){
       loadingdata.dismiss();
     }
   );
+  }
 }
 login(){
   this.nav.setRoot(LoginPage);
