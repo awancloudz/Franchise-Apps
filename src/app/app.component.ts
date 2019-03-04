@@ -21,7 +21,7 @@ import { DompetPage } from '../pages/dompet/dompet';
 import { PesanPage,PesanDetailPage } from '../pages/pesan/pesan';
 import { SettingPage } from '../pages/setting/setting';
 import { ProfilePage } from '../pages/profile/profile';
-import { LoginPage, ForgotPage, DaftarPage, InformasipendaftaranPage} from '../pages/login/login';
+import { LoginPage, DaftarownerPage, DaftarmitraPage, ForgotPage, InformasipendaftaranPage} from '../pages/login/login';
 import { KeranjangPage } from '../pages/keranjang/keranjang';
 import { SearchPage } from '../pages/search/search';
 import { TokoPage } from '../pages/toko/toko';

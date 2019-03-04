@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title style="margin-left: -12px">Pendaftaran Owner</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="cekdaftar()">
+        <ion-icon name="ios-checkmark-circle-outline" class="button_icon"></ion-icon>
+      </button>
+  </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+<div class="daftarpage_form">
+  <ion-item no-lines >
+    <ion-label stacked>Nomor KTP</ion-label>
+    <ion-input type="number"  [(ngModel)]="noktp" (keyup)="cekinput(1)"></ion-input>
+  </ion-item>
+  <ion-item *ngIf="noktp == '' && validktp == 0">
+    <ion-label stacked><i>*Nomor KTP Wajib Diisi</i></ion-label>
+  </ion-item>
+
+  <ion-item no-lines>
+    <ion-label stacked>Nama Owner</ion-label>
+    <ion-input type="text" [(ngModel)]="namaowner" (keyup)="cekinput(2)"></ion-input>
+  </ion-item>
+  <ion-item *ngIf="nama == '' && validnama == 0">
+    <ion-label stacked><i>*Nama Owner Wajib Diisi</i></ion-label>
+  </ion-item>
+
+  <ion-item no-lines>
+    <ion-label stacked>Nama Franchise</ion-label>
+    <ion-input type="text" [(ngModel)]="namafranchise"></ion-input>
+  </ion-item>
+
+  <ion-item no-lines>
+    <ion-label stacked>Alamat</ion-label>
+    <ion-textarea rows="3" [(ngModel)]="alamat" (keyup)="cekinput(3)"></ion-textarea>
+  </ion-item>
+  <ion-item *ngIf="alamat == '' && validalamat == 0">
+    <ion-label stacked><i>*Alamat Wajib Diisi</i></ion-label>
+  </ion-item>
+
+  <ion-item no-lines>
+    <ion-label stacked>Kota</ion-label>
+    <ion-select [(ngModel)]="kota" submitText="yes" cancelText="cancel" style="padding-left: 8px;">
+      <ion-option value="semarang">Semarang</ion-option>
+      <ion-option value="surabaya">Surabaya</ion-option>
+      <ion-option value="bandung">Bandung</ion-option>
+      <ion-option value="jakarta">Jakarta</ion-option>
+      <ion-option value="bogor">Bogor</ion-option>
+      <ion-option value="bekasi">Bekasi</ion-option>
+      <ion-option value="yogyakarta">Yogyakarta</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item *ngIf="kota == '' && validkota == 0">
+    <ion-label stacked><i>*Kota Wajib Diisi</i></ion-label>
+  </ion-item>
+
+  <ion-item no-lines>
+    <ion-label stacked>Provinsi</ion-label>
+    <ion-select [(ngModel)]="provinsi" submitText="yes" cancelText="cancel" style="padding-left: 8px;">
+      <ion-option value="jawa_barat">Jaw Barat</ion-option>
+      <ion-option value="jawa_tengah">Jawa Tengah</ion-option>
+      <ion-option value="jawa_timur">Jawa Timur</ion-option>
+      <ion-option value="jakarta">Jakarta</ion-option>
+      <ion-option value="aceh">Aceh</ion-option>
+      <ion-option value="bali">Bali</ion-option>
+      <ion-option value="yogyakarta">Yogyakarta</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item no-lines>
+    <ion-label stacked>Nomor Handphone</ion-label>
+    <ion-input type="number" [(ngModel)]="nohp" (keyup)="cekinput(5)"></ion-input>
+  </ion-item>
+  <ion-item *ngIf="nohp == '' && validnohp == 0">
+    <ion-label stacked><i>*No.Handphone Wajib Diisi</i></ion-label>
+  </ion-item>
+
+  <ion-item no-lines>
+    <ion-label stacked>Email</ion-label>
+    <ion-input type="email" [(ngModel)]="email" (keyup)="cekinput(6)"></ion-input>
+  </ion-item>
+  <ion-item *ngIf="email == '' && validemail == 0">
+    <ion-label stacked><i>*Email Wajib Diisi</i></ion-label>
+  </ion-item>
+
+  <ion-item no-lines>
+    <ion-label stacked>Status Franchise</ion-label>
+    <ion-select [(ngModel)]="statusfranchise" submitText="yes" cancelText="cancel" style="padding-left: 8px;">
+      <ion-option value="mitra20">Mitra 1 - 20</ion-option>
+      <ion-option value="mitra50">Mitra 1 - 50</ion-option>
+      <ion-option value="mitra100">Mitra 1 - 100</ion-option>
+      <ion-option value="mitra200">Mitra 1 - 200</ion-option>
+      <ion-option value="mitra200up">Mitra 200+</ion-option>
+    </ion-select>
+  </ion-item>
+</div>
+
+</ion-content>

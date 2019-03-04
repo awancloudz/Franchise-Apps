@@ -1,10 +1,10 @@
-<ion-content style="background-image: url('login_image/background_official_logo.png'); background-repeat: no-repeat; background-position: center">
+<ion-content style="background-image: url('login-image/login-background.png'); background-repeat: no-repeat; background-position: center; position: fixed">
 
 <div>
   <ion-grid>
     <ion-row>
       <ion-col style="text-align: center">
-        <img src="login_image/official_logo.png" class="loginpage_image">
+        <img src="login-image/official-logo.png" class="loginpage_image">
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -23,7 +23,7 @@
     </ion-item>
 
     <ion-buttons>
-        <button ion-button color="secondary" (click)="ceklogin()">Masuk</button>
+        <button ion-button color="secondary" (click)="ceklogin()">Login</button>
     </ion-buttons>
   </div>
 
@@ -31,12 +31,21 @@
     <ion-grid>
       <ion-row class="loginpage_button">
         <ion-col>
-          <p>Berminat jadi mitra kami?
-            <button ion-button clear color="light" (click)="daftar()">Daftar</button>
-          </p>
+          <p>Belum terdaftar? Daftar sebagai</p>
         </ion-col>
       </ion-row>
       <ion-row class="loginpage_button2">
+        <ion-col>
+          <button ion-button color="secondary" block (click)="daftarowner()">Owner</button>
+        </ion-col>
+        <ion-col col-2>
+          <h6>atau</h6>
+        </ion-col>
+        <ion-col>
+          <button ion-button color="secondary" block (click)="daftarmitra()">Mitra</button>
+        </ion-col>
+      </ion-row>
+      <ion-row class="loginpage_button3">
         <ion-col>
           <ion-buttons>
           <button ion-button clear color="light" (click)="informasipendaftaran()" style="margin-top: -8px">Informasi Pendaftaran</button>

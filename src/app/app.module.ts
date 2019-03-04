@@ -36,7 +36,7 @@ import { TokopenjualanPage,TokopenjualanDetailPage } from '../pages/tokopenjuala
 import { TokoprodukPage,TokoprodukCreatePage } from '../pages/tokoproduk/tokoproduk';
 import { TokoprofilePage,TokoCreatePage } from '../pages/tokoprofile/tokoprofile';
 import { TokosearchPage } from '../pages/tokosearch/tokosearch';
-import { LoginPage, DaftarPage, ForgotPage, InformasipendaftaranPage } from '../pages/login/login';
+import { LoginPage, DaftarownerPage, DaftarmitraPage, ForgotPage, InformasipendaftaranPage } from '../pages/login/login';
 import { ProfilePage } from '../pages/profile/profile';
 import { FilterPage } from '../pages/filter/filter';
 import { ImageuploadPage } from '../pages/imageupload/imageupload';
@@ -159,7 +159,7 @@ import { ImagezoomPageModule } from '../pages/imagezoom/imagezoom.module';
     SettingPage,
     KeranjangPage, KeranjangcreatePage,
     SearchPage,
-    LoginPage, DaftarPage, ForgotPage, InformasipendaftaranPage,
+    LoginPage, DaftarownerPage, DaftarmitraPage, ForgotPage, InformasipendaftaranPage,
     TokoPage,
     TokokategoriPage,TokokategoriDetailPage,
     TokokeranjangPage,TokokeranjangPage2,TokokeranjangCreatePage,TokokeranjangCreatePage2,

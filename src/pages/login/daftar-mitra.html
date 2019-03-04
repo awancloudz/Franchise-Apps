@@ -13,10 +13,13 @@
 </ion-header>
 
 <ion-content>
+
+<ion-searchbar placeholder="Pencarian Franchise" animated="true"></ion-searchbar>
+
 <div class="daftarpage_form">
   <ion-item no-lines >
     <ion-label stacked>Nomor KTP</ion-label>
-    <ion-input text-center type="number"  [(ngModel)]="noktp" (keyup)="cekinput(1)"></ion-input>
+    <ion-input type="number"  [(ngModel)]="noktp" (keyup)="cekinput(1)"></ion-input>
   </ion-item>
   <ion-item *ngIf="noktp == '' && validktp == 0">
     <ion-label stacked><i>*Nomor KTP Wajib Diisi</i></ion-label>
@@ -24,7 +27,7 @@
 
   <ion-item no-lines>
     <ion-label stacked>Nama</ion-label>
-    <ion-input text-center type="text" [(ngModel)]="nama" (keyup)="cekinput(2)"></ion-input>
+    <ion-input type="text" [(ngModel)]="nama" (keyup)="cekinput(2)"></ion-input>
   </ion-item>
   <ion-item *ngIf="nama == '' && validnama == 0">
     <ion-label stacked><i>*Nama Wajib Diisi</i></ion-label>
@@ -32,7 +35,7 @@
 
   <ion-item no-lines>
     <ion-label stacked>Alamat</ion-label>
-    <ion-textarea text-center rows="3" [(ngModel)]="alamat" (keyup)="cekinput(3)"></ion-textarea>
+    <ion-textarea rows="3" [(ngModel)]="alamat" (keyup)="cekinput(3)"></ion-textarea>
   </ion-item>
   <ion-item *ngIf="alamat == '' && validalamat == 0">
     <ion-label stacked><i>*Alamat Wajib Diisi</i></ion-label>
@@ -40,15 +43,36 @@
 
   <ion-item no-lines>
     <ion-label stacked>Kota</ion-label>
-    <ion-input text-center type="text" [(ngModel)]="kota" (keyup)="cekinput(4)"></ion-input>
+    <ion-select [(ngModel)]="kota" submitText="yes" cancelText="cancel" style="padding-left: 8px;">
+      <ion-option value="semarang">Semarang</ion-option>
+      <ion-option value="surabaya">Surabaya</ion-option>
+      <ion-option value="bandung">Bandung</ion-option>
+      <ion-option value="jakarta">Jakarta</ion-option>
+      <ion-option value="bogor">Bogor</ion-option>
+      <ion-option value="bekasi">Bekasi</ion-option>
+      <ion-option value="yogyakarta">Yogyakarta</ion-option>
+    </ion-select>
   </ion-item>
   <ion-item *ngIf="kota == '' && validkota == 0">
     <ion-label stacked><i>*Kota Wajib Diisi</i></ion-label>
   </ion-item>
 
   <ion-item no-lines>
+    <ion-label stacked>Provinsi</ion-label>
+    <ion-select [(ngModel)]="provinsi" submitText="yes" cancelText="cancel" style="padding-left: 8px;">
+      <ion-option value="jawa_barat">Jaw Barat</ion-option>
+      <ion-option value="jawa_tengah">Jawa Tengah</ion-option>
+      <ion-option value="jawa_timur">Jawa Timur</ion-option>
+      <ion-option value="jakarta">Jakarta</ion-option>
+      <ion-option value="aceh">Aceh</ion-option>
+      <ion-option value="bali">Bali</ion-option>
+      <ion-option value="yogyakarta">Yogyakarta</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item no-lines>
     <ion-label stacked>Nomor Handphone</ion-label>
-    <ion-input text-center type="number" [(ngModel)]="nohp" (keyup)="cekinput(5)"></ion-input>
+    <ion-input type="number" [(ngModel)]="nohp" (keyup)="cekinput(5)"></ion-input>
   </ion-item>
   <ion-item *ngIf="nohp == '' && validnohp == 0">
     <ion-label stacked><i>*No.Handphone Wajib Diisi</i></ion-label>
@@ -56,7 +80,7 @@
 
   <ion-item no-lines>
     <ion-label stacked>Email</ion-label>
-    <ion-input text-center type="email" [(ngModel)]="email" (keyup)="cekinput(6)"></ion-input>
+    <ion-input type="email" [(ngModel)]="email" (keyup)="cekinput(6)"></ion-input>
   </ion-item>
   <ion-item *ngIf="email == '' && validemail == 0">
     <ion-label stacked><i>*Email Wajib Diisi</i></ion-label>
@@ -67,20 +91,23 @@
 <ion-input type="hidden" [(ngModel)]="fotowajah"></ion-input>
 
 <div class="daftarpage_verifikasi">
-
-  <p class="daftarpage_verifikasi_title">Verifikasi Identitas</p>
+  <h5>Verifikasi Identitas</h5>
 
   <ion-grid>
     <ion-row>
       <ion-col (click)="takeKTP()">
-        <p class="daftarpage_verifikasi_title2">Foto KTP</p>
+        <h6>Foto KTP</h6>
         <ion-buttons>
-          <div *ngFor="let photo of photos; let id = index">
+          <!-- <div *ngFor="let photo of photos; let id = index">
             <img [src]="photo">
-          </div>
+          </div> -->
+          <img src="login-image/camera.png">
         </ion-buttons>
-
-        <p style="text-align: left; font-size: 12px">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <p>
           Pastikan foto KTP yang diupload :<br>
           1. Terlihat jelas (Fokus pada KTP, tidak buram)<br>
           2. Foto Asli (bukan fotocopy, hasil scan dan tidak editan)<br>
@@ -91,14 +118,18 @@
 
     <ion-row>
       <ion-col (click)="takeWajah()">
-        <p class="daftarpage_verifikasi_title2">Foto Selfie dengan KTP</p>
+        <h6>Foto Selfie dengan KTP</h6>
         <ion-buttons>
-          <div *ngFor="let photo2 of photos2; let id = index">
+          <!-- <div *ngFor="let photo2 of photos2; let id = index">
             <img [src]="photo2"><br>
-          </div>
+          </div> -->
+          <img src="login-image/camera.png">
         </ion-buttons>
-
-        <p style="text-align: left; font-size: 12px">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <p>
           Pastikan foto KTP yang diupload :<br>
           1. Letakkan KTP Anda dekat dengan wajah Anda<br>
           2. Pastikan wajah dan foto KTP Anda terlihat jelas
@@ -107,4 +138,5 @@
     </ion-row>
   </ion-grid>
 </div>
+
 </ion-content>

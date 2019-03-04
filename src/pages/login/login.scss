@@ -11,7 +11,7 @@
 .loginpage_input {
     margin: 8px;
     border-radius: 15px;
-    background-color:rgba(80, 80, 80, 0.5);
+    background-color:rgba(80, 80, 80, 0.7);
     padding: 3px;
 }
 
@@ -35,39 +35,57 @@
 
 .loginpage_form button {
     text-transform: none;
-    border-radius: 7px;
+    border-radius: 5px;
     text-align: center;
     margin-top: 10px;
     width: 100px;
-    font-size: 16px;
+    font-size: 18px;
 }
 
-.loginpage_button p {
-    color: white;
-    text-align: center;
-    margin-left: 22px;
-}
+.loginpage_button {
+    margin-top: -15px;
 
-.loginpage_button button {
-    text-transform: none;
-    text-decoration: underline;
-    margin-top: -3px;
-    margin-left: -10px;
+        p {
+        color: white;
+        text-align: center;
+        }
 }
 
 .loginpage_button2 {
     text-align: center;
     margin-top: -15px;
-}
-.loginpage_button2 button {
+
+    h6 {
+        color: white;
+        font-weight: 400;
+    }
+
+    button {
     text-transform: none;
-    text-decoration: underline;
+    border-radius: 5px;
+    font-size: 16px;
+    }
+}
+
+.loginpage_button3 {
+    text-align: center;
+    margin-top: 15px;
+
+    button {
+        text-transform: none;
+        text-decoration: underline;
+        font-size: 16px;
+    }
 }
 
 /* ---------------------------------------------------------------------------------------------- */
 
 .button_icon {
     font-size: 38px;
+}
+
+.daftarpage_form {
+    margin-bottom: 25px;
 }
 
 .daftarpage_form ion-item {
@@ -81,6 +99,11 @@
     padding-left: 8px;
 }
 
+.daftarpage_form ion-select {
+    background-color: #e8e8e8;
+    border-radius: 5px;
+}
+
 .daftarpage_form ion-textarea {
     background-color: #e8e8e8;
     border-radius: 5px;
@@ -90,15 +113,38 @@
 .daftarpage_verifikasi{
     margin: 25px 7px 0px 7px;
     border-top: 1px solid gainsboro;
-}
 
-.daftarpage_verifikasi_title {
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
-}
-.daftarpage_verifikasi ion-grid {
-    margin-top: -20px;
+    h5 {
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    ion-grid {
+        margin-top: -20px;
+
+        h6 {
+            text-align: center;
+            font-weight: 500;
+        }
+
+        ion-buttons {
+            text-align: center;
+
+            img {
+                height: 50px;
+                width: 50px;
+                border: dashed 1px gray;
+                border-radius: 7px;
+                padding: 10px;
+            }
+        }
+
+        p {
+            font-size: 12px;
+        }
+
+    }
 }
 
 .daftarpage_verifikasi_title2 {

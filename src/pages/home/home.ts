@@ -69,7 +69,7 @@ export class HomePage {
     });
   }
   //Tampil data awal
-ionViewDidLoad() {
+/* ionViewDidLoad() {
   //Loading bar
   let loadingdata=this.loadincontroller.create({
     content:"Loading Produk..."
@@ -91,7 +91,7 @@ ionViewDidLoad() {
       }
     ); 
   });
-}
+} */
 
   tombolkeranjang() {
       this.nav.push (KeranjangPage);

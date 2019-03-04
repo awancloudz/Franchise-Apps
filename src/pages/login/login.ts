@@ -179,8 +179,12 @@ formatDate(date) {
 
   return [year, month, day].join('-');
 }
-daftar(){
-  this.nav.push(DaftarPage);
+daftarowner (){
+  this.nav.push(DaftarownerPage);
+}
+
+daftarmitra (){
+  this.nav.push(DaftarmitraPage);
 }
 
 lupapassword(){
@@ -194,9 +198,9 @@ informasipendaftaran (){
 }
 
 @Component({
-  templateUrl: 'daftar.html',
+  templateUrl: 'daftar-owner.html',
 })
-export class DaftarPage {
+export class DaftarownerPage {
   //KTP
   public photos : any;
   public imageURI:any;
@@ -543,6 +547,22 @@ login(){
   this.nav.setRoot(LoginPage);
 }
 }
+
+@Component({
+  templateUrl: 'daftar-mitra.html',
+})
+export class DaftarmitraPage {
+
+  constructor ( public nav: NavController,
+                public platform: Platform,
+                public actionSheetCtrl: ActionSheetController,
+                public alertCtrl: AlertController,
+                public loadincontroller:LoadingController,
+                public _toast:ToastController,) {
+              }
+
+}
+
 
 @Component({
   templateUrl: 'forgot.html',
