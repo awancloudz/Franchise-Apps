@@ -1,19 +1,13 @@
-<!--
-  Generated template for the SearchPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar color="primary">
-    <ion-toolbar>
-      <ion-searchbar [(ngModel)]="query" placeholder="Cari Produk" #searchbar (ionInput)="cariproduk()"></ion-searchbar>
-    </ion-toolbar>
+    <ion-title style="margin-left: -12px">Pencarian</ion-title>
   </ion-navbar>
   <!--<ion-list *ngIf="items.length > 0">
     <ion-item *ngFor="let item of items" (touchstart)="pilihproduk(item)"><b>{{item.namaproduk}} </b>di Kategori <b>{{item.kategoriproduk.namakategori}}</b></ion-item>
   </ion-list>-->
+  <ion-toolbar color="primary">
+    <ion-searchbar [(ngModel)]="query" placeholder="Cari Produk" #searchbar (ionInput)="cariproduk()"></ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
 

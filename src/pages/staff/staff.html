@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title style="margin-left: -15px">Staff</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="staff_list">
+    <ion-grid>
+      <ion-row (click)="staffdetail()">
+        <ion-col class="staff_list pict">
+          <img src="staff_picture/staff.png">
+        </ion-col>
+        <ion-col class="staff-list info">
+          <h5>Bill Gates</h5>
+          <h6>kasir</h6>
+        </ion-col>
+      </ion-row>
+
+      <ion-row (click)="staffdetail()">
+        <ion-col class="staff_list pict">
+          <img src="staff_picture/staff.png">
+        </ion-col>
+        <ion-col class="staff-list info">
+          <h5>Bill Gates</h5>
+          <h6>kasir</h6>
+        </ion-col>
+      </ion-row>
+
+      <ion-row (click)="staffdetail()">
+        <ion-col class="staff_list pict">
+          <img src="staff_picture/staff.png">
+        </ion-col>
+        <ion-col class="staff-list info">
+          <h5>Bill Gates</h5>
+          <h6>kasir</h6>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>

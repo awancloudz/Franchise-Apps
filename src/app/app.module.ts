@@ -43,6 +43,8 @@ import { ImageuploadPage } from '../pages/imageupload/imageupload';
 import { ImagezoomPage } from '../pages/imagezoom/imagezoom';
 import { DaftarkurirPage } from '../pages/daftarkurir/daftarkurir';
 import { InformasitokoPage } from '../pages/informasitoko/informasitoko';
+import { StaffPage, StaffdetailPage } from '../pages/staff/staff';
+import { KasirPage } from '../pages/kasir/kasir';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -88,6 +90,8 @@ import { MitraserviceProvider } from '../providers/mitraservice/mitraservice';
 import { ProdukserviceProvider } from '../providers/produkservice/produkservice';
 import { ImageuploadPageModule } from '../pages/imageupload/imageupload.module';
 import { ImagezoomPageModule } from '../pages/imagezoom/imagezoom.module';
+import { StaffPageModule } from '../pages/staff/staff.module';
+import { KasirPageModule } from '../pages/kasir/kasir.module';
 
 @NgModule({
   declarations: [
@@ -114,6 +118,8 @@ import { ImagezoomPageModule } from '../pages/imagezoom/imagezoom.module';
     //TokopenjualanPage, TokopenjualanDetailPage,
     //TokoprodukPage, TokoprodukCreatePage,
     //TokosearchPage,
+    //StaffPage, StaffdetailPage,
+    //KasirPage,
   ],
   imports: [
     BrowserModule,
@@ -144,6 +150,8 @@ import { ImagezoomPageModule } from '../pages/imagezoom/imagezoom.module';
     ProdukPageModule,
     ImageuploadPageModule,
     ImagezoomPageModule,
+    StaffPageModule,
+    KasirPageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -172,8 +180,11 @@ import { ImagezoomPageModule } from '../pages/imagezoom/imagezoom.module';
     FilterPage,
     ImageuploadPage,
     ImagezoomPage,
+    StaffPage, StaffdetailPage,
+    KasirPage,
     //DaftarkurirPage,
     //InformasitokoPage,
+    
   ],
   providers: [
     StatusBar,

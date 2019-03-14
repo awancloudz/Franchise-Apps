@@ -1,0 +1,77 @@
+page-kasir {
+
+.kasirmenu_header {
+    background: color($colors, primary);
+
+    ion-buttons {
+        margin-top: -10px;
+
+        p {
+            text-transform: none;
+            color: white;
+            font-size: 14px;
+        }
+    }
+}
+
+.kasirmenu_thumbnail {
+
+    ion-list {
+
+        ion-grid {
+            padding: 2px;
+
+            ion-row {
+                padding: 0px;
+        
+                ion-col {
+        
+                    ion-card {
+                        margin: -3px;
+                        width: auto;
+                        height: auto;
+                        border-radius: 5px;
+                        white-space: normal;
+
+                        img {
+                            filter: brightness(60%);
+                        }
+
+                        h6 {
+                            top: 2%;
+                            margin-left: 5px;
+                            margin-right: 7px;
+                            font-weight: 500;
+                            position: absolute;
+                            color: white;
+                            font-size: 3vw;
+                        }
+
+                        h5 {
+                            position: absolute;
+                            color: white;
+                            font-size: 2vh;
+                            text-align: center;
+                            margin-top: -3vh;
+                            width: 100%;
+                        }
+
+                        button {
+                            width: 100%;
+                            margin: 0px;
+                            height: 30px;
+
+                            ion-icon {
+                                zoom: 1.5;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    
+}
+
+}

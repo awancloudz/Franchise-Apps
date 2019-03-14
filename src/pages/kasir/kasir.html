@@ -1,0 +1,132 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title style="margin-left: -12px">Kasir</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only>
+          <ion-icon name="cart" style="zoom:1.2" ></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <div class="kasirmenu_header">
+    <ion-segment [(ngModel)]="kasir_menu">
+      <ion-segment-button value="food">
+        <ion-buttons>
+          <p>Food</p>
+        </ion-buttons>
+      </ion-segment-button>
+      <ion-segment-button value="snack">
+        <ion-buttons>
+          <p>Snack</p>
+        </ion-buttons>
+      </ion-segment-button>
+      <ion-segment-button value="drink">
+        <ion-buttons>
+          <p>Drink</p>
+        </ion-buttons>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+</ion-header>
+
+<ion-content>
+
+  <div [ngSwitch]="kasir_menu">
+    <div class="kasirmenu_thumbnail">
+      <ion-list *ngSwitchCase="'food'">
+        <ion-grid>
+          <ion-row>
+            <ion-col col-4>
+              <ion-card>
+                <img src="kasir_menu/food.png">
+                <h6>condimentum odio et</h6>
+                <h5>IDR 100.000</h5>
+                <button ion-button color="primary">
+                  <ion-icon name="add"></ion-icon>
+                </button>
+              </ion-card>
+            </ion-col>
+            <ion-col col-4>
+              <ion-card>
+                <img src="kasir_menu/appetizer.png">
+                <h6>consequat placerat orci</h6>
+                <h5>IDR 100.000</h5>
+                <button ion-button color="primary">
+                  <ion-icon name="add"></ion-icon>
+                </button>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-list>
+    
+      <ion-list *ngSwitchCase="'snack'">
+        <ion-grid>
+          <ion-row>
+            <ion-col col-4>
+              <ion-card>
+                <img src="kasir_menu/appetizer.png">
+                <h6>primis in faucibus</h6>
+                <h5>IDR 100.000</h5>
+                <button ion-button color="primary">
+                  <ion-icon name="add"></ion-icon>
+                </button>
+              </ion-card>
+            </ion-col>
+            <ion-col col-4>
+              <ion-card>
+                <img src="kasir_menu/bread.png">
+                <h6>viverra blandit elementum</h6>
+                <h5>IDR 100.000</h5>
+                <button ion-button color="primary">
+                  <ion-icon name="add"></ion-icon>
+                </button>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'drink'">
+        <ion-grid>
+          <ion-row>
+            <ion-col col-4>
+              <ion-card>
+                <img src="kasir_menu/coffee.png">
+                <h6>Pellentesque at nulla</h6>
+                <h5>IDR 100.000</h5>
+                <button ion-button color="primary">
+                  <ion-icon name="add"></ion-icon>
+                </button>
+              </ion-card>
+            </ion-col>
+            <ion-col col-4>
+              <ion-card>
+                <img src="kasir_menu/tea.png">
+                <h6>gravida euismod sed sed libero</h6>
+                <h5>IDR 100.000</h5>
+                <button ion-button color="primary">
+                  <ion-icon name="add"></ion-icon>
+                </button>
+              </ion-card>
+            </ion-col>
+            <ion-col col-4>
+              <ion-card>
+                <img src="kasir_menu/cocktail.png">
+                <h6>Donec ultricies ex</h6>
+                <h5>IDR 100.000</h5>
+                <button ion-button color="primary">
+                  <ion-icon name="add"></ion-icon>
+                </button>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-list>
+    </div>
+  </div>
+
+</ion-content>

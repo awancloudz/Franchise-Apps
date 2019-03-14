@@ -37,6 +37,8 @@ import { ImageuploadPage } from '../pages/imageupload/imageupload';
 import { ImagezoomPage } from '../pages/imagezoom/imagezoom';
 import { DaftarkurirPage } from '../pages/daftarkurir/daftarkurir';
 import { InformasitokoPage } from '../pages/informasitoko/informasitoko';
+import { StaffPage, StaffdetailPage } from '../pages/staff/staff';
+import { KasirPage } from '../pages/kasir/kasir';
 
 @Component({
   templateUrl: 'app.html'
@@ -77,16 +79,21 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages_admin = [
-      //{ title: 'Home', icon: "sidemenu_icon/home.png", component: HomePage },
-      { title: 'Penjualan', icon: "sidemenu_icon/penjualan.png", component: PenjualanPage },
+      { title: 'Home', icon: "sidemenu_icon/home.png", component: HomePage },
+      { title: 'Kategori', icon: "sidemenu_icon/kategori.png", component: KategoriPage },
       { title: 'Produk', icon: "sidemenu_icon/produk.png", component: ProdukPage },
+      { title: 'Penjualan', icon: "sidemenu_icon/penjualan.png", component: PenjualanPage },
       { title: 'Mitra', icon: "sidemenu_icon/mitra.png", component: MitraPage },
+      { title: 'Staff', icon: "sidemenu_icon/staff.png", component: StaffPage },
+      { title: 'Profile',  icon: "sidemenu_icon/profile.png", component: ProfilePage },
       { title: 'Logout',  icon: "sidemenu_icon/log_out.png", component: SettingPage },
     ];
     this.pages_mitra = [
       { title: 'Home', icon: "sidemenu_icon/home.png", component: HomePage },
-      // { title: 'Kategori', icon: "sidemenu_icon/kategori.png", component: KategoriPage },
+      { title: 'Kasir', icon: "sidemenu_icon/kasir.png", component: KasirPage },
+      { title: 'Penjualan', icon: "sidemenu_icon/penjualan.png", component: PenjualanPage },
       { title: 'Pembelian', icon: "sidemenu_icon/pembelian.png", component: PembelianPage },
+      { title: 'Shopping Cart', icon: "sidemenu_icon/shopping_cart.png", component: KeranjangPage },
       { title: 'Profile',  icon: "sidemenu_icon/profile.png", component: ProfilePage },
       { title: 'Logout',  icon: "sidemenu_icon/log_out.png", component: SettingPage },
     ];
