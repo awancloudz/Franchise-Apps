@@ -57,12 +57,18 @@ page-kasir {
                         }
 
                         button {
+                            position: absolute;
+                            left: 50%;
+                            top: 50%;
+                            transform: translate(-50%,-50%);
+                            opacity: 0.3;
                             width: 100%;
-                            margin: 0px;
-                            height: 30px;
+                            height: 100%;
 
                             ion-icon {
-                                zoom: 1.5;
+                                color: white;
+                                margin: 0 auto;
+                                font-size: 20vw;
                             }
                         }
                     }

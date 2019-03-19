@@ -5,6 +5,8 @@ import { SearchPage } from '../../pages/search/search';
 import { FilterPage } from '../filter/filter';
 import { DaftarkurirPage } from '../daftarkurir/daftarkurir';
 import { InformasitokoPage } from '../informasitoko/informasitoko';
+import { PencarianprodukPage } from '../pencarianproduk/pencarianproduk';
+
 
 //Tambahkan Provider
 import { KategoriserviceProvider } from '../../providers/kategoriservice/kategoriservice';
@@ -17,9 +19,9 @@ import { KeranjangArray } from '../keranjang/keranjangarray';
 import { Storage } from '@ionic/storage';
 
 @Component({
-  selector: 'home-page',
+  selector: 'page-home',
   templateUrl: 'home.html',
-  entryComponents: [ KeranjangPage,SearchPage,KategoriDetailPage,KeranjangcreatePage ],
+  entryComponents: [ KeranjangPage,SearchPage,KategoriDetailPage,KeranjangcreatePage, PencarianprodukPage ],
 })
 export class HomePage {
   carousel_case: string;
@@ -125,6 +127,10 @@ export class HomePage {
     else{
       this.nav.push(KeranjangcreatePage, {item2: item});
     }
+  }
+
+  pencarianproduk () {
+    this.nav.push (PencarianprodukPage);
   }
 }
 

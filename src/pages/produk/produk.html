@@ -4,62 +4,57 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title style="margin-left: -12px">Produk</ion-title>
-    <ion-buttons end class="produk_create">
-        <button ion-button icon-only (click)="produkcreate()">
-            <ion-icon name="ios-add-circle-outline"></ion-icon>
-        </button>
+    <ion-buttons end class="produk_button">
+      <button ion-button clear (click)="pencarianproduk()" class="produk_button search">
+        <ion-icon name="md-search"></ion-icon>
+      </button>
+      <button ion-button clear (click)="produkcreate()" class="produk_button create">
+        <ion-icon name="add-circle"></ion-icon>
+      </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
+<ion-content style="background-color: whitesmoke">
 
-<ion-content>
-  <div>
-        <ion-card *ngFor="let item of items">
-            <ion-grid>
-              <ion-row>
-                <ion-col>
-                  <div>
-                    <p class="produk_namabarang">{{item.namaproduk}}<p>
-                    <p class="produk_kodebarang">#{{item.kodeproduk}}</p>
-                  </div>
-                </ion-col>
-                <ion-col class="produk_thumbnail_delete">
-                    <ion-buttons>
-                        <button ion-button clear color="secondary" (click)="tombolhapus(item)">
-                            <ion-icon name="md-trash"></ion-icon>
-                        </button>
-                    </ion-buttons>
-                </ion-col>
-              </ion-row>
+  <div class="produk_thumbnail">
+    <ion-card *ngFor="let item of items">
+      <ion-grid>
+        <ion-row>
+          <ion-col class="produk_thumbnail nama_produk">
+            <h5>{{item.namaproduk}}</h5>
+            <h6>#{{item.kodeproduk}}</h6>
+          </ion-col>
+          <ion-col class="produk_thumbnail delete_button">
+            <ion-buttons>
+              <button ion-button clear color="secondary" (click)="tombolhapus(item)">
+                <ion-icon name="md-trash"></ion-icon>
+              </button>
+            </ion-buttons>
+          </ion-col>
+        </ion-row>
 
-              <ion-row>
-                <ion-col style="max-width: 120px">
-                  <img src="http://localhost:8000/fotoupload/{{item.foto}}">
-                </ion-col>
-          
-                <ion-col style="max-width: 75px">
-                    <p class="produk_info"> Stok<br>
-                                            Harga<br>
-                                            Diskon
-                    </p>
-                </ion-col>
-          
-                <ion-col>
-                    <p class="produk_qty">  {{item.stok}}<br>
-                                            Rp {{item.harga}},-<br>
-                                            {{item.diskon}}%
-                    </p>
-
-                    
-                    <div class="produk_thumbnail_edit">
-                        <button ion-button outline color="secondary" (click)="produkedit(item)">Update</button>
-                    </div>
-                </ion-col>
-
-              </ion-row>
-            </ion-grid>
-          </ion-card>
-    </div>
-
+        <ion-row>
+          <ion-col class="produk_thumbnail image">
+            <img src="http://localhost:8000/fotoupload/{{item.foto}}">
+          </ion-col>
+          <ion-col class="produk_thumbnail info_1">
+            <p>Stok<br>
+                Harga<br>
+                Diskon
+            </p>
+          </ion-col>
+          <ion-col class="produk_thumbnail info_2">
+            <p>{{item.stok}}<br>
+                Rp {{item.harga}},-<br>
+                {{item.diskon}}%
+            </p>
+            <ion-buttons>
+              <button ion-button outline color="secondary" (click)="produkedit(item)">Update</button>
+            </ion-buttons>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+  </div>
 </ion-content>

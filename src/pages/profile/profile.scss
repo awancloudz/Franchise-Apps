@@ -1,3 +1,18 @@
 page-profile {
 
+.profile_form {
+    margin-right: 8px;
+
+    ion-input {
+        background-color: rgb(230, 230, 230);
+        border-radius: 5px;
+        padding-left: 8px;
+    }
+
+    ion-textarea {
+        background-color: rgb(230, 230, 230);
+        border-radius: 5px;
+        padding-left: 8px;
+    }
+}
 }

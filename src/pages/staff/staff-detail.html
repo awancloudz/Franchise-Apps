@@ -1,44 +1,59 @@
-<ion-header>
-  <ion-navbar color="primary">
+<ion-header no-border>
+  <ion-navbar transparent class="staffdetail_navbar">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title style="margin-left: -15px">Staff Detail</ion-title>
+
+    <ion-buttons end>
+      <button ion-button clear class="staffdetail_navbar delete">
+        <ion-icon name="md-trash"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen style="background-color:whitesmoke">
   <div class="staffdetail_pict">
-    <img src="staff_picture/staff.png">
+    <ion-grid>
+      <ion-row class="staffdetail_pict background">
+        <ion-col>
+
+        </ion-col>
+      </ion-row>
+      <ion-row class="staffdetail_pict card_1">
+        <ion-col>
+          <ion-card>
+            <button ion-button clear (click)="staffedit()">
+              <ion-icon name="md-create"></ion-icon>
+            </button>
+            <img src="staff_picture/staff.png">
+            <h5>Antonio Banderas</h5>
+            <h6>Kasir</h6>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 
-  <!-- -----nek wes dadi, placeholder e di ilangi wae----- -->
   <div class="staffdetail_info">
-    <ion-list inset>
-      <ion-item no-lines>
-        <ion-label fixed>Nama</ion-label>
-        <ion-input type="text" readonly placeholder="Bill Gates"></ion-input>
-      </ion-item>
-
-      <ion-item no-lines>
-        <ion-label fixed>Jabatan</ion-label>
-        <ion-input type="text" readonly placeholder="Kasir"></ion-input>
-      </ion-item>
-
-      <ion-item no-lines>
-        <ion-label fixed>email</ion-label>
-        <ion-input type="email" readonly placeholder="blank@gmail.com"></ion-input>
-      </ion-item>
-
-      <ion-item no-lines>
-        <ion-label fixed>Password</ion-label>
-        <ion-input type="text" readonly placeholder="j1h2fkjhf4kj1h2f41"></ion-input>
-      </ion-item>
-
-      <ion-item no-lines>
-        <ion-label fixed>Nomor Hp</ion-label>
-        <ion-input type="number" readonly placeholder="081.000.000.000"></ion-input>
-      </ion-item>
-    </ion-list>
+    <ion-card>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <h5>No. Handphone</h5><br><h6>081.000.000.000</h6>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <h5>Email</h5><br><h6>blank@gmail.com</h6>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <h5>Password</h5><br><h6>a1b2c3d4e5f6g7h8i9j10</h6>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
   </div>
 </ion-content>

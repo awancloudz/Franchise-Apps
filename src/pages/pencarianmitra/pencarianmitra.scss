@@ -1,0 +1,33 @@
+page-pencarianmitra {
+
+.pencarian_mitra_list {
+    padding: 2px 0px;
+
+    ion-card {
+        height: 55px;
+        width: auto;
+        margin: 5px;
+        border-radius: 5px;
+        
+        ion-item {
+            margin-top: -7px;
+
+            h5 {
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: block;
+                font-weight: 600;
+                font-size: 16px;
+            }
+
+            h6 {
+                color: gray;
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+}

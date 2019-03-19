@@ -43,8 +43,10 @@ import { ImageuploadPage } from '../pages/imageupload/imageupload';
 import { ImagezoomPage } from '../pages/imagezoom/imagezoom';
 import { DaftarkurirPage } from '../pages/daftarkurir/daftarkurir';
 import { InformasitokoPage } from '../pages/informasitoko/informasitoko';
-import { StaffPage, StaffdetailPage } from '../pages/staff/staff';
+import { StaffPage, StaffdetailPage, StaffcreatePage, StaffeditPage } from '../pages/staff/staff';
 import { KasirPage } from '../pages/kasir/kasir';
+import { PencarianmitraPage } from '../pages/pencarianmitra/pencarianmitra';
+import { PencarianprodukPage } from '../pages/pencarianproduk/pencarianproduk';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -92,6 +94,8 @@ import { ImageuploadPageModule } from '../pages/imageupload/imageupload.module';
 import { ImagezoomPageModule } from '../pages/imagezoom/imagezoom.module';
 import { StaffPageModule } from '../pages/staff/staff.module';
 import { KasirPageModule } from '../pages/kasir/kasir.module';
+import { PencarianmitraPageModule } from '../pages/pencarianmitra/pencarianmitra.module';
+import { PencarianprodukPageModule } from '../pages/pencarianproduk/pencarianproduk.module';
 
 @NgModule({
   declarations: [
@@ -118,8 +122,10 @@ import { KasirPageModule } from '../pages/kasir/kasir.module';
     //TokopenjualanPage, TokopenjualanDetailPage,
     //TokoprodukPage, TokoprodukCreatePage,
     //TokosearchPage,
-    //StaffPage, StaffdetailPage,
+    //StaffPage, StaffdetailPage, StaffcreatePage, StaffeditPage,
     //KasirPage,
+    //PencarianmitraPage,
+    //PencarianprodukPage,
   ],
   imports: [
     BrowserModule,
@@ -152,6 +158,8 @@ import { KasirPageModule } from '../pages/kasir/kasir.module';
     ImagezoomPageModule,
     StaffPageModule,
     KasirPageModule,
+    PencarianmitraPageModule,
+    PencarianprodukPageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -180,8 +188,10 @@ import { KasirPageModule } from '../pages/kasir/kasir.module';
     FilterPage,
     ImageuploadPage,
     ImagezoomPage,
-    StaffPage, StaffdetailPage,
+    StaffPage, StaffdetailPage, StaffcreatePage, StaffeditPage,
     KasirPage,
+    PencarianmitraPage,
+    PencarianprodukPage,
     //DaftarkurirPage,
     //InformasitokoPage,
     

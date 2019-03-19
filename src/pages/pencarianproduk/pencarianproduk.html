@@ -1,49 +1,23 @@
 <ion-header>
   <ion-navbar color="primary">
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title style="margin-left: -12px">--Nama Kategori--</ion-title>
-    <ion-buttons end class="kategori_navbar_button">
-      <button ion-button clear (click)="pencarianproduk()" class="kategori_navbar_button search">
-          <ion-icon name="search"></ion-icon>
-      </button>
-      <button ion-button clear (click)="tombolkeranjang()" class="kategori_navbar_button cart">
-        <ion-icon name="cart"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
+  <ion-toolbar color="primary">
+    <ion-searchbar placeholder="Pencarian Produk"></ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content style="background-color: whitesmoke">
-<!-- <ion-card style="margin-top:10px">
-    <ion-list class="kategori-list">
-        <ion-row>
-            <ion-col *ngFor="let item2 of items.koleksi2" col-6>
-                <p align="center">
-                    <img *ngIf="item2.foto != ''" src="http://localhost:8000/fotoupload/{{item2.foto}}" class="picture-item">
-                    <img *ngIf="item2.foto == ''" src="assets/imgs/product.png" class="picture-item">
-                </p>
-                <h2><b>{{item2.namaproduk}}</b></h2>
-                <h3>Stok : {{item2.stok}}</h3>
-                <h3>Rp. {{item2.harga}},-</h3>
-                <ion-buttons>
-                    <button ion-button block (click)="tombolbeli(item2)">Beli</button>
-                </ion-buttons>
-            </ion-col>       
-        </ion-row>
-    </ion-list>
-</ion-card> -->
 
-<div class="kategori_thumbnail_admin">
+<ion-content>
+
+<div class="pencarian_produk_admin">
   <ion-card>
     <ion-grid>
       <ion-row>
-        <ion-col class="kategori_thumbnail_admin nama_produk">
+        <ion-col class="pencarian_produk__admin nama_produk">
           <h5>Sample Produk 1 Sample Produk 1 Sample Produk 1</h5>
           <h6>#123456789</h6>
         </ion-col>
-        <ion-col class="kategori_thumbnail_admin delete_button">
+        <ion-col class="pencarian_produk__admin delete_button">
           <ion-buttons>
             <button ion-button clear color="secondary" (click)="tombolhapus(item)">
               <ion-icon name="md-trash"></ion-icon>
@@ -52,7 +26,7 @@
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col class="kategori_thumbnail_admin image">
+        <ion-col class="pencarian_produk__admin image">
           <img src="staff_picture/staff.png">
         </ion-col>
         <ion-col class="kategori_thumbnail_admin info_1">
@@ -61,7 +35,7 @@
                                   Diskon
           </p>
         </ion-col>
-        <ion-col class="kategori_thumbnail_admin info_2">
+        <ion-col class="pencarian_produk__admin info_2">
           <p>100<br>
                                 Rp 100.000.000,-<br>
                                 100%
@@ -75,15 +49,15 @@
   </ion-card>
 </div>
 
-<div class="kategori_thumbnail_admin">
+<div class="pencarian_produk_admin">
   <ion-card>
     <ion-grid>
       <ion-row>
-        <ion-col class="kategori_thumbnail_admin nama_produk">
+        <ion-col class="pencarian_produk_admin nama_produk">
           <h5>Sample Produk 1 Sample Produk 1</h5>
           <h6>#123456789</h6>
         </ion-col>
-        <ion-col class="kategori_thumbnail_admin delete_button">
+        <ion-col class="pencarian_produk__admin delete_button">
           <ion-buttons>
             <button ion-button clear color="secondary" (click)="tombolhapus(item)">
               <ion-icon name="md-trash"></ion-icon>
@@ -92,16 +66,16 @@
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col class="kategori_thumbnail_admin image">
+        <ion-col class="pencarian_produk_admin image">
           <img src="staff_picture/staff.png">
         </ion-col>
-        <ion-col class="kategori_thumbnail_admin info_1">
+        <ion-col class="pencarian_produk__admin info_1">
           <p>Stok<br>
               Harga<br>
               Diskon
           </p>
         </ion-col>
-        <ion-col class="kategori_thumbnail_admin info_2">
+        <ion-col class="pencarian_produk_admin info_2">
           <p>100<br>
               Rp 100.000.000,-<br>
               100%
@@ -115,7 +89,7 @@
   </ion-card>
 </div>
 
-<div class="kategori_thumbnail_mitra">
+<div class="pencarian_produk_mitra">
   <ion-grid>
     <ion-row>
       <ion-col col-6>

@@ -12,12 +12,7 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
 import { FilePath } from '@ionic-native/file-path';
 import { ImageuploadPage } from '../imageupload/imageupload';
 import { ImagezoomPage } from '../imagezoom/imagezoom';
-/**
- * Generated class for the ProdukPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { PencarianprodukPage } from '../pencarianproduk/pencarianproduk';
 
 @IonicPage()
 @Component({
@@ -137,6 +132,10 @@ export class ProdukPage {
 
   produkcreate () {
     this.nav.push (ProdukcreatePage);
+  }
+
+  pencarianproduk () {
+    this.nav.push (PencarianprodukPage);
   }
 
 }

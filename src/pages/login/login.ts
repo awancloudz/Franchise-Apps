@@ -19,14 +19,9 @@ import { OneSignal } from '@ionic-native/onesignal';
 import {Camera, CameraOptions} from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
-/**
- * Generated class for the LoginPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 
 @Component({
+  selector: 'page-Login',
   templateUrl: 'login.html',
   //Set komponen * Wajib *
   entryComponents:[ HomePage ], 
@@ -198,6 +193,7 @@ informasipendaftaran (){
 }
 
 @Component({
+  selector: 'page-Login',
   templateUrl: 'daftar-owner.html',
 })
 export class DaftarownerPage {
@@ -549,6 +545,7 @@ login(){
 }
 
 @Component({
+  selector: 'page-Login',
   templateUrl: 'daftar-mitra.html',
 })
 export class DaftarmitraPage {
@@ -565,6 +562,7 @@ export class DaftarmitraPage {
 
 
 @Component({
+  selector: 'page-Login',
   templateUrl: 'forgot.html',
   //Set komponen * Wajib *
   entryComponents:[ LoginPage ], 

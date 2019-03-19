@@ -5,13 +5,8 @@ import { MitraserviceProvider } from '../../providers/mitraservice/mitraservice'
 import { MitraArray } from './mitraarray';
 import { Storage } from '@ionic/storage';
 import { ImagezoomPage } from '../imagezoom/imagezoom';
+import { PencarianmitraPage } from '../pencarianmitra/pencarianmitra';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
-/**
- * Generated class for the MitraPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -84,6 +79,10 @@ export class MitraPage {
 
   mitradetail(item) {
     this.nav.push (MitradetailPage, {item: item});
+  }
+
+  pencarianmitra () {
+    this.nav.push (PencarianmitraPage);
   }
 }
 

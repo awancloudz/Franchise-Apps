@@ -1,6 +1,23 @@
 page-kategori {
 
-.kategori_thumbnail {
+.kategori_navbar_button {
+
+    .search {
+
+        ion-icon {
+            zoom: 1.8;
+        }
+    }
+
+    .cart {
+
+        ion-icon {
+            zoom: 1.7;
+        }
+    }
+}
+
+.kategori_list {
     padding: 0px;
     margin-top: -3px;
 
@@ -44,5 +61,149 @@ page-kategori {
         }
     }
 }
+
+/* ---------------------------------------------------------------------------------------------- */
+
+.kategori_thumbnail_admin {
+    padding: 0px;
+
+    ion-card {
+        margin: 5px;
+        width: auto;
+        border-radius: 5px;
+
+        ion-row {
+
+            .nama_produk {
+                margin-left: 0px;
+    
+                h5 {
+                    font-weight: 500;
+                    font-size: 16px;
+                    margin-top: -2px;
+                    height: 38px;
+                }
+    
+                h6 {
+                    color: gray;
+                    font-size: 14px;
+                    margin-bottom: 5px;
+                }
+            }
+    
+            .delete_button {
+                max-width: 40px;
+    
+                button {
+                   left: 50%;
+                   transform: translateX(-50%);
+                   margin-top: -2px;
+    
+                    ion-icon {
+                        zoom: 1.3;
+                    }
+                }
+            }
+
+            .image {
+                max-width: 120px;
+
+                img {
+                    border-radius: 5px;
+                }
+            }
+
+            .info_1 {
+                max-width: 60px;
+                margin-left: 8px;
+                
+                p {
+                    font-weight: 500;
+                    color: gray;
+                    
+                }
+            }
+
+            .info_2 {
+
+                p {
+                    font-weight: 500;
+                }
+
+                button {
+                    border-radius: 20px;
+                    text-transform: none;
+                    height: 30px;
+                    margin-top: 10px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+        }
+    }
+}
+
+/* ------------------------------------------------------------------------------------------- */
+
+.kategori_thumbnail_mitra {
+
+    ion-row {
+        padding: 0px;
+        margin: -5px -3px;
+
+        ion-col {
+            padding: 0px;
+            
+
+            ion-card {
+                margin: 3px;
+                width: auto;
+                border-radius: 5px;
+
+                h4 {
+                    margin: 2px 5px;
+                    font-weight: 500;
+                    font-size: 15px;
+                    /* ---------------------------- */
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    white-space: normal;
+                    -webkit-line-clamp: 2;
+                    overflow: hidden;
+                    height: 37px;
+                }
+
+                h5 {
+                    text-align: center;
+                    font-weight: 500;
+                    font-size: 16px;
+                    color: red;
+                    margin: 7px 0px;
+                }
+
+                h6 {
+                    text-align: center;
+                    font-weight: 500;
+                    font-size: 13px;
+                    background-color: red;
+                    color: white;
+                    width: 70px;
+                    border-radius: 5px;
+                    padding: 2px;
+                    margin: 0 auto;
+                }
+
+                button {
+                    border-radius: 5px;
+                    text-transform: none;
+                    font-size: 16px;
+                    height: 30px;
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+}
+
 }
 

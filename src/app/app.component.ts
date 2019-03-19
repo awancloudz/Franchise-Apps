@@ -37,8 +37,10 @@ import { ImageuploadPage } from '../pages/imageupload/imageupload';
 import { ImagezoomPage } from '../pages/imagezoom/imagezoom';
 import { DaftarkurirPage } from '../pages/daftarkurir/daftarkurir';
 import { InformasitokoPage } from '../pages/informasitoko/informasitoko';
-import { StaffPage, StaffdetailPage } from '../pages/staff/staff';
+import { StaffPage, StaffdetailPage, StaffcreatePage, StaffeditPage } from '../pages/staff/staff';
 import { KasirPage } from '../pages/kasir/kasir';
+import { PencarianmitraPage } from '../pages/pencarianmitra/pencarianmitra';
+import { PencarianprodukPage } from '../pages/pencarianproduk/pencarianproduk';
 
 @Component({
   templateUrl: 'app.html'
@@ -54,7 +56,7 @@ export class MyApp {
   id:Number;
   fotoprofile:String;
 
-  rootPage: any = LoginPage;
+  rootPage: any = DaftarmitraPage;
   level = "";
   pages_admin: Array<{title: string, icon: string,component: any}>;
   pages_mitra: Array<{title: string, icon: string,component: any}>;
@@ -85,16 +87,20 @@ export class MyApp {
       { title: 'Penjualan', icon: "sidemenu_icon/penjualan.png", component: PenjualanPage },
       { title: 'Mitra', icon: "sidemenu_icon/mitra.png", component: MitraPage },
       { title: 'Staff', icon: "sidemenu_icon/staff.png", component: StaffPage },
-      { title: 'Profile',  icon: "sidemenu_icon/profile.png", component: ProfilePage },
+      { title: 'Profil',  icon: "sidemenu_icon/profile.png", component: ProfilePage },
       { title: 'Logout',  icon: "sidemenu_icon/log_out.png", component: SettingPage },
     ];
     this.pages_mitra = [
       { title: 'Home', icon: "sidemenu_icon/home.png", component: HomePage },
+      { title: 'Kategori', icon: "sidemenu_icon/kategori.png", component: KategoriPage },
+      { title: 'Produk', icon: "sidemenu_icon/produk.png", component: ProdukPage },
+      { title: 'Keranjang', icon: "sidemenu_icon/shopping_cart.png", component: KeranjangPage },
+      { title: 'Pembelian', icon: "sidemenu_icon/pembelian.png", component: PembelianPage },
+
       { title: 'Kasir', icon: "sidemenu_icon/kasir.png", component: KasirPage },
       { title: 'Penjualan', icon: "sidemenu_icon/penjualan.png", component: PenjualanPage },
-      { title: 'Pembelian', icon: "sidemenu_icon/pembelian.png", component: PembelianPage },
-      { title: 'Shopping Cart', icon: "sidemenu_icon/shopping_cart.png", component: KeranjangPage },
-      { title: 'Profile',  icon: "sidemenu_icon/profile.png", component: ProfilePage },
+      { title: 'Staff', icon: "sidemenu_icon/staff.png", component: StaffPage },
+      { title: 'Profil',  icon: "sidemenu_icon/profile.png", component: ProfilePage },
       { title: 'Logout',  icon: "sidemenu_icon/log_out.png", component: SettingPage },
     ];
   }

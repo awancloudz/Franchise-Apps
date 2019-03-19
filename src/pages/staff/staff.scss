@@ -1,5 +1,12 @@
 page-staff {
 
+.staff_add {
+
+    ion-icon {
+        zoom: 2.0;
+    }
+}
+
 .staff_list {
 
     .pict {
@@ -27,6 +34,12 @@ page-staff {
                     font-weight: 500;
                     line-height: 1.1;
                     margin-top: 7px;
+                    height: 18px;
+                    white-space: normal;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 1;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
                 }
 
                 h6 {
@@ -42,43 +55,154 @@ page-staff {
 
 /* ------------------------------------------------------------------------------------------------- */
 
+.staffdetail_navbar {
+
+    button {
+        color: white;
+    }
+
+    .delete {
+        margin-top: -10px;
+        margin-right: 5px;
+
+        ion-icon {
+            zoom: 1.3;
+        }
+    }
+}
+
 .staffdetail_pict {
-    text-align: center;
     margin-top: 10px;
 
-    img {
-        height: 150px;
-        width: 150px;
-        border-radius: 50%;
+    .background {
+        background: color($colors, primary);
+        height: 200px;
+        margin: -75px -5px 0px -5px;
     }
+
+    .card_1 {
+        text-align: center;
+
+        ion-card {
+            margin: -90px 0px 0px 0px;
+            width: auto;
+            height: 110px;
+            padding-top: 10px;
+            text-align: center;
+            border-radius: 5px;
+    
+            button {
+                position: absolute;
+                color: gray;
+                left: 98%;
+                transform: translateX(-98%);
+                margin-top: -7px;
+                    
+                ion-icon {
+                    zoom: 1.3;
+                }
+            }
+    
+            img {
+                height: 100px;
+                width: 100px;
+                border-radius: 50%;
+                background: white;
+                padding: 3px;
+                margin-top: -63px;
+                position: absolute;
+                z-index: 1;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+    
+            h5 {
+                font-weight: 500;
+                font-size: 18px;
+                margin-top: 45px;
+            }
+    
+            h6 {
+                font-size: 16px;
+                color: gray;
+            }
+        }
+    }   
 }
 
 .staffdetail_info {
-    margin-left: -5px;
-    margin-right: -5px;
 
-    ion-list {
+    ion-card {
+        margin-top: 0px;
+        text-align: center;
+        border-radius: 5px;
 
-        ion-item {
-            border-radius: 5px !important;
-            background-color: whitesmoke;
-            margin: 7px 0px;
-            border: 1px solid gainsboro !important;
-    
-            ion-label {
-                font-size: 14px;
-                margin-left: 10px;
-            }
-    
-            ion-input {
-                font-size: 14px;
-                margin-left: -30px;
-                margin-right: -5px;
-            }
+        h5 {
+            font-size: 14px;
+            font-weight: 400;
+            color: gray;
         }
+    
+        h6 {
+            font-size: 16px;
+            font-weight: 500;
+            margin-top: -15px;
+            margin-bottom: 10px;
+        }
+    } 
+}
+
+/* -------------------------------------------------------------------------------------------- */
+
+.staffcreate_checkmark {
+
+    ion-icon {
+        zoom: 1.4;
+
+    }
+}
+
+.staffcreate_image {
+    text-align: center;
+    margin: 10px;
+
+    img {
+        height: auto;
+        width: 170px;
+        border-radius: 50%;
     }
 
-    
+    button {
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        margin-top: -50px;
+        margin-left: 37px;
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        
+        ion-icon {
+            zoom: 1.5;
+            color: white;
+            margin-right: -1px;
+        }
+    }
 }
+
+.staffcreate_form {
+    margin-right: 8px;
+
+    ion-input {
+        background-color: rgb(230, 230, 230);
+        border-radius: 5px;
+        padding-left: 8px;
+    }
+
+    ion-select {
+        background-color: rgb(230, 230, 230);
+        border-radius: 5px;
+    }
+}
+
 }
 

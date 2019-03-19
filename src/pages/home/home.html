@@ -4,8 +4,11 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title style="margin-left: -12px">Home</ion-title>
-    <ion-buttons end class="cart_button">
-        <button ion-button icon-only (click)="tombolkeranjang()">
+    <ion-buttons end class="home_navbar_button">
+        <button ion-button clear class="home_navbar_button search" (click)="pencarianproduk()">
+            <ion-icon name="search"></ion-icon>
+        </button>
+        <button ion-button clear class="home_navbar_button cart" (click)="tombolkeranjang()">
             <ion-icon name="cart"></ion-icon>
             <p *ngFor="let item2 of items.koleksi2">{{ item2.jumlahkeranjang }}</p>
         </button>
@@ -13,36 +16,59 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-<div class="homepage_slides">
-    <ion-slides pager="true" autoplay="2500" loop="true" initialslide="6">
+<ion-content style="background-color:whitesmoke">
+
+<div class="homepage_slide_iklan">
+    <ion-slides pager="true" autoplay="2500" loop="true" initialslide="5">
         <ion-slide>
-            <img src="home_slide_image/sample1.jpg">
+            <img src="homepage_slide_iklan/iklan1.png">
         </ion-slide>
         
         <ion-slide>
-            <img src="home_slide_image/sample2.jpg">
-        </ion-slide>
-        
-        <ion-slide>
-            <img src="home_slide_image/sample3.jpg">
-        </ion-slide>
-
-        <ion-slide>
-            <img src="home_slide_image/sample4.jpg">
-        </ion-slide>
-
-        <ion-slide>
-            <img src="home_slide_image/sample5.jpg">
-        </ion-slide>
-
-        <ion-slide>
-            <img src="home_slide_image/sample6.jpg">
+            <img src="homepage_slide_iklan/iklan2.png">
         </ion-slide>
     </ion-slides>
 </div>
 
-<div class="homepage_menu">
+<div class="homepage_informasi">
+    <h5>Informasi</h5>
+    <ion-card>
+
+        <h6>Praesent quis massa id ante viverra imperdiet. Donec elit risus, tempor ac nunc sit amet, vestibulum maximus mauris. Nullam sollicitudin magna lorem, et posuere libero luctus eget. Duis sed sapien pulvinar, auctor dolor non, gravida mi. In sed elit id metus auctor commodo. Praesent velit est, facilisis non volutpat at, vulputate at est. Morbi non nulla id nisi iaculis lacinia nec ac nulla. Nam vestibulum consectetur metus, in condimentum quam varius dictum. Maecenas quis nunc in risus volutpat elementum sed non turpis. Fusce tincidunt turpis non libero feugiat maximus.</h6>
+    </ion-card>
+</div>
+
+<div class="homepage_list_franchise">
+    <ion-card>
+        <ion-grid>
+            <ion-row>
+                <ion-col class="homepage_list_franchise image">
+                    <img src="staff_picture/staff.png">
+                </ion-col>
+                <ion-col class="homepage_list_franchise info">
+                    <h5>Nama Franchise Nama Franchise Nama Franchise</h5>
+                    <h6>Kota Asal Franchise</h6>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card>
+
+    <ion-card>
+        <ion-grid>
+            <ion-row>
+                <ion-col class="homepage_list_franchise image">
+                    <img src="staff_picture/staff.png">
+                </ion-col>
+                <ion-col class="homepage_list_franchise info">
+                    <h5>Nama Franchise</h5>
+                    <h6>Kota Asal Franchise</h6>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card>
+</div>
+
+<!-- <div class="homepage_menu">
     <h5>Daftar Produk</h5>
     <ion-grid no-padding>
         <ion-row>
@@ -61,5 +87,47 @@
             </ion-col>
         </ion-row>
     </ion-grid>
+</div> -->
+
+<div class="homepage_produk_mitra">
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <ion-card>
+          <img src="staff_picture/staff.png">
+          <h4>Sample Produk 1 Sample Produk 1 Sample Produk 1 Sample Produk 1</h4>
+          <h5>Rp. 100.000.000.-</h5>
+          <h6>999 Unit</h6>
+          <ion-buttons>
+            <button ion-button color="secondary" block (click)="tombolbeli(item)">Beli</button>
+          </ion-buttons>
+        </ion-card>
+      </ion-col>
+
+      <ion-col col-6>
+        <ion-card>
+          <img src="staff_picture/staff.png">
+          <h4>Sample Produk 1</h4>
+          <h5>Rp. 100.000.000.-</h5>
+          <h6>999 unit</h6>
+          <ion-buttons>
+            <button ion-button color="secondary" block (click)="tombolbeli(item)">Beli</button>
+          </ion-buttons>
+        </ion-card>
+      </ion-col>
+
+      <ion-col col-6>
+        <ion-card>
+          <img src="staff_picture/staff.png">
+          <h4>Sample Produk 1</h4>
+          <h5>Rp. 100.000.000.-</h5>
+          <h6>999 unit</h6>
+          <ion-buttons>
+            <button ion-button color="secondary" block (click)="tombolbeli(item)">Beli</button>
+          </ion-buttons>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </div>
 </ion-content>

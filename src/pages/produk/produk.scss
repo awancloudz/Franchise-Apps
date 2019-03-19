@@ -1,62 +1,103 @@
 page-produk {
 
-.produk_create {
+.produk_button {
 
-    ion-icon {
-        zoom: 1.4;
-    }
-}
-
-.produk_namabarang {
-    line-height: 1.1;
-    white-space: normal;
-    font-size: 16px;
-    font-weight: 500;
-}
-
-.produk_kodebarang {
-    font-size: 14px;
-    color: gray;
-}
-
-.produk_info {
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.produk_qty {
-    margin-top: 1px;
-    font-size: 14px;
-    line-height: 1.5;
-}
-
-.produk_thumbnail_delete {
-    max-width: 40px;
-
-    button {
-        margin: 0 auto;
-        width: 15px;
-        height: 25px;
+    .search {
 
         ion-icon {
-            zoom: 1.3;
+            zoom: 1.9;
         }
     }
-    
+
+    .create {
+
+        ion-icon {
+            zoom: 2.0;
+        }
+    }
 }
 
-.produk_thumbnail_edit {
-    text-align: center;
+.produk_thumbnail {
+    padding: 0px;
 
-    button {
-        height: 20px;
-        text-transform: none;
-        margin-top: 15px;
-        margin-bottom: 0px;
+    ion-card {
+        margin: 5px;
+        width: auto;
+        border-radius: 5px;
+
+        ion-row {
+
+            .nama_produk {
+                margin-left: 0px;
+    
+                h5 {
+                    font-weight: 500;
+                    font-size: 16px;
+                    margin-top: -2px;
+                    height: 38px;
+                }
+    
+                h6 {
+                    color: gray;
+                    font-size: 14px;
+                    margin-bottom: 5px;
+                }
+            }
+    
+            .delete_button {
+                max-width: 40px;
+    
+                button {
+                   left: 50%;
+                   transform: translateX(-50%);
+                   margin-top: -2px;
+    
+                    ion-icon {
+                        zoom: 1.3;
+                    }
+                }
+            }
+
+            .image {
+                max-width: 120px;
+
+                img {
+                    border-radius: 5px;
+                }
+            }
+
+            .info_1 {
+                max-width: 60px;
+                margin-left: 8px;
+                
+                p {
+                    font-weight: 500;
+                    color: gray;
+                    
+                }
+            }
+
+            .info_2 {
+
+                p {
+                    font-weight: 500;
+                }
+
+                button {
+                    border-radius: 20px;
+                    text-transform: none;
+                    height: 30px;
+                    margin-top: 10px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+        }
     }
 }
 
 /* ------------------------------------Produk Update Page------------------------------------- */
+
 .produkupdate_apply {
 
     ion-icon {
@@ -78,6 +119,7 @@ page-produk {
         position: absolute;
         margin-top: -40px;
         margin-left: 37px;
+
         
         ion-icon {
             zoom: 1.4;

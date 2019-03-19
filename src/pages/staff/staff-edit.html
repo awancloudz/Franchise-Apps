@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title style="margin-left: -12px">Staff Edit</ion-title>
+    <ion-buttons end class="staffcreate_checkmark">
+      <button ion-button icon-only>
+        <ion-icon name="ios-checkmark-circle-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+<div class="staffcreate_image">
+    <img src="staff_picture/staff.png">
+    <ion-buttons>
+      <button ion-button clear>
+        <ion-icon name="ios-camera-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </div>
+
+  <div style="margin-right: 8px" class="staffcreate_form">
+    <ion-item no-lines>
+      <ion-label stacked>Nama Lengkap</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item no-lines>
+      <ion-label stacked>Jabatan</ion-label>
+        <ion-select [(ngModel)]="kota" submitText="yes" cancelText="cancel" style="padding-left: 8px">
+          <ion-option value="kasir">Kasir</ion-option>
+          <ion-option value="waitress">Waitress</ion-option>
+          <ion-option value="chef">Chef</ion-option>
+          <ion-option value="bartender">Bartender</ion-option>
+          <ion-option value="barista">Barista</ion-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-item no-lines>
+      <ion-label stacked>No. Handphone</ion-label>
+      <ion-input type="number"></ion-input>
+    </ion-item>
+
+    <ion-item no-lines>
+      <ion-label stacked>Email</ion-label>
+      <ion-input type="email"></ion-input>
+    </ion-item>
+
+    <ion-item no-lines>
+      <ion-label stacked>Password</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+  </div>
+
+</ion-content>

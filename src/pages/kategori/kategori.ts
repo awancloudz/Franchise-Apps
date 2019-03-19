@@ -8,12 +8,8 @@ import { NavController, NavParams, Platform, ActionSheetController, LoadingContr
 import { SearchPage } from '../../pages/search/search';
 import { KeranjangPage,KeranjangcreatePage } from '../../pages/keranjang/keranjang';
 import { KeranjangArray } from '../keranjang/keranjangarray';
-/**
- * Generated class for the KategoriPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { PencarianprodukPage } from '../../pages/pencarianproduk/pencarianproduk';
+
 @Component({
   selector: 'page-kategori',
   templateUrl: 'kategori.html',
@@ -85,12 +81,16 @@ ionViewDidLoad() {
     this.nav.push (KeranjangPage);
   }
 
+  kategoridetail () {
+    this.nav.push (KategoriDetailPage);
+  }
+
 }
 
 @Component({
   selector: 'page-kategori',
   templateUrl: 'kategori-detail.html',
-  entryComponents: [ SearchPage,KeranjangPage,KeranjangcreatePage ],
+  entryComponents: [ SearchPage,KeranjangPage,KeranjangcreatePage, PencarianprodukPage ],
 })
 export class KategoriDetailPage {
   item;
@@ -112,7 +112,7 @@ export class KategoriDetailPage {
   }
 
 //Tampil data awal
-ionViewDidLoad() {
+/* ionViewDidLoad() {
   //Loading bar
   let loadingdata=this.loadincontroller.create({
     content:"Loading..."
@@ -132,7 +132,7 @@ ionViewDidLoad() {
       loadingdata.dismiss();
     }
   );
-}
+} */
   tombolsub(item){
     this.nav.push(KategoriDetailPage2, { item: item });  
   }
@@ -156,6 +156,10 @@ ionViewDidLoad() {
     else{
       this.nav.push(KeranjangcreatePage, {item2: item2});
     }
+  }
+
+  pencarianproduk () {
+    this.nav.push (PencarianprodukPage);
   }
 }
 
